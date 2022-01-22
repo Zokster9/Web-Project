@@ -1,26 +1,38 @@
 package model;
 
+import com.google.gson.annotations.Expose;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Post {
+public abstract class AbstractPost {
+    private Long id;
     private String picture;
-    private String text;
     private boolean isDeleted;
-    private User user;
+    private String username;
+
+    @Expose(serialize = false)
     private List<Comment> comments;
 
-    public Post() {
+    public AbstractPost() {
         isDeleted = false;
         comments = new ArrayList<>();
     }
 
-    public Post(String picture, String text, User user) {
+    public AbstractPost(Long id, String picture, String username) {
+        this.id = id;
         this.picture = picture;
-        this.text = text;
-        this.user = user;
+        this.username = username;
         isDeleted = false;
         comments = new ArrayList<>();
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getPicture() {
@@ -31,14 +43,6 @@ public class Post {
         this.picture = picture;
     }
 
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
-    }
-
     public boolean isDeleted() {
         return isDeleted;
     }
@@ -47,12 +51,12 @@ public class Post {
         isDeleted = deleted;
     }
 
-    public User getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public List<Comment> getComments() {

@@ -1,5 +1,7 @@
 package model;
 
+import com.google.gson.annotations.Expose;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,15 +18,22 @@ public class User {
     private boolean isPrivate;
     private boolean isBlocked;
     private boolean isDeleted;
+
+    @Expose(serialize = false)
     private List<User> friends;
+    @Expose(serialize = false)
     private List<Message> messages;
+    @Expose(serialize = false)
     private List<FriendRequest> friendRequests;
+    @Expose(serialize = false)
     private List<FriendRequest> friendRequestsSent;
-    private List<Post> posts;
-    private List<Photo> photos;
+    @Expose(serialize = false)
+    private List<AbstractPost> posts;
+    @Expose(serialize = false)
     private Photo profilePicture;
 
     public User() {
+        dateOfBirth = LocalDate.now();
         role = UserType.User;
         isPrivate = false;
         isBlocked = false;
@@ -34,7 +43,6 @@ public class User {
         friendRequests = new ArrayList<>();
         friendRequestsSent = new ArrayList<>();
         posts = new ArrayList<>();
-        photos = new ArrayList<>();
     }
 
     public User(String username, String password, String email, String name, String surname, Gender gender) {
@@ -44,6 +52,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
+        dateOfBirth = LocalDate.now();
         role = UserType.User;
         isPrivate = false;
         isBlocked = false;
@@ -53,7 +62,6 @@ public class User {
         friendRequests = new ArrayList<>();
         friendRequestsSent = new ArrayList<>();
         posts = new ArrayList<>();
-        photos = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -176,20 +184,12 @@ public class User {
         this.friendRequestsSent = friendRequestsSent;
     }
 
-    public List<Post> getPosts() {
+    public List<AbstractPost> getPosts() {
         return posts;
     }
 
-    public void setPosts(List<Post> posts) {
-        this.posts = posts;
-    }
-
-    public List<Photo> getPhotos() {
-        return photos;
-    }
-
-    public void setPhotos(List<Photo> photos) {
-        this.photos = photos;
+    public void setPosts(List<AbstractPost> statuses) {
+        this.posts = statuses;
     }
 
     public Photo getProfilePicture() {

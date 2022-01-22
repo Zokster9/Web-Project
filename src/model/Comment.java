@@ -3,20 +3,30 @@ package model;
 import java.time.LocalDate;
 
 public class Comment {
+    private Long post;
     private LocalDate date;
     private LocalDate editDate;
     private boolean isDeleted;
-    private User user;
+    private String username;
 
     public Comment() {
         isDeleted = false;
     }
 
-    public Comment(LocalDate date, LocalDate editDate, User user) {
+    public Comment(Long post, LocalDate date, LocalDate editDate, String username) {
+        this.post = post;
         this.date = date;
         this.editDate = editDate;
-        this.user = user;
+        this.username = username;
         isDeleted = false;
+    }
+
+    public Long getPost() {
+        return post;
+    }
+
+    public void setPost(Long post) {
+        this.post = post;
     }
 
     public LocalDate getDate() {
@@ -43,11 +53,11 @@ public class Comment {
         isDeleted = deleted;
     }
 
-    public User getUser() {
-        return user;
+    public String getUsername() {
+        return username;
     }
 
-    public void setUser(User user) {
-        this.user = user;
+    public void setUsername(String username) {
+        this.username = username;
     }
 }
