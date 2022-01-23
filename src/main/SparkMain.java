@@ -5,13 +5,16 @@ import dao.UserDao;
 import utils.Filters;
 import utils.Path;
 
+import java.io.File;
+import java.io.IOException;
+
 import static spark.Spark.*;
 
 public class SparkMain {
 
     public static UserDao userDao;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         userDao = new UserDao();
 
         port(8088);
