@@ -15,7 +15,8 @@ public class SparkMain {
         userDao = new UserDao();
 
         port(8088);
-        staticFiles.location("../../static");
+
+        staticFiles.externalLocation(new File("./static").getCanonicalPath());
 
         before("*", Filters.addTrailingSlashes);
 
