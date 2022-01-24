@@ -62,7 +62,7 @@ Vue.component("signup-form", {
                             </div>
 
                             <div class="form-group">
-                                <button @click="clicked(cum)" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+                                <button @click="clicked('')" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
                             </div>
 
                             <p class="forgot-password text-right">
