@@ -4,11 +4,19 @@
   }
 
 body {
+  min-height: 100vh;
+  display: flex;
+  font-weight: 400;
+}
+
+.gifbg {
+  width: auto;
+  height: auto;
   background: url("bg.gif");
   background-size:50%;
   min-height: 100vh;
   display: flex;
-  font-weight: 400;
+  font-weight: 500;
 }
 
 body,
@@ -93,8 +101,31 @@ label {
   color: #2554FF;
 }
 
-
 body::-webkit-scrollbar-track
+{
+  -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+  background-color: rgba(93, 137, 219, 0.658);
+  border-radius: 10px;
+}
+
+body::-webkit-scrollbar
+{
+  width: 10px;
+  background-color: #F5F5F5;
+}
+
+body::-webkit-scrollbar-thumb
+{
+  border-radius: 10px;
+  background-image: -webkit-gradient(linear,
+  left bottom,
+  left top,
+  color-stop(0.44, rgba(122, 154, 217, 0.80)),
+  color-stop(0.72, rgba(73,125,189, 0.80)),
+  color-stop(0.86, rgba(28,58,148, 0.80)));
+}
+/* different scrollbar */
+/* body::-webkit-scrollbar-track
 {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   border-radius: 10px;
@@ -112,4 +143,4 @@ body::-webkit-scrollbar-thumb
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
   background-color: #555;
-}
+} */
