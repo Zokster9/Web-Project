@@ -1,12 +1,12 @@
 Vue.component("forgot-password-form", {
     template: `
-    <div class="password">
+    <div class="password gifbg">
     <login-navbar></login-navbar>
     <div class="App">
         <div class="vertical-center">
             <div class="inner-block">
                 <div class="password">
-                    <form>
+                    <form  @submit.prevent>
                         <h3>Forgot Password</h3>
 
                         <div class="form-group">
@@ -16,6 +16,9 @@ Vue.component("forgot-password-form", {
 
                         <div class="form-group">
                             <button type="submit" class="btn btn-dark btn-lg btn-block">Reset password</button>
+                        </div>
+                        <div class="form-group">
+                            <div class="alert alert-info">This functionality is not available at the moment. Our team is working hard on making it available ;)</div>
                         </div>
                     </form>
                 </div>

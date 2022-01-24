@@ -2,14 +2,14 @@ Vue.use(vuelidate.default)
 
 Vue.component("login-form", {
     template: `
-    <div class="login">
+    <div class="login gifbg">
     <!-- Navigation -->
     <login-navbar></login-navbar>
     <div class="App">
         <div class="vertical-center">
             <div class="inner-block">
                 <div class="login">
-                    <form>
+                    <form @submit.prevent>
                         <h3>Sign In</h3>
 
                         <div class="form-group">

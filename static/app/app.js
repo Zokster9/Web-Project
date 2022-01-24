@@ -4,16 +4,16 @@ const ForgotPassword = {template : "<forgot-password-form></forgot-password-form
 
 
 const router = new VueRouter({
-    mode: 'history',
+    mode: 'hash',
     routes: [
         { path: "/", component: LoginForm },
-        { path: "/login", component: LoginForm},
-        { path: "/signup", component: SignUpForm},
-        { path: "/forgot-password", component: ForgotPassword },
+        { path: "/login/", component: LoginForm},
+        { path: "/signup/", component: SignUpForm},
+        { path: "/forgot-password/", component: ForgotPassword },
     ]
 });
 
-new Vue({
+var app = new Vue({
     router,
     el: "#wrapper",
 })

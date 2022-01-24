@@ -2,14 +2,14 @@ Vue.use(vuelidate.default)
 
 Vue.component("signup-form", {
     template: `
-    <div class="signup">
+    <div class="signup gifbg">
     <!-- Navigation -->
         <login-navbar></login-navbar>
         <div class="App">
             <div class="vertical-center">
                 <div class="inner-block">
                     <div class="signup">
-                        <form>
+                        <form @submit.prevent>
                             <h3>Sign Up</h3>
 
                             <div class="form-group">
@@ -62,7 +62,7 @@ Vue.component("signup-form", {
                             </div>
 
                             <div class="form-group">
-                                <button :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+                                <button @click="clicked(cum)" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
                             </div>
 
                             <p class="forgot-password text-right">
@@ -107,6 +107,9 @@ Vue.component("signup-form", {
         },
         outFocus(field){
             this.infocus[field] = false
+        },
+        clicked(msg){
+            console.log(msg)
         }
     },
 
