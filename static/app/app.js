@@ -1,6 +1,8 @@
-const LoginForm = { template: "<login-form></login-form>" }
-const SignUpForm = { template: "<signup-form></signup-form>"}
-const ForgotPassword = {template : "<forgot-password-form></forgot-password-form>"}
+const NotFoundComponent = { template: "<not-found></not-found>"};
+
+const LoginForm = { template: "<login-form></login-form>" };
+const SignUpForm = { template: "<signup-form></signup-form>"};
+const ForgotPassword = {template : "<forgot-password-form></forgot-password-form>"};
 
 
 const router = new VueRouter({
@@ -10,6 +12,11 @@ const router = new VueRouter({
         { path: "/login/", component: LoginForm},
         { path: "/signup/", component: SignUpForm},
         { path: "/forgot-password/", component: ForgotPassword },
+
+
+
+
+        { path: '*', component: NotFoundComponent },
     ]
 });
 
