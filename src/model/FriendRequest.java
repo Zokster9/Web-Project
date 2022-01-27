@@ -11,8 +11,8 @@ public class FriendRequest {
     public FriendRequest() {
     }
 
-    public FriendRequest(FriendRequestStatus status, LocalDate date, String sender, String receiver) {
-        this.status = status;
+    public FriendRequest(LocalDate date, String sender, String receiver) {
+        this.status = FriendRequestStatus.Pending;
         this.date = date;
         this.sender = sender;
         this.receiver = receiver;

@@ -3,6 +3,7 @@ package main;
 import com.google.gson.Gson;
 import controllers.FeedController;
 import controllers.LoginController;
+import controllers.ProfileController;
 import dao.UserDao;
 import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
@@ -33,5 +34,10 @@ public class SparkMain {
         post(Path.Web.LOGIN, LoginController.loginUser);
         post(Path.Web.SIGN_UP, LoginController.signUpUser);
         get(Path.Web.FEED, FeedController.getFeed);
+        get(Path.Web.PROFILE_COMMON_FRIENDS, ProfileController.getCommonFriends);
+        get(Path.Web.PROFILE_STATUSES, ProfileController.getProfileStatuses);
+        get(Path.Web.PROFILE_GALLERY, ProfileController.getProfileGallery);
+        post(Path.Web.ADD_FRIEND, ProfileController.addFriend);
+        delete(Path.Web.UNFRIEND, ProfileController.unfriend);
     }
 }

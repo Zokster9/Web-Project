@@ -18,11 +18,10 @@ public class User {
     private boolean isPrivate;
     private boolean isBlocked;
     private boolean isDeleted;
+    private List<String> friends;
 
     @Expose(serialize = false)
     private String JWTToken;
-    @Expose(serialize = false)
-    private List<User> friends;
     @Expose(serialize = false)
     private List<Message> messages;
     @Expose(serialize = false)
@@ -158,11 +157,11 @@ public class User {
         isDeleted = deleted;
     }
 
-    public List<User> getFriends() {
+    public List<String> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<User> friends) {
+    public void setFriends(List<String> friends) {
         this.friends = friends;
     }
 

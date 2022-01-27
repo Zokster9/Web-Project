@@ -1,9 +1,12 @@
 package dao;
 
+import model.FriendRequest;
+import model.Photo;
 import model.Status;
 import model.User;
 import utils.SortStatusByDate;
 
+import java.time.LocalDate;
 import java.util.*;
 
 public class UserDao {
@@ -13,10 +16,26 @@ public class UserDao {
         users = new HashMap<>();
     }
 
+    public void addFriendRequest(User sender, User receiver) {
+        FriendRequest friendRequest = new FriendRequest(LocalDate.now(), sender.getUsername(), receiver.getUsername());
+        sender.getFriendRequestsSent().add(friendRequest);
+        receiver.getFriendRequests().add(friendRequest);
+    }
+
+    public List<User> getCommonFriends(User user1, User user2) {
+        List<String> commonFriendsUsernames = new ArrayList<>(user1.getFriends());
+        commonFriendsUsernames.retainAll(user2.getFriends());
+        List<User> commonFriends = new ArrayList<>();
+        for (String username : commonFriendsUsernames) {
+            commonFriends.add(users.get(username));
+        }
+        return commonFriends;
+    }
+
     public List<Status> getFriendsStatuses(User user) {
         List<Status> statuses = new ArrayList<>(user.getStatuses());
-        for (User friend : user.getFriends()) {
-            statuses.addAll(friend.getStatuses());
+        for (String friend : user.getFriends()) {
+            statuses.addAll(users.get(friend).getStatuses());
         }
         statuses.sort(new SortStatusByDate());
         return statuses;
@@ -41,5 +60,18 @@ public class UserDao {
             return null;
         }
         return null;
+    }
+
+    public List<Status> getUserStatuses(User profileUser) {
+        return profileUser.getStatuses();
+    }
+
+    public List<Photo> getUserGallery(User profileUser) {
+        return profileUser.getPhotos();
+    }
+
+    public void removeFriend(User user, User exFriend) {
+        user.getFriends().remove(exFriend.getUsername());
+        exFriend.getFriends().remove(user.getUsername());
     }
 }
