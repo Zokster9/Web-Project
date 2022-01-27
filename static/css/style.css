@@ -6,7 +6,6 @@
 body {
   min-height: 100vh;
   display: flex;
-  font-weight: 400;
 }
 
 .gifbg {
@@ -101,12 +100,82 @@ label {
   color: #2554FF;
 }
 
+.profile-pic {
+  width:100%;
+  height:100%;
+  object-fit: cover;
+  overflow:hidden;
+  border-radius:20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.status {
+  width: 100%;
+  height: auto;
+  max-width: 800px;
+  max-height: 70vh;
+  overflow:hidden;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.content {
+  width: 100%;
+  height: 90%;
+  overflow:hidden;
+}
+
+.content .status-text {
+  width: 100%;
+  height: 100%;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.content .status-img{
+  width:100%;
+  height:auto;
+  object-fit: cover;
+  overflow:hidden;
+}
+
+.like-comment-share {
+  display: flex;
+  justify-content: space-around;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  width: 100%;
+  height: 40px;
+}
+
+.like-comment-share button {
+  all:unset;
+  flex-grow: 1;
+  cursor: pointer;
+  text-align: center;
+  border-top: 1px solid lightgray;
+}
+
+.like-comment-share button:hover {
+  background-color:lightgray
+}
+
+.like-comment-share .comment {
+  border-left: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+}
+
 body::-webkit-scrollbar-track
 {
   -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
   background-color: rgba(93, 137, 219, 0.658);
   border-radius: 10px;
 }
+
 
 body::-webkit-scrollbar
 {
