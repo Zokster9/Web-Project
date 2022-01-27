@@ -29,6 +29,7 @@ public class LoginController {
         response.type("application/json");
         String payload = request.body();
         User user = g.fromJson(payload, User.class);
+        //TODO Validate input from signup
         userDao.addUser(user);
         return g.toJson(user);
     };
