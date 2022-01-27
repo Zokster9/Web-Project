@@ -20,6 +20,8 @@ public class User {
     private boolean isDeleted;
 
     @Expose(serialize = false)
+    private String JWTToken;
+    @Expose(serialize = false)
     private List<User> friends;
     @Expose(serialize = false)
     private List<Message> messages;
@@ -28,7 +30,9 @@ public class User {
     @Expose(serialize = false)
     private List<FriendRequest> friendRequestsSent;
     @Expose(serialize = false)
-    private List<AbstractPost> posts;
+    private List<Status> statuses;
+    @Expose(serialize = false)
+    private List<Photo> photos;
     @Expose(serialize = false)
     private Photo profilePicture;
 
@@ -42,7 +46,8 @@ public class User {
         messages = new ArrayList<>();
         friendRequests = new ArrayList<>();
         friendRequestsSent = new ArrayList<>();
-        posts = new ArrayList<>();
+        statuses = new ArrayList<>();
+        photos = new ArrayList<>();
     }
 
     public User(String username, String password, String email, String name, String surname, Gender gender) {
@@ -61,7 +66,8 @@ public class User {
         messages = new ArrayList<>();
         friendRequests = new ArrayList<>();
         friendRequestsSent = new ArrayList<>();
-        posts = new ArrayList<>();
+        statuses = new ArrayList<>();
+        photos = new ArrayList<>();
     }
 
     public String getUsername() {
@@ -184,12 +190,20 @@ public class User {
         this.friendRequestsSent = friendRequestsSent;
     }
 
-    public List<AbstractPost> getPosts() {
-        return posts;
+    public List<Status> getStatuses() {
+        return statuses;
     }
 
-    public void setPosts(List<AbstractPost> statuses) {
-        this.posts = statuses;
+    public void setStatuses(List<Status> statuses) {
+        this.statuses = statuses;
+    }
+
+    public List<Photo> getPhotos() {
+        return photos;
+    }
+
+    public void setPhotos(List<Photo> photos) {
+        this.photos = photos;
     }
 
     public Photo getProfilePicture() {
@@ -198,5 +212,13 @@ public class User {
 
     public void setProfilePicture(Photo profilePicture) {
         this.profilePicture = profilePicture;
+    }
+
+    public String getJWTToken() {
+        return JWTToken;
+    }
+
+    public void setJWTToken(String JWTToken) {
+        this.JWTToken = JWTToken;
     }
 }
