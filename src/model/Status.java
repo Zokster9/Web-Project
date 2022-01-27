@@ -12,8 +12,8 @@ public class Status {
     private boolean isDeleted;
     private String username;
 
-    @Expose(serialize = false)
-    private List<Comment> comments;
+    private transient User poster;
+    private transient List<Comment> comments;
 
     public Status() {
         isDeleted = false;
@@ -31,10 +31,6 @@ public class Status {
 
     public Long getId() {
         return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getPicture() {
@@ -60,6 +56,10 @@ public class Status {
     public void setUsername(String username) {
         this.username = username;
     }
+
+    public User getPoster() { return poster; }
+
+    public void setPoster(User poster) { this.poster = poster; }
 
     public List<Comment> getComments() {
         return comments;

@@ -19,22 +19,14 @@ public class User {
     private boolean isBlocked;
     private boolean isDeleted;
 
-    @Expose(serialize = false)
-    private String JWTToken;
-    @Expose(serialize = false)
-    private List<User> friends;
-    @Expose(serialize = false)
-    private List<Message> messages;
-    @Expose(serialize = false)
-    private List<FriendRequest> friendRequests;
-    @Expose(serialize = false)
-    private List<FriendRequest> friendRequestsSent;
-    @Expose(serialize = false)
-    private List<Status> statuses;
-    @Expose(serialize = false)
-    private List<Photo> photos;
-    @Expose(serialize = false)
-    private Photo profilePicture;
+    private transient String JWTToken;
+    private transient List<User> friends;
+    private transient List<Message> messages;
+    private transient List<FriendRequest> friendRequests;
+    private transient List<FriendRequest> friendRequestsSent;
+    private transient List<Status> statuses;
+    private transient List<Photo> photos;
+    private transient Photo profilePicture;
 
     public User() {
         dateOfBirth = LocalDate.now();

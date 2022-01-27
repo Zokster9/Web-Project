@@ -1,25 +1,33 @@
 package model;
 
+import javax.jws.soap.SOAPBinding;
 import java.time.LocalDate;
 
 public class Message {
+    private Long id;
     private String content;
     private LocalDate date;
     private boolean isDeleted;
     private String sender;
     private String receiver;
 
+    private transient User userSender;
+    private transient User userReceiver;
+
     public Message() {
         isDeleted = false;
     }
 
-    public Message(String content, LocalDate date, String sender, String receiver) {
+    public Message(Long id, String content, LocalDate date, String sender, String receiver) {
+        this.id = id;
         this.content = content;
         this.date = date;
         this.sender = sender;
         this.receiver = receiver;
         this.isDeleted = false;
     }
+
+    public Long getId() { return id; }
 
     public String getContent() {
         return content;
@@ -60,4 +68,13 @@ public class Message {
     public void setReceiver(String receiver) {
         this.receiver = receiver;
     }
+
+    public User getUserSender() { return userSender; }
+
+    public void setUserSender(User userSender) { this.userSender = userSender; }
+
+    public User getUserReceiver() { return userReceiver; }
+
+    public void setUserReceiver(User userReceiver) { this.userReceiver = userReceiver; }
+
 }

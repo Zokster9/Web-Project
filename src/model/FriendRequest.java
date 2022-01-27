@@ -8,6 +8,9 @@ public class FriendRequest {
     private String sender;
     private String receiver;
 
+    private transient User userSender;
+    private transient User userReceiver;
+
     public FriendRequest() {
     }
 
@@ -49,4 +52,12 @@ public class FriendRequest {
     public void setReceiver(String receiver) {
         this.receiver = receiver;
     }
+
+    public User getUserSender() { return userSender; }
+
+    public void setUserSender(User userSender) { this.userSender = userSender; }
+
+    public User getUserReceiver() { return userReceiver; }
+
+    public void setUserReceiver(User userReceiver) { this.userReceiver = userReceiver; }
 }
