@@ -6,7 +6,7 @@ Vue.component("not-found", {
                 <div class="col-md-12 text-center">
                     <span class="display-1 d-block">404</span>
                     <div class="mb-4 lead">The page you are looking for was not found.</div>
-                    <a class="btn btn-dark btn-lg btn-block" href="/#/">Return to home page</a>
+                    <router-link class="btn btn-dark btn-lg btn-block" to="login">Return to home page</router-link>
                 </div>
             </div>
         </div>
