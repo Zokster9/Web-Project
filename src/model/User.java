@@ -18,6 +18,7 @@ public class User {
     private boolean isPrivate;
     private boolean isBlocked;
     private boolean isDeleted;
+    private List<String> friends;
 
     private transient String JWTToken;
     private transient List<User> friends;
@@ -150,11 +151,11 @@ public class User {
         isDeleted = deleted;
     }
 
-    public List<User> getFriends() {
+    public List<String> getFriends() {
         return friends;
     }
 
-    public void setFriends(List<User> friends) {
+    public void setFriends(List<String> friends) {
         this.friends = friends;
     }
 
