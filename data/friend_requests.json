@@ -1,0 +1,42 @@
+[
+  {
+    "status": "Accepted",
+    "date": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
+    "sender": "mirko",
+    "receiver": "ines"
+  },
+  {
+    "status": "Accepted",
+    "date": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
+    "sender": "test",
+    "receiver": "mirko"
+  },
+  {
+    "status": "Rejected",
+    "date": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
+    "sender": "test",
+    "receiver": "ines"
+  },
+  {
+    "status": "Pending",
+    "date": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
+    "sender": "test",
+    "receiver": "ines"
+  }
+]

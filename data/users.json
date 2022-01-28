@@ -1,0 +1,104 @@
+[
+  {
+    "username": "admin",
+    "password": "admin",
+    "email": "admin@pico.com",
+    "name": "Admir",
+    "surname": "Admirevic",
+    "dateOfBirth": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
+    "role": "Administrator",
+    "profilePicture": null,
+    "gender": "Male",
+    "isPrivate": false,
+    "isBlocked": false,
+    "isDeleted": false,
+    "friends": []
+  },
+  {
+    "username": "zokster",
+    "password": "admin",
+    "email": "admin@pico.com",
+    "name": "Zoran",
+    "surname": "Bukorac",
+    "dateOfBirth": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
+    "role": "Administrator",
+    "profilePicture": null,
+    "gender": "Male",
+    "isPrivate": false,
+    "isBlocked": false,
+    "isDeleted": false,
+    "friends": []
+  },
+  {
+    "username": "mirko",
+    "password": "password",
+    "email": "mirko@gmail.com",
+    "name": "Mirko",
+    "surname": "Slavujić",
+    "dateOfBirth": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
+    "role": "User",
+    "profilePicture": null,
+    "gender": "Male",
+    "isPrivate": false,
+    "isBlocked": false,
+    "isDeleted": false,
+    "friends": [
+      "ines",
+      "test"
+    ]
+  },
+  {
+    "username": "ines",
+    "password": "password",
+    "email": "ines@outlook.com",
+    "name": "Ines",
+    "surname": "Svegić",
+    "dateOfBirth": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
+    "role": "User",
+    "profilePicture": null,
+    "gender": "Female",
+    "isPrivate": false,
+    "isBlocked": false,
+    "isDeleted": false,
+    "friends": [
+      "mirko"
+    ]
+  },
+  {
+    "username": "test",
+    "password": "password",
+    "email": "test@test.com",
+    "name": "Test",
+    "surname": "Test",
+    "dateOfBirth": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
+    "role": "User",
+    "profilePicture": null,
+    "gender": "Female",
+    "isPrivate": false,
+    "isBlocked": false,
+    "isDeleted": false,
+    "friends": [
+      "mirko"
+    ]
+  }
+]
