@@ -149,24 +149,30 @@ label {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   width: 100%;
-  height: 40px;
+  height: 30px;
 }
 
-.like-comment-share button {
+.like-comment-share a {
+  text-decoration: none;
+  color: black;
+  width: 100%;
+  text-align: center;
+}
+
+.like-comment-share a button{
   all:unset;
   flex-grow: 1;
   cursor: pointer;
   text-align: center;
-  border-top: 1px solid lightgray;
 }
 
-.like-comment-share button:hover {
+.like-comment-share a:hover {
   background-color:lightgray
 }
 
 .like-comment-share .comment {
-  border-left: 1px solid lightgray;
-  border-right: 1px solid lightgray;
+  border-left: 1px solid darkgray;
+  border-right: 1px solid darkgray;
 }
 
 body::-webkit-scrollbar-track
