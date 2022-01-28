@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 public class Comment {
     private Long postID;
+    private String content;
     private LocalDate date;
     private LocalDate editDate;
     private boolean isDeleted;
@@ -15,10 +16,10 @@ public class Comment {
         isDeleted = false;
     }
 
-    public Comment(Long postID, LocalDate date, LocalDate editDate, String username) {
+    public Comment(Long postID, String content, LocalDate date, String username) {
         this.postID = postID;
+        this.content = content;
         this.date = date;
-        this.editDate = editDate;
         this.username = username;
         isDeleted = false;
     }
@@ -30,6 +31,10 @@ public class Comment {
     public void setPostID(Long postID) {
         this.postID = postID;
     }
+
+    public String getContent() { return content; }
+
+    public void setContent(String content) { this.content = content; }
 
     public LocalDate getDate() {
         return date;
