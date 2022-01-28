@@ -79,10 +79,7 @@ public class UserDao {
     }
 
     public User getUser(String username) {
-        if (users.containsKey(username)) {
-            return users.get(username);
-        }
-        return null;
+        return users.getOrDefault(username, null);
     }
 
     public boolean isUserValid(User user) {
@@ -337,5 +334,45 @@ public class UserDao {
             e.printStackTrace();
             System.out.println("File " + Path.DataFilePaths.FRIEND_REQUESTS + " doesn't exist!");
         }
+    }
+
+    public void addPhoto(Photo p) {
+        p.setId(getPostIDCounter());
+        User u = p.getPoster();
+        u.getPhotos().add(p);
+        photos.put(p.getId(), p);
+    }
+
+    public boolean photoExists(Photo p) {
+        return photos.getOrDefault(p.getId(), null) != null;
+    }
+
+    public boolean isPhotoFromUser(Photo p, User user) {
+        Photo photoToDelete = photos.get(p.getId());
+        return user.getRole() == UserType.Administrator || photoToDelete.getUsername().equals(user.getUsername());
+    }
+
+    public void deletePhoto(Photo photoToDelete) {
+        photos.get(photoToDelete.getId()).setDeleted(true);
+    }
+
+    public void addStatus(Status s){
+        s.setId(getPostIDCounter());
+        User u = s.getPoster();
+        u.getStatuses().add(s);
+        statuses.put(s.getId(), s);
+    }
+
+    public boolean statusExists(Status s) {
+        return statuses.getOrDefault(s.getId(), null) != null;
+    }
+
+    public boolean isStatusFromUser(Status s, User user) {
+        Status statusToDelete = statuses.get(s.getId());
+        return user.getRole() == UserType.Administrator || statusToDelete.getUsername().equals(user.getUsername());
+    }
+
+    public void deleteStatus(Status statusToDelete) {
+        statuses.get(statusToDelete.getId()).setDeleted(true);
     }
 }

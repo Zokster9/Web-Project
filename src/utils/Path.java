@@ -13,6 +13,10 @@ public class Path {
         public static final String UNFRIEND = "/unfriend/";
         public static final String PROFILE_COMMON_FRIENDS = "/profile/:username/common-friends/";
         public static final String MESSAGES = "/messages/";
+        public static final String ADD_PHOTO = "/add-photo/";
+        public static final String DELETE_PHOTO = "/delete-photo/";
+        public static final String ADD_STATUS = "/add-status/";
+        public static final String DELETE_STATUS = "/delete-status/";
     }
 
     public static class DataFilePaths{

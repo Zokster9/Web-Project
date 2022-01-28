@@ -39,5 +39,9 @@ public class SparkMain {
         get(Path.Web.PROFILE_GALLERY, ProfileController.getProfileGallery);
         post(Path.Web.ADD_FRIEND, ProfileController.addFriend);
         delete(Path.Web.UNFRIEND, ProfileController.unfriend);
+        post(Path.Web.ADD_PHOTO, ProfileController.addPhoto);
+        delete(Path.Web.DELETE_PHOTO, ProfileController.deletePhoto);
+        post(Path.Web.ADD_STATUS, ProfileController.addStatus);
+        delete(Path.Web.DELETE_STATUS, ProfileController.deleteStatus);
     }
 }
