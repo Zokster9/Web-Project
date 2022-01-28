@@ -56,3 +56,5 @@ pom.xml.releaseBackup
 pom.xml.tag
 
 static/vue/
+
+data/
