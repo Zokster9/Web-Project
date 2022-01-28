@@ -36,6 +36,8 @@ public class UserDao {
                 .setPrettyPrinting()
                 .serializeNulls()
                 .create();
+
+        loadData();
     }
 
     public static Long getPostIDCounter() {
@@ -137,7 +139,7 @@ public class UserDao {
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("File" + Path.DataFilePaths.USERS + "doesn't exist!");
+            System.out.println("File " + Path.DataFilePaths.USERS + " doesn't exist!");
         }
     }
 
@@ -150,7 +152,7 @@ public class UserDao {
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("File" + Path.DataFilePaths.STATUSES + "doesn't exist!");
+            System.out.println("File " + Path.DataFilePaths.STATUSES + " doesn't exist!");
         }
     }
 
@@ -163,7 +165,7 @@ public class UserDao {
             }
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("File" + Path.DataFilePaths.PHOTOS + "doesn't exist!");
+            System.out.println("File " + Path.DataFilePaths.PHOTOS + " doesn't exist!");
         }
     }
 
@@ -174,7 +176,7 @@ public class UserDao {
             messages = Arrays.asList(messagesArray);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("File" + Path.DataFilePaths.MESSAGES + "doesn't exist!");
+            System.out.println("File " + Path.DataFilePaths.MESSAGES + " doesn't exist!");
         }
     }
 
@@ -185,7 +187,7 @@ public class UserDao {
             comments = Arrays.asList(commentsArray);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("File" + Path.DataFilePaths.COMMENTS + "doesn't exist!");
+            System.out.println("File " + Path.DataFilePaths.COMMENTS + " doesn't exist!");
         }
     }
 
@@ -196,17 +198,79 @@ public class UserDao {
             friendRequests = Arrays.asList(friendRequestsArray);
         } catch (FileNotFoundException e) {
             e.printStackTrace();
-            System.out.println("File" + Path.DataFilePaths.FRIEND_REQUESTS + "doesn't exist!");
+            System.out.println("File " + Path.DataFilePaths.FRIEND_REQUESTS + " doesn't exist!");
         }
     }
 
-    public void saveData(Collection<Object> data, String dataFile){
+    public void saveUsers(List<User> data){
         try {
-            gson.toJson(data, new FileWriter(dataFile));
-            System.out.println("Saved data to" + dataFile + "succesfully");
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.USERS));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.USERS + " succesfully");
         } catch (IOException e) {
             e.printStackTrace();
-            System.out.println("File" + dataFile + "doesn't exist!");
+            System.out.println("File " + Path.DataFilePaths.USERS + " doesn't exist!");
+        }
+    }
+
+    public void saveStatuses(List<Status> data){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.STATUSES));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.STATUSES + " succesfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("File " + Path.DataFilePaths.STATUSES + " doesn't exist!");
+        }
+    }
+
+    public void savePhotos(List<Photo> data){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.PHOTOS));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.PHOTOS + " succesfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("File " + Path.DataFilePaths.PHOTOS + " doesn't exist!");
+        }
+    }
+
+    public void saveMessages(List<Message> data){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.MESSAGES));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.MESSAGES + " succesfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("File" + Path.DataFilePaths.MESSAGES + "doesn't exist!");
+        }
+    }
+
+    public void saveComments(List<Comment> data){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.COMMENTS));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.COMMENTS + " succesfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("File " + Path.DataFilePaths.COMMENTS + " doesn't exist!");
+        }
+    }
+
+    public void saveFriendRequests(List<FriendRequest> data){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.FRIEND_REQUESTS));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.FRIEND_REQUESTS + " succesfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("File " + Path.DataFilePaths.FRIEND_REQUESTS + " doesn't exist!");
         }
     }
 
