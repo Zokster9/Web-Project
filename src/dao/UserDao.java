@@ -13,7 +13,6 @@ import java.time.LocalDate;
 
 public class UserDao {
     private Gson gson;
-
     private Map<String, User> users;
     private Map<Long, Status> statuses;
     private Map<Long, Photo> photos;
@@ -60,6 +59,15 @@ public class UserDao {
         connectUsersAndFriendRequests();
         connectUsersAndComments();
         connectPostsAndComments();
+        //If statuses has max postID assign it to PostIDCounter, else put photos max postID
+        PostIDCounter = Collections.max(statuses.keySet()) > Collections.max(photos.keySet()) ?
+                        Collections.max(statuses.keySet()) : Collections.max(photos.keySet());
+        //Get highest message ID to continue
+        MessageIDCounter = -1L; //No messages
+        for (Message message : messages) {
+            if (message.getId() > MessageIDCounter)
+                MessageIDCounter = message.getId();
+        }
         System.out.println("[INFO] Loaded and connected all data.");
     }
 
