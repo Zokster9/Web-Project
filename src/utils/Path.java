@@ -16,12 +16,12 @@ public class Path {
     }
 
     public static class DataFilePaths{
-        private static String cwd = System.getProperty("user.dir");
-        public static final String USERS = cwd + "data/users.json";
-        public static final String STATUSES = cwd + "data/statuses.json";
-        public static final String PHOTOS = cwd + "data/photos.json";
-        public static final String MESSAGES = cwd + "data/messages.json";
-        public static final String COMMENTS = cwd + "data/comments.json";
-        public static final String FRIEND_REQUESTS = cwd + "data/friend_requests.json";
+        private static String cwd = System.getProperty("user.dir")+"\\data\\";
+        public static final String USERS = cwd + "users.json";
+        public static final String STATUSES = cwd + "statuses.json";
+        public static final String PHOTOS = cwd + "photos.json";
+        public static final String MESSAGES = cwd + "messages.json";
+        public static final String COMMENTS = cwd + "comments.json";
+        public static final String FRIEND_REQUESTS = cwd + "friend_requests.json";
     }
 }
