@@ -1,7 +1,5 @@
 package model;
 
-import com.google.gson.annotations.Expose;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +12,7 @@ public class User {
     private String surname;
     private LocalDate dateOfBirth;
     private UserType role;
+    private String profilePicture;
     private Gender gender;
     private boolean isPrivate;
     private boolean isBlocked;
@@ -21,13 +20,11 @@ public class User {
     private List<String> friends;
 
     private transient String JWTToken;
-    private transient List<User> friends;
     private transient List<Message> messages;
     private transient List<FriendRequest> friendRequests;
     private transient List<FriendRequest> friendRequestsSent;
     private transient List<Status> statuses;
     private transient List<Photo> photos;
-    private transient Photo profilePicture;
 
     public User() {
         dateOfBirth = LocalDate.now();
@@ -199,11 +196,11 @@ public class User {
         this.photos = photos;
     }
 
-    public Photo getProfilePicture() {
+    public String getProfilePicture() {
         return profilePicture;
     }
 
-    public void setProfilePicture(Photo profilePicture) {
+    public void setProfilePicture(String profilePicture) {
         this.profilePicture = profilePicture;
     }
 
