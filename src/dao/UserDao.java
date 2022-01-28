@@ -23,8 +23,6 @@ public class UserDao {
     private static Long PostIDCounter;
     private static Long MessageIDCounter;
 
-
-
     public UserDao() {
         users = new HashMap<>();
         statuses = new HashMap<>();
@@ -38,6 +36,137 @@ public class UserDao {
                 .create();
 
         loadData();
+    }
+
+    public void addFriendRequest(User sender, User receiver) {
+        FriendRequest friendRequest = new FriendRequest(LocalDate.now(), sender.getUsername(), receiver.getUsername());
+        sender.getFriendRequestsSent().add(friendRequest);
+        receiver.getFriendRequests().add(friendRequest);
+    }
+
+    public List<User> getCommonFriends(User user1, User user2) {
+        List<String> commonFriendsUsernames = new ArrayList<>(user1.getFriends());
+        commonFriendsUsernames.retainAll(user2.getFriends());
+        List<User> commonFriends = new ArrayList<>();
+        for (String username : commonFriendsUsernames) {
+            commonFriends.add(users.get(username));
+        }
+        return commonFriends;
+    }
+
+    public List<Status> getFriendsStatuses(User user) {
+        List<Status> statuses = new ArrayList<>(user.getStatuses());
+        for (String friend : user.getFriends()) {
+            statuses.addAll(users.get(friend).getStatuses());
+        }
+        statuses.sort(new SortStatusByDate());
+        return statuses;
+    }
+
+    public void addUser(User user) {
+        users.put(user.getUsername(), user);
+    }
+
+    public User getUser(String username) {
+        if (users.containsKey(username)) {
+            return users.get(username);
+        }
+        return null;
+    }
+
+    public User getUser(User user) {
+        if (users.containsKey(user.getUsername())) {
+            if (users.get(user.getUsername()).getPassword().equals(user.getPassword())) {
+                return users.get(user.getUsername());
+            }
+            return null;
+        }
+        return null;
+    }
+
+    public List<Status> getUserStatuses(User profileUser) {
+        return profileUser.getStatuses();
+    }
+
+    public List<Photo> getUserGallery(User profileUser) {
+        return profileUser.getPhotos();
+    }
+
+    public void removeFriend(User user, User exFriend) {
+        user.getFriends().remove(exFriend.getUsername());
+        exFriend.getFriends().remove(user.getUsername());
+    }
+
+    public void saveUsers(List<User> data){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.USERS));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.USERS + " successfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("File " + Path.DataFilePaths.USERS + " doesn't exist!");
+        }
+    }
+
+    public void saveStatuses(List<Status> data){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.STATUSES));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.STATUSES + " successfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("File " + Path.DataFilePaths.STATUSES + " doesn't exist!");
+        }
+    }
+
+    public void savePhotos(List<Photo> data){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.PHOTOS));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.PHOTOS + " successfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("File " + Path.DataFilePaths.PHOTOS + " doesn't exist!");
+        }
+    }
+
+    public void saveMessages(List<Message> data){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.MESSAGES));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.MESSAGES + " successfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("File" + Path.DataFilePaths.MESSAGES + "doesn't exist!");
+        }
+    }
+
+    public void saveComments(List<Comment> data){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.COMMENTS));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.COMMENTS + " successfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("File " + Path.DataFilePaths.COMMENTS + " doesn't exist!");
+        }
+    }
+
+    public void saveFriendRequests(List<FriendRequest> data){
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.FRIEND_REQUESTS));
+            bw.write(gson.toJson(data));
+            bw.flush();bw.close();
+            System.out.println("Saved data to " + Path.DataFilePaths.FRIEND_REQUESTS + " successfully");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("File " + Path.DataFilePaths.FRIEND_REQUESTS + " doesn't exist!");
+        }
     }
 
     public static Long getPostIDCounter() {
@@ -200,136 +329,5 @@ public class UserDao {
             e.printStackTrace();
             System.out.println("File " + Path.DataFilePaths.FRIEND_REQUESTS + " doesn't exist!");
         }
-    }
-
-    public void saveUsers(List<User> data){
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.USERS));
-            bw.write(gson.toJson(data));
-            bw.flush();bw.close();
-            System.out.println("Saved data to " + Path.DataFilePaths.USERS + " succesfully");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("File " + Path.DataFilePaths.USERS + " doesn't exist!");
-        }
-    }
-
-    public void saveStatuses(List<Status> data){
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.STATUSES));
-            bw.write(gson.toJson(data));
-            bw.flush();bw.close();
-            System.out.println("Saved data to " + Path.DataFilePaths.STATUSES + " succesfully");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("File " + Path.DataFilePaths.STATUSES + " doesn't exist!");
-        }
-    }
-
-    public void savePhotos(List<Photo> data){
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.PHOTOS));
-            bw.write(gson.toJson(data));
-            bw.flush();bw.close();
-            System.out.println("Saved data to " + Path.DataFilePaths.PHOTOS + " succesfully");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("File " + Path.DataFilePaths.PHOTOS + " doesn't exist!");
-        }
-    }
-
-    public void saveMessages(List<Message> data){
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.MESSAGES));
-            bw.write(gson.toJson(data));
-            bw.flush();bw.close();
-            System.out.println("Saved data to " + Path.DataFilePaths.MESSAGES + " succesfully");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("File" + Path.DataFilePaths.MESSAGES + "doesn't exist!");
-        }
-    }
-
-    public void saveComments(List<Comment> data){
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.COMMENTS));
-            bw.write(gson.toJson(data));
-            bw.flush();bw.close();
-            System.out.println("Saved data to " + Path.DataFilePaths.COMMENTS + " succesfully");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("File " + Path.DataFilePaths.COMMENTS + " doesn't exist!");
-        }
-    }
-
-    public void saveFriendRequests(List<FriendRequest> data){
-        try {
-            BufferedWriter bw = new BufferedWriter(new FileWriter(Path.DataFilePaths.FRIEND_REQUESTS));
-            bw.write(gson.toJson(data));
-            bw.flush();bw.close();
-            System.out.println("Saved data to " + Path.DataFilePaths.FRIEND_REQUESTS + " succesfully");
-        } catch (IOException e) {
-            e.printStackTrace();
-            System.out.println("File " + Path.DataFilePaths.FRIEND_REQUESTS + " doesn't exist!");
-        }
-    }
-
-    public void addFriendRequest(User sender, User receiver) {
-        FriendRequest friendRequest = new FriendRequest(LocalDate.now(), sender.getUsername(), receiver.getUsername());
-        sender.getFriendRequestsSent().add(friendRequest);
-        receiver.getFriendRequests().add(friendRequest);
-    }
-
-    public List<User> getCommonFriends(User user1, User user2) {
-        List<String> commonFriendsUsernames = new ArrayList<>(user1.getFriends());
-        commonFriendsUsernames.retainAll(user2.getFriends());
-        List<User> commonFriends = new ArrayList<>();
-        for (String username : commonFriendsUsernames) {
-            commonFriends.add(users.get(username));
-        }
-        return commonFriends;
-    }
-
-    public List<Status> getFriendsStatuses(User user) {
-        List<Status> statuses = new ArrayList<>(user.getStatuses());
-        for (String friend : user.getFriends()) {
-            statuses.addAll(users.get(friend).getStatuses());
-        }
-        statuses.sort(new SortStatusByDate());
-        return statuses;
-    }
-
-    public void addUser(User user) {
-        users.put(user.getUsername(), user);
-    }
-
-    public User getUser(String username) {
-        if (users.containsKey(username)) {
-            return users.get(username);
-        }
-        return null;
-    }
-
-    public User getUser(User user) {
-        if (users.containsKey(user.getUsername())) {
-            if (users.get(user.getUsername()).getPassword().equals(user.getPassword())) {
-                return users.get(user.getUsername());
-            }
-            return null;
-        }
-        return null;
-    }
-
-    public List<Status> getUserStatuses(User profileUser) {
-        return profileUser.getStatuses();
-    }
-
-    public List<Photo> getUserGallery(User profileUser) {
-        return profileUser.getPhotos();
-    }
-
-    public void removeFriend(User user, User exFriend) {
-        user.getFriends().remove(exFriend.getUsername());
-        exFriend.getFriends().remove(user.getUsername());
     }
 }
