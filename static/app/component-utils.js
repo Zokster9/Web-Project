@@ -2,7 +2,7 @@ Vue.component("profile-picture", {
     template:`
     <div style="width:100%;height:100%;">
         <router-link to="/profil">
-            <img src="imgs/download.jpg" class="profile-pic">
+            <img src="imgs/favicon.ico" class="profile-pic">
         </router-link>
     </div>
     `

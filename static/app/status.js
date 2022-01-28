@@ -1,7 +1,7 @@
 Vue.component("status-ui", {
     template: `
 
-    <div class="status">
+    <div class="status" style="margin-top:30px">
         <div class="content">
             <div>
                 <profile-picture-details></profile-picture-details>
@@ -17,13 +17,13 @@ Vue.component("status-ui", {
                 </p>
             </div>
             <div v-if="img" class="status-img">
-                <img src="imgs/download.jpg" class="status-img">
+                <img src="imgs/download.jpg" alt="MAAAAAAJMUBE" class="status-img">
             </div>
         </div>
         <div class="like-comment-share">
-            <router-link><button class="like">Like</button></router-link>
-            <router-link><button class="comment">Comment</button></router-link>
-            <router-link><button class="share">Share</button></router-link>
+            <router-link to="/"><button class="like">Like</button></router-link>
+            <router-link to="/"><button class="comment">Comment</button></router-link>
+            <router-link to="/"><button class="share">Share</button></router-link>
         </div>
     </div>
     `,
