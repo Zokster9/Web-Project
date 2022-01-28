@@ -1,13 +1,12 @@
 package model;
 
-import com.google.gson.annotations.Expose;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class Photo {
     private Long id;
     private String picture;
+    private String caption;
     private boolean isDeleted;
     private String username;
 
@@ -19,9 +18,10 @@ public class Photo {
         comments = new ArrayList<>();
     }
 
-    public Photo(Long id, String picture, String username) {
+    public Photo(Long id, String picture, String caption, String username) {
         this.id = id;
         this.picture = picture;
+        this.caption = caption;
         this.username = username;
         isDeleted = false;
         comments = new ArrayList<>();
@@ -38,6 +38,10 @@ public class Photo {
     public void setPicture(String picture) {
         this.picture = picture;
     }
+
+    public String getCaption() { return caption; }
+
+    public void setCaption(String caption) { this.caption = caption; }
 
     public boolean isDeleted() {
         return isDeleted;
