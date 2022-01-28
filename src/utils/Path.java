@@ -16,11 +16,12 @@ public class Path {
     }
 
     public static class DataFilePaths{
-        public static final String USERS = "data/users.json";
-        public static final String STATUSES = "data/statuses.json";
-        public static final String PHOTOS = "data/photos.json";
-        public static final String MESSAGES = "data/messages.json";
-        public static final String COMMENTS = "data/comments.json";
-        public static final String FRIEND_REQUESTS = "data/friend_requests.json";
+        private static String cwd = System.getProperty("user.dir");
+        public static final String USERS = cwd + "data/users.json";
+        public static final String STATUSES = cwd + "data/statuses.json";
+        public static final String PHOTOS = cwd + "data/photos.json";
+        public static final String MESSAGES = cwd + "data/messages.json";
+        public static final String COMMENTS = cwd + "data/comments.json";
+        public static final String FRIEND_REQUESTS = cwd + "data/friend_requests.json";
     }
 }
