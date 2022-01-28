@@ -38,6 +38,17 @@ public class UserDao {
         loadData();
     }
 
+    public boolean isUsernameValid(String username) {
+        for (String keyUsername : users.keySet()) {
+            username = username.toLowerCase();
+            keyUsername = keyUsername.toLowerCase();
+            if (keyUsername.equals(username)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void addFriendRequest(User sender, User receiver) {
         FriendRequest friendRequest = new FriendRequest(LocalDate.now(), sender.getUsername(), receiver.getUsername());
         sender.getFriendRequestsSent().add(friendRequest);
@@ -74,14 +85,11 @@ public class UserDao {
         return null;
     }
 
-    public User getUser(User user) {
+    public boolean isUserValid(User user) {
         if (users.containsKey(user.getUsername())) {
-            if (users.get(user.getUsername()).getPassword().equals(user.getPassword())) {
-                return users.get(user.getUsername());
-            }
-            return null;
+            return users.get(user.getUsername()).getPassword().equals(user.getPassword());
         }
-        return null;
+        return false;
     }
 
     public List<Status> getUserStatuses(User profileUser) {

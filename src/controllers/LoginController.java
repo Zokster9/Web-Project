@@ -15,11 +15,11 @@ public class LoginController {
         response.type("application/json");
         String payload = request.body();
         User user = g.fromJson(payload, User.class);
-        if (userDao.getUser(user) != null) {
+        if (userDao.isUserValid(user)) {
             String jws = Jwts.builder().setSubject(user.getUsername())
                     .setExpiration(new Date(new Date().getTime() + 30 * 6000 * 10L)).setIssuedAt(new Date()).signWith(key).compact();
             user.setJWTToken(jws);
-            return g.toJson(userDao.getUser(user));
+            return g.toJson(userDao.getUser(user.getUsername()));
         }
         response.status(401);
         return response;
@@ -29,8 +29,11 @@ public class LoginController {
         response.type("application/json");
         String payload = request.body();
         User user = g.fromJson(payload, User.class);
-        //TODO Validate input from signup
-        userDao.addUser(user);
-        return g.toJson(user);
+        if (userDao.isUsernameValid(user.getUsername())) {
+            userDao.addUser(user);
+            return g.toJson(user);
+        }
+        response.status(401);
+        return response;
     };
 }
