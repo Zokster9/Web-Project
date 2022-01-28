@@ -17,11 +17,11 @@ Vue.component("status-ui", {
                 </p>
             </div>
             <div v-if="img" class="status-img">
-                <img src="imgs/download.jpg" class="status-img">
+                <img src="imgs/download.jpg" alt="MAAAAAAJMUBE" class="status-img">
             </div>
         </div>
         <div class="like-comment-share">
-            <router-link to="/" class="like text-align-center"><button>Like</button></router-link>
+            <router-link to="/" class="like"><button>Like</button></router-link>
             <router-link to="/" class="comment"><button>Comment</button></router-link>
             <router-link to="/" class="share"><button>Share</button></router-link>
         </div>
