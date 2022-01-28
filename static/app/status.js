@@ -21,9 +21,9 @@ Vue.component("status-ui", {
             </div>
         </div>
         <div class="like-comment-share">
-            <router-link to="/" class="like"><button>Like</button></router-link>
-            <router-link to="/" class="comment"><button>Comment</button></router-link>
-            <router-link to="/" class="share"><button>Share</button></router-link>
+            <router-link to="/" class="like"><button><i class="fa fa-thumbs-up"></i> Like</button></router-link>
+            <router-link to="/" class="comment"><button><i class="fa fa-comment"></i> Comment</button></router-link>
+            <router-link to="/" class="share"><button><i class="fa fa-share"></i> Share</button></router-link>
         </div>
     </div>
     `,
