@@ -6,7 +6,7 @@ Vue.component("main-navbar",{
             <router-link to="/"><img src="imgs/logo.gif" alt="Pico" class="logo navbar-brand float-left"></router-link>
             <ul class="nav navbar-nav flex-row float-right">
                 <li class="nav-item">
-                    <router-link class="nav-link pr-3" to="/"><i class="fa fa-search fa-2x"></i></router-link>
+                    <router-link class="nav-link pr-3" to="/"><i class="fas fa-search fa-2x"></i></router-link>
                 </li>
                 <li class="nav-item">
                     <div style="height:40px; width:40px; margin-top:3px;">
@@ -14,13 +14,13 @@ Vue.component("main-navbar",{
                     </div>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link pr-3" to="/"><i class="fa fa-user-plus fa-2x"></i></router-link>
+                    <router-link class="nav-link pr-3" to="/"><i class="fas fa-user-plus fa-2x"></i></router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link pr-3" to="/"><i class="fa fa-comments fa-2x"></i></router-link>
+                    <router-link class="nav-link pr-3" to="/"><i class="fab fa-facebook-messenger fa-2x"></i></router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link class="nav-link pr-3" to="/"><i class="fa fa-sign-out fa-2x"></i></router-link>
+                    <router-link class="nav-link pr-3" to="/"><i class="fas fa-sign-out-alt fa-2x"></i></router-link>
                 </li>
             </ul>
             </div>
