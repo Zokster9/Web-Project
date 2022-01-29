@@ -3,12 +3,12 @@ package controllers;
 import model.Photo;
 import model.Status;
 import model.User;
-import org.eclipse.jetty.server.handler.gzip.GzipHttpOutputInterceptor;
 import spark.Request;
 import spark.Response;
 import spark.Route;
 
-import java.lang.annotation.Repeatable;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 import static main.SparkMain.userDao;
@@ -125,5 +125,13 @@ public class ProfileController {
             }
         }
         return g.toJson(statusToDelete);
+    };
+
+    //TODO see where this should be called
+    public static Route searchUsers = (Request request, Response response) -> {
+        HashMap<String, String[]> queryParams = new HashMap<>();
+        request.queryMap().toMap().forEach(queryParams::put);
+        ArrayList<User> result = userDao.searchUsers(queryParams);
+        return g.toJson(result);
     };
 }

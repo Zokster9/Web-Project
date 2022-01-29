@@ -2,20 +2,24 @@ package dao;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import javaxt.utils.Array;
 import model.*;
 import utils.Path;
 import utils.SortStatusByDate;
 
 import java.io.*;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.ZoneId;
 import java.util.*;
 
 import java.time.LocalDate;
 
 public class UserDao {
     private Gson gson;
-    private Map<String, User> users;
-    private Map<Long, Status> statuses;
-    private Map<Long, Photo> photos;
+    private HashMap<String, User> users;
+    private HashMap<Long, Status> statuses;
+    private HashMap<Long, Photo> photos;
     private List<Message> messages;
     private List<Comment> comments;
     private List<FriendRequest> friendRequests;
@@ -375,4 +379,35 @@ public class UserDao {
     public void deleteStatus(Status statusToDelete) {
         statuses.get(statusToDelete.getId()).setDeleted(true);
     }
+
+    public ArrayList<User> searchUsers(Map<String, String[]> queryParams) throws ParseException {
+        HashMap<String, User> cloned = (HashMap<String, User>) users.clone();
+        ArrayList<User> clonedUsers = (ArrayList<User>) cloned.values();
+        String[] name = queryParams.getOrDefault("name", null);
+        if (name != null){
+            clonedUsers.removeIf(x -> (!(x.getName().toLowerCase().contains(name[0].toLowerCase()))));
+        }
+        String[] lastName = queryParams.getOrDefault("lastName", null);
+        if (lastName != null){
+            clonedUsers.removeIf(x -> (!(x.getSurname().toLowerCase().contains(lastName[0].toLowerCase()))));
+        }
+        String[] email = queryParams.getOrDefault("email", null);
+        if (email != null){
+            clonedUsers.removeIf(x -> (!(x.getEmail().toLowerCase().contains(email[0].toLowerCase()))));
+        }
+        String[] dateOfBirth = queryParams.getOrDefault("dateOfBirth", null);
+        if (dateOfBirth != null) {
+            //TODO Check how we will store dates in string, to make sure this is valid
+            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
+            Date dateMin = formatter.parse(dateOfBirth[0]);
+            LocalDate localDateMin = dateMin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            Date dateMax = formatter.parse(dateOfBirth[1]);
+            LocalDate localDateMax = dateMax.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+            clonedUsers.removeIf(x -> (!(x.getDateOfBirth() != null
+                                    && x.getDateOfBirth().isAfter(localDateMin.minusDays(1))
+                                    && x.getDateOfBirth().isBefore(localDateMax.plusDays(1)))));
+        }
+        return clonedUsers;
+    }
+
 }
