@@ -380,6 +380,7 @@ public class UserDao {
         statuses.get(statusToDelete.getId()).setDeleted(true);
     }
 
+    //TODO Check what is returned in queryparams
     public ArrayList<User> searchUsers(Map<String, String[]> queryParams) throws ParseException {
         HashMap<String, User> cloned = (HashMap<String, User>) users.clone();
         ArrayList<User> clonedUsers = (ArrayList<User>) cloned.values();

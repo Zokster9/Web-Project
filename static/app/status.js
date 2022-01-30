@@ -2,7 +2,7 @@ Vue.component("status-ui", {
     template: `
 
     <div class="status" style="margin-top:30px">
-        <div class="content">
+        <router-link to="/post/" tag="div" class="content">
             <div>
                 <profile-picture-details></profile-picture-details>
             </div>
@@ -19,11 +19,11 @@ Vue.component("status-ui", {
             <div v-if="img" class="status-img">
                 <img src="imgs/download.jpg" alt="MAAAAAAJMUBE" class="status-img">
             </div>
-        </div>
+        </router-link>
         <div class="like-comment-share">
-            <router-link to="/like-not-implemented" class="like"><button><i class="far fa-thumbs-up"></i> Like</button></router-link>
+            <router-link to="/like-not-implemented" class="like"><button><i class="fa fa-thumbs-up"></i> Like</button></router-link>
             <router-link to="/comment" class="comment"><button><i class="fa fa-comment"></i> Comment</button></router-link>
-            <router-link to="/share" class="share"><button><i class="fas fa-share"></i> Share</button></router-link>
+            <router-link to="/share" class="share"><button><i class="fa fa-share"></i> Share</button></router-link>
         </div>
     </div>
     `,

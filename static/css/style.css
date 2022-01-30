@@ -123,10 +123,17 @@ label {
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
+.profile-details:hover {
+  border-radius: 5px;
+  background-color: lightskyblue;
+
+}
+
 .content {
   width: 100%;
   height: 90%;
   overflow:hidden;
+  cursor: pointer;
 }
 
 .content .status-text {
@@ -149,7 +156,7 @@ label {
   border-bottom-left-radius: 20px;
   border-bottom-right-radius: 20px;
   width: 100%;
-  height: 30px;
+  height: auto;
 }
 
 .like-comment-share a {
@@ -159,21 +166,31 @@ label {
   text-align: center;
 }
 
-.like-comment-share a button{
+.like-comment-share button{
   all:unset;
+  width: 100%;
   flex-grow: 1;
   cursor: pointer;
   text-align: center;
 }
 
-.like-comment-share a:hover {
-  background-color:lightgray
+.like-comment-share button:hover {
+  background-color:lightskyblue
 }
 
 .like-comment-share .comment {
   border-left: 1px solid darkgray;
   border-right: 1px solid darkgray;
 }
+
+.post-sidebar{
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top: 1px solid lightgray;
+  border-right: 1px solid lightgray;
+  border-bottom: 1px solid lightgray;
+}
+
 
 body::-webkit-scrollbar-track
 {
