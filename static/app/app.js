@@ -7,6 +7,8 @@ const ChatPage = { template: "<chat-page></chat-page>" };
 const Status = {template: "<status-ui></status-ui>"};
 const Feed = {template: "<feed-page></feed-page>"};
 const Profile = { template: "<profile-page></profile-page>" };
+const Post  = { template: "<post-ui></post-ui>"}
+
 
 const router = new VueRouter({
     mode: 'hash',
@@ -16,6 +18,7 @@ const router = new VueRouter({
         { path: "/signup/", component: SignUpForm},
         { path: "/forgot-password/", component: ForgotPassword },
         { path: "/feed/", component: Feed},
+        { path: "/post/",  component: Post},
         { path: "/chat/", component: ChatPage},
 
 
