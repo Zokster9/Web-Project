@@ -8,6 +8,7 @@ const Status = {template: "<status-ui></status-ui>"};
 const Feed = {template: "<feed-page></feed-page>"};
 const Profile = { template: "<profile-page></profile-page>" };
 const Gallery = {template: "<gallery-page></gallery-page>"};
+const MutualFriends = {template: "<mutual-friends></mutual-friends>"};
 
 const router = new VueRouter({
     mode: 'hash',
@@ -20,6 +21,7 @@ const router = new VueRouter({
         { path: "/chat/", component: ChatPage},
         { path: "/profile", component: Profile},
         { path: "/gallery", component: Gallery},
+        { path: "/mutual-friends", component:MutualFriends},
 
 
         { path: '*', component: NotFoundComponent },
