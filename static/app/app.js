@@ -11,12 +11,13 @@ const Profile = { template: "<profile-page></profile-page>" };
 const router = new VueRouter({
     mode: 'hash',
     routes: [
-        { path: "/", component: Profile },
+        { path: "/", component: LoginForm },
         { path: "/login/", component: LoginForm},
         { path: "/signup/", component: SignUpForm},
         { path: "/forgot-password/", component: ForgotPassword },
         { path: "/feed/", component: Feed},
         { path: "/chat/", component: ChatPage},
+        { path: "/profile", component: Profile},
 
 
         { path: '*', component: NotFoundComponent },
