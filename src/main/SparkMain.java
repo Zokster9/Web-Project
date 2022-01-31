@@ -1,6 +1,7 @@
 package main;
 
 import com.google.gson.Gson;
+import controllers.ChatController;
 import controllers.FeedController;
 import controllers.LoginController;
 import controllers.ProfileController;
@@ -9,6 +10,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import utils.Filters;
 import utils.Path;
+import ws.MessageHandler;
 
 import java.io.File;
 import java.io.IOException;
@@ -27,6 +29,8 @@ public class SparkMain {
 
         port(8088);
 
+        webSocket("/ws", MessageHandler.class);
+
         staticFiles.externalLocation(new File("./static").getCanonicalPath());
 
         before("*", Filters.addTrailingSlashes);
@@ -43,5 +47,6 @@ public class SparkMain {
         delete(Path.Web.DELETE_PHOTO, ProfileController.deletePhoto);
         post(Path.Web.ADD_STATUS, ProfileController.addStatus);
         delete(Path.Web.DELETE_STATUS, ProfileController.deleteStatus);
+        post(Path.Web.ADD_MESSAGE, ChatController.addMessage);
     }
 }
