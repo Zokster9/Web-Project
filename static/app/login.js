@@ -25,13 +25,11 @@ Vue.component("login-form", {
                         </div>
 
                         <div class="form-group">
-                            <button :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Sign In</button>
+                            <router-link event to="/feed" tag="button" @click.native="login" @enter.native="login" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Sign In</router-link>
                         </div>
 
                         <div class="form-group">
-                            <router-link to="/search">
-                                <button role="button" type="button" class="btn btn-outline-primary btn-lg btn-block">Sign in as guest</button>
-                            </router-link>
+                            <router-link to="/search" tag="button" role="button" type="button" class="btn btn-outline-primary btn-lg btn-block">Sign in as guest</router-link>
                         </div>
  
                         <p class="forgot-password text-right mt-2 mb-4">
@@ -67,6 +65,17 @@ Vue.component("login-form", {
         },
         outFocus(field){
             this.infocus[field] = false
+        },
+        login() {
+            axios.post("/login/", {
+                username: this.form.username,
+                password: this.form.password
+            }).then(function(response) {
+                console.log("GAAAAAAAAAAAAAAAAAAAS");
+                router.push("/feed")
+            }).catch(function(error) {
+                console.log("Ne ide brt");
+            });
         }
     },
 
