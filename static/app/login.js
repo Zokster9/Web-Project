@@ -13,9 +13,9 @@ Vue.component("login-form", {
                         <h3>Sign In</h3>
 
                         <div class="form-group">
-                            <label>Email address</label>
-                            <input v-model="form.email" @focus="inFocus('email')" @blur="outFocus('email')" type="email" class="form-control form-control-lg" />
-                            <div v-show="!isFocused('email') && $v.form.email.$invalid" class="alert alert-danger">Email field must match email format.</div>
+                            <label>Username</label>
+                            <input v-model="form.username" @focus="inFocus('username')" @blur="outFocus('username')" type="text" pattern="[a-zA-Z0-9\.]+$" class="form-control form-control-lg"/>
+                            <div v-show="!isFocused('username') && $v.form.username.$invalid" class="alert alert-danger">Username is required.</div>
                         </div>
 
                         <div class="form-group">
@@ -48,11 +48,11 @@ Vue.component("login-form", {
     data () {
         return {
             form:{
-                email: "",
+                username: "",
                 password: ""
             },
             infocus:{
-                email: true,
+                username: true,
                 password: true
             }
         }
@@ -72,9 +72,10 @@ Vue.component("login-form", {
 
     validations: {
         form:{
-            email: {
+            username : {
                 required: validators.required,
-                email: validators.email
+                minLength: validators.minLength(4),
+                maxLength: validators.maxLength(20)
             },
             password: {
                 required: validators.required,
