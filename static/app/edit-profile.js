@@ -54,6 +54,13 @@ Vue.component("edit-profile", {
                         <div class="form-group">
                             <button @click="clicked('')" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Edit profile</button>
                         </div>
+
+                        <div v-if="true" class="form-group">
+                            <button @click="clicked('private')" :disabled="$v.form.$invalid" type="submit" class="btn btn-primary btn-lg btn-block">Make profile private</button>
+                        </div>
+                        <div v-else class="form-group">
+                            <button @click="clicked('public')" :disabled="$v.form.$invalid" type="submit" class="btn btn-primary btn-lg btn-block">Make profile public</button>
+                        </div>
                     </form>
                 </div>
             </div>
