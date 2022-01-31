@@ -10,6 +10,9 @@ const Profile = { template: "<profile-page></profile-page>" };
 const Gallery = {template: "<gallery-page></gallery-page>"};
 const MutualFriends = {template: "<mutual-friends></mutual-friends>"};
 const Post  = { template: "<post-ui></post-ui>"}
+const Search = {template: "<search-ui></search-ui>"}
+const EditProfile = {template: "<edit-profile></edit-profile>"}
+
 
 const router = new VueRouter({
     mode: 'hash',
@@ -24,7 +27,8 @@ const router = new VueRouter({
         { path: "/profile", component: Profile},
         { path: "/gallery", component: Gallery},
         { path: "/mutual-friends", component:MutualFriends},
-
+        { path: "/search", component:Search},
+        { path: "/edit-profile", component: EditProfile},
 
         { path: '*', component: NotFoundComponent },
     ]
