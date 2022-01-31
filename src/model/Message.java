@@ -1,6 +1,5 @@
 package model;
 
-import javax.jws.soap.SOAPBinding;
 import java.time.LocalDate;
 
 public class Message {
@@ -77,4 +76,7 @@ public class Message {
 
     public void setUserReceiver(User userReceiver) { this.userReceiver = userReceiver; }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
 }
