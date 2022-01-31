@@ -42,6 +42,12 @@ public class UserDao {
         loadData();
     }
 
+    public void addNewMessage(User sender, User receiver, Message message) {
+        message.setId(getMessageIDCounter());
+        sender.getMessages().add(message);
+        receiver.getMessages().add(message);
+    }
+
     public boolean isUsernameValid(String username) {
         for (String keyUsername : users.keySet()) {
             username = username.toLowerCase();
@@ -410,5 +416,4 @@ public class UserDao {
         }
         return clonedUsers;
     }
-
 }
