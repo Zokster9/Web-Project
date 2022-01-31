@@ -52,7 +52,7 @@ Vue.component("edit-profile", {
                         </div>
 
                         <div class="form-group">
-                            <button @click="clicked('')" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+                            <button @click="clicked('')" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Edit profile</button>
                         </div>
                     </form>
                 </div>
@@ -62,7 +62,6 @@ Vue.component("edit-profile", {
     `,
 
     data() {
-        const yesterday = new Date(new Date().getTime() - 24 * 3600 * 1000);
         return {
             form:{
                 firstName: "",
