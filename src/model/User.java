@@ -18,8 +18,8 @@ public class User {
     private boolean isBlocked;
     private boolean isDeleted;
     private List<String> friends;
+    private String JWTToken;
 
-    private transient String JWTToken;
     private transient List<Message> messages;
     private transient List<FriendRequest> friendRequests;
     private transient List<FriendRequest> friendRequestsSent;
@@ -52,6 +52,7 @@ public class User {
         isPrivate = false;
         isBlocked = false;
         isDeleted = false;
+        profilePicture = "no-profile-page.png";
         friends = new ArrayList<>();
         messages = new ArrayList<>();
         friendRequests = new ArrayList<>();
