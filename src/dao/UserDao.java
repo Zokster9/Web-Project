@@ -65,14 +65,14 @@ public class UserDao {
         receiver.getFriendRequests().add(friendRequest);
     }
 
-    public List<User> getCommonFriends(User user1, User user2) {
-        List<String> commonFriendsUsernames = new ArrayList<>(user1.getFriends());
-        commonFriendsUsernames.retainAll(user2.getFriends());
-        List<User> commonFriends = new ArrayList<>();
-        for (String username : commonFriendsUsernames) {
-            commonFriends.add(users.get(username));
+    public List<User> getMutualFriends(User user1, User user2) {
+        List<String> mutualFriendsUsernames = new ArrayList<>(user1.getFriends());
+        mutualFriendsUsernames.retainAll(user2.getFriends());
+        List<User> mutualFriends = new ArrayList<>();
+        for (String username : mutualFriendsUsernames) {
+            mutualFriends.add(users.get(username));
         }
-        return commonFriends;
+        return mutualFriends;
     }
 
     public List<Status> getFriendsStatuses(User user) {

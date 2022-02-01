@@ -7,8 +7,8 @@ public class Path {
         public static final String SIGN_UP = "/signup/";
         public static final String FEED = "/feed/";
         public static final String SEARCH = "/search/";
-        public static final String PROFILE_STATUSES = "/profile/:username/statuses";
-        public static final String PROFILE_GALLERY = "/profile/:username/gallery";
+        public static final String PROFILE_STATUSES = "/profile/:username/statuses/";
+        public static final String PROFILE_GALLERY = "/profile/:username/gallery/";
         public static final String ADD_FRIEND = "/add-friend/";
         public static final String UNFRIEND = "/unfriend/";
         public static final String PROFILE_COMMON_FRIENDS = "/profile/:username/common-friends/";
@@ -18,6 +18,8 @@ public class Path {
         public static final String ADD_STATUS = "/add-status/";
         public static final String DELETE_STATUS = "/delete-status/";
         public static final String ADD_MESSAGE = "/add-message/";
+        public static final String GET_USER = "/get-user/:username/";
+        public static final String GET_PROFILE_PICTURE = "/get-profile-picture/";
     }
 
     public static class DataFilePaths{

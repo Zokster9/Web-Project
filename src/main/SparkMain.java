@@ -38,7 +38,7 @@ public class SparkMain {
         post(Path.Web.LOGIN, LoginController.loginUser);
         post(Path.Web.SIGN_UP, LoginController.signUpUser);
         get(Path.Web.FEED, FeedController.getFeed);
-        get(Path.Web.PROFILE_COMMON_FRIENDS, ProfileController.getCommonFriends);
+        get(Path.Web.PROFILE_COMMON_FRIENDS, ProfileController.getMutualFriends);
         get(Path.Web.PROFILE_STATUSES, ProfileController.getProfileStatuses);
         get(Path.Web.PROFILE_GALLERY, ProfileController.getProfileGallery);
         post(Path.Web.ADD_FRIEND, ProfileController.addFriend);
@@ -48,5 +48,7 @@ public class SparkMain {
         post(Path.Web.ADD_STATUS, ProfileController.addStatus);
         delete(Path.Web.DELETE_STATUS, ProfileController.deleteStatus);
         post(Path.Web.ADD_MESSAGE, ChatController.addMessage);
+        get(Path.Web.GET_USER, ProfileController.getUser);
+        get(Path.Web.GET_PROFILE_PICTURE, ProfileController.getProfilePicture);
     }
 }

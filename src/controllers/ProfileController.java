@@ -17,13 +17,27 @@ import static utils.JwtUtils.getUsernameFromToken;
 
 public class ProfileController {
 
-    public static Route getCommonFriends = (Request request, Response response) -> {
+    public static Route getProfilePicture = (Request request, Response response) -> {
+        response.type("application/json");
+        String username = getUsernameFromToken(request);
+        User user = userDao.getUser(username);
+        return g.toJson(user.getProfilePicture());
+    };
+
+    public static Route getUser = (Request request, Response response) -> {
+        response.type("application/json");
+        String pathUsername = request.params("username");
+        User user = userDao.getUser(pathUsername);
+        return g.toJson(user);
+    };
+
+    public static Route getMutualFriends = (Request request, Response response) -> {
         String tokenUsername = getUsernameFromToken(request);
         response.type("application/json");
         User loggedUser = userDao.getUser(tokenUsername);
         String pathUsername = request.params("username");
         User profileUser = userDao.getUser(pathUsername);
-        List<User> commonFriends = userDao.getCommonFriends(loggedUser, profileUser);
+        List<User> commonFriends = userDao.getMutualFriends(loggedUser, profileUser);
         return g.toJson(commonFriends);
     };
 
