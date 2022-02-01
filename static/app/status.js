@@ -1,35 +1,36 @@
 Vue.component("status-ui", {
+    props: ["status"],
     template: `
 
     <div class="status" style="margin-top:30px">
         <router-link to="/post/" tag="div" class="content">
-            <div>
-                <profile-picture-details></profile-picture-details>
+            <div v-if="user">
+                <profile-picture-details :user="user"></profile-picture-details>
             </div>
             <div class="status-text">
-                <p class="font-weight-large fs-5">Lorem ipsum dolor sit amet, 
-                consectetur adipiscing elit. Nunc eget euismod odio. 
-                Aenean sed faucibus ligula. Mauris id turpis et elit pharetra mollis. 
-                Phasellus venenatis turpis ac convallis luctus. 
-                Sed elementum ex neque, a aliquam elit facilisis quis. 
-                Nam sit amet leo ex. Sed turpis magna, laoreet rhoncus massa semper, semper laoreet erat.
-                Etiam rutrum lacinia lectus vitae iaculis.
-                </p>
+                <p class="font-weight-large fs-5">{{status.text}}</p>
             </div>
-            <div v-if="img" class="status-img">
-                <img src="imgs/download.jpg" alt="MAAAAAAJMUBE" class="status-img">
+            <div v-if="status.picture" class="status-img">
+                <img :src="'imgs/' + status.picture" :alt="'imgs/' + status.picture" class="status-img">
             </div>
         </router-link>
         <div class="like-comment-share">
-            <router-link to="/like-not-implemented" class="like"><button><i class="fa fa-thumbs-up"></i> Like</button></router-link>
-            <router-link to="/comment" class="comment"><button><i class="fa fa-comment"></i> Comment</button></router-link>
-            <router-link to="/share" class="share"><button><i class="fa fa-share"></i> Share</button></router-link>
+            <router-link to="/like-not-implemented" tag="button" class="like"><i class="fa fa-thumbs-up"></i> Like</router-link>
+            <router-link to="/comment" tag="button" class="comment"><i class="fa fa-comment"></i> Comment</router-link>
+            <router-link to="/share" tag="button" class="share"><i class="fa fa-share"></i> Share</router-link>
         </div>
     </div>
     `,
     data() {
         return {
-            img: true
+            user: null,
         }
     },
+    mounted() {
+        console.log(this.status.username)
+        axios.get(`/get-user/${this.status.username}`)
+            .then((response) => {
+                this.user = response.data;
+            })
+    }
 })

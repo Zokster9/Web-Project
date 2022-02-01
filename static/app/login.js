@@ -72,6 +72,9 @@ Vue.component("login-form", {
                 password: this.form.password
             }).then(function(response) {
                 console.log("GAAAAAAAAAAAAAAAAAAAS");
+                window.sessionStorage.setItem("jwt", response.data.JWTToken);
+                window.sessionStorage.setItem("profilePicture", response.data.profilePicture);
+                app.username = response.data.username;
                 router.push("/feed")
             }).catch(function(error) {
                 console.log("Ne ide brt");

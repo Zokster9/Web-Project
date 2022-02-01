@@ -1,4 +1,4 @@
-Vue.component("main-navbar",{
+Vue.component("main-navbar", {
     template:`
         <nav class="navbar shadow bg-white rounded justify-content-between flex-nowrap flex-row fixed-top">
             <div class="container">
@@ -10,7 +10,7 @@ Vue.component("main-navbar",{
                 </li>
                 <li class="nav-item">
                     <div style="height:40px; width:40px; margin-top:3px;">
-                        <profile-picture></profile-picture>
+                        <profile-picture :profilePicture="profilePicture"></profile-picture>
                     </div>
                 </li>
                 <li class="nav-item">
@@ -25,7 +25,12 @@ Vue.component("main-navbar",{
             </ul>
             </div>
         </nav>
-    `
+    `,
+    data() {
+        return {
+            profilePicture: window.sessionStorage.getItem("profilePicture"),
+        }
+    },
 });
 
 // var app = new Vue({
