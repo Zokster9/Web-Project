@@ -15,7 +15,7 @@ Vue.component("create-photo", {
                             </div>
                             <div class="form-group">
                                 <label>Caption</label>
-                                <textarea v-model="form.text" rows="6" class="form-control"/>
+                                <textarea v-model="form.text" rows="5" class="form-control"/>
                             </div>
                             
                             <div class="form-group">
@@ -48,7 +48,7 @@ Vue.component("create-photo", {
                 required: validators.required,
             },
             text : {
-                maxLength: validators.maxLength(200)
+                maxLength: validators.maxLength(150)
             },
         }
     }

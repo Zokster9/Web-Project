@@ -12,6 +12,7 @@ Vue.component("create-status", {
                             <div class="form-group">
                                 <label>Status text</label>
                                 <textarea v-model="form.text" @focus="inFocus('text')" @blur="outFocus('text')" rows="10" class="form-control"/>
+                                
                             </div>
                             <div class="form-group">
                                 <label for="formFileLg" class="form-label">Status photo</label>
