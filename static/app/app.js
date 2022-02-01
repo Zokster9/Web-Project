@@ -12,6 +12,8 @@ const MutualFriends = {template: "<mutual-friends></mutual-friends>"};
 const Post  = { template: "<post-ui></post-ui>"}
 const Search = {template: "<search-ui></search-ui>"}
 const EditProfile = {template: "<edit-profile></edit-profile>"}
+const CreateStatus = {template: "<create-status></create-status>"}
+const CreatePhoto = {template: "<create-photo></create-photo>"}
 
 
 const router = new VueRouter({
@@ -29,7 +31,8 @@ const router = new VueRouter({
         { path: "/mutual-friends", component:MutualFriends},
         { path: "/search", component:Search},
         { path: "/edit-profile", component: EditProfile},
-
+        { path: "/create-status/", component: CreateStatus},
+        { path: "/create-photo/", component: CreatePhoto},
         { path: '*', component: NotFoundComponent },
     ]
 });

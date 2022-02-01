@@ -225,6 +225,13 @@ label {
 .like-comment-share .like,.comment,.share {
   border-top: 1px solid darkgray;
 }
+.like-comment-share .comment {
+  border-top: 1px solid darkgray;
+}
+
+.like-comment-share .share {
+  border-top: 1px solid darkgray;
+}
 
 .like-comment-share .comment {
   border-left: 1px solid darkgray;
