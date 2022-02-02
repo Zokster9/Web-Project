@@ -59,6 +59,15 @@ public class UserDao {
         return true;
     }
 
+    public boolean isEmailValid(String email) {
+        for (User user : users.values()) {
+            if (user.getEmail().toLowerCase().equals(email.toLowerCase())) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void addFriendRequest(User sender, User receiver) {
         FriendRequest friendRequest = new FriendRequest(LocalDate.now(), sender.getUsername(), receiver.getUsername());
         sender.getFriendRequestsSent().add(friendRequest);
@@ -388,32 +397,46 @@ public class UserDao {
 
     //TODO Check what is returned in queryparams
     public ArrayList<User> searchUsers(Map<String, String[]> queryParams) throws ParseException {
-        HashMap<String, User> cloned = (HashMap<String, User>) users.clone();
-        ArrayList<User> clonedUsers = (ArrayList<User>) cloned.values();
+        ArrayList<User> clonedUsers = new ArrayList<>(users.values());
+        clonedUsers.removeIf(x ->(x.getRole() == UserType.Administrator));
+        String[] username = queryParams.getOrDefault("username", null);
+        if (username != null){
+            if (!username[0].isEmpty())
+                clonedUsers.removeIf(x -> (x.getName().toLowerCase().equals(username[0].toLowerCase())));
+        }
         String[] name = queryParams.getOrDefault("name", null);
         if (name != null){
-            clonedUsers.removeIf(x -> (!(x.getName().toLowerCase().contains(name[0].toLowerCase()))));
+            if (!name[0].isEmpty())
+                clonedUsers.removeIf(x -> (!(x.getName().toLowerCase().contains(name[0].toLowerCase()))));
         }
-        String[] lastName = queryParams.getOrDefault("lastName", null);
+        String[] lastName = queryParams.getOrDefault("surname", null);
         if (lastName != null){
-            clonedUsers.removeIf(x -> (!(x.getSurname().toLowerCase().contains(lastName[0].toLowerCase()))));
+            if (!lastName[0].isEmpty())
+                clonedUsers.removeIf(x -> (!(x.getSurname().toLowerCase().contains(lastName[0].toLowerCase()))));
         }
         String[] email = queryParams.getOrDefault("email", null);
         if (email != null){
-            clonedUsers.removeIf(x -> (!(x.getEmail().toLowerCase().contains(email[0].toLowerCase()))));
+            if (!email[0].isEmpty())
+                clonedUsers.removeIf(x -> (!(x.getEmail().toLowerCase().contains(email[0].toLowerCase()))));
         }
-        String[] dateOfBirth = queryParams.getOrDefault("dateOfBirth", null);
-        if (dateOfBirth != null) {
+        String[] dateRange = queryParams.getOrDefault("dateRange", null);
+        if (dateRange != null) {
             //TODO Check how we will store dates in string, to make sure this is valid
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-            Date dateMin = formatter.parse(dateOfBirth[0]);
+            Date dateMin = formatter.parse(dateRange[0].substring(2,26));
             LocalDate localDateMin = dateMin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            Date dateMax = formatter.parse(dateOfBirth[1]);
+            Date dateMax = formatter.parse(dateRange[0].substring(29,53));
             LocalDate localDateMax = dateMax.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
             clonedUsers.removeIf(x -> (!(x.getDateOfBirth() != null
                                     && x.getDateOfBirth().isAfter(localDateMin.minusDays(1))
                                     && x.getDateOfBirth().isBefore(localDateMax.plusDays(1)))));
         }
         return clonedUsers;
+    }
+
+    public void changeBlockStatus(String username) {
+        User user = users.get(username);
+        user.setBlocked(!user.isBlocked());
+        saveUsers(new ArrayList<>(users.values()));
     }
 }

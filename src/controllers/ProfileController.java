@@ -141,11 +141,17 @@ public class ProfileController {
         return g.toJson(statusToDelete);
     };
 
-    //TODO see where this should be called
     public static Route searchUsers = (Request request, Response response) -> {
         HashMap<String, String[]> queryParams = new HashMap<>();
         request.queryMap().toMap().forEach(queryParams::put);
         ArrayList<User> result = userDao.searchUsers(queryParams);
         return g.toJson(result);
+    };
+
+    public static Route blockUnblockUser = (Request request, Response response) -> {
+        response.type("application/json");
+        String username = request.params("username");
+        userDao.changeBlockStatus(username);
+        return g.toJson(request.body());
     };
 }
