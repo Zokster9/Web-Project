@@ -1,3 +1,4 @@
+Vue.use(vuelidate.default)
 
 Vue.component("chat-page-user", {
     template: `
@@ -30,8 +31,8 @@ Vue.component("chat-page-user", {
                             </div>
                         </div>
                         <div class="d-flex">
-                            <button class="btn btn-primary flex-shrink-0"><i class="fas fa-paper-plane"></i></button>
-                            <input type="text" class="w-100 form-control form-control-lg"/>
+                            <button class="btn btn-primary flex-shrink-0" :disabled="$v.message.$invalid" @click="sendMessage"><i class="fas fa-paper-plane"></i></button>
+                            <input v-model="message" type="text" class="w-100 form-control form-control-lg"/>
                         </div>
                     </div>
                 </div>
@@ -45,11 +46,13 @@ Vue.component("chat-page-user", {
             chats: null,
             receiver: null,
             messages: null,
+            message: "",
+            webSocket: null,
         }
     },
     methods:{
-      loadChats(){
-          axios.get("/get-user/"+this.$route.params.username+"/", {
+        loadChats() {
+          axios.get("/get-user/" + this.$route.params.username + "/", {
           }).then((response) => {
               this.receiver = response.data;
           });
@@ -62,7 +65,26 @@ Vue.component("chat-page-user", {
           }).then((response) => {
               this.messages = response.data;
           });
-      }
+        },
+        sendMessage() {
+            let chatMessage = this.username + "|" + this.receiver.username + "|" + this.message;
+            this.webSocket.send(chatMessage);
+            axios.post("/add-message/", {
+                content: this.message,
+                sender: this.username,
+                receiver: this.receiver.username,
+            }).then((response) => {
+                this.message = "";
+                axios.get("/messages/", {
+                    params: {
+                        username: this.username,
+                        receiver: this.receiver.username,
+                    }
+                }).then((response) => {
+                    this.messages = response.data;
+                });
+            });
+        },
     },
     mounted() {
         if (window.sessionStorage.getItem("user") === null){
@@ -76,7 +98,7 @@ Vue.component("chat-page-user", {
             this.chats = response.data;
         });
         // this gets opened chat user info
-        axios.get("/get-user/"+this.$route.params.username+"/", {
+        axios.get("/get-user/" + this.$route.params.username + "/", {
         }).then((response) => {
             this.receiver = response.data;
         });
@@ -89,6 +111,33 @@ Vue.component("chat-page-user", {
         }).then((response) => {
             this.messages = response.data;
         });
+    },
+    created() {
+        let self = this;
+        this.webSocket = new WebSocket("ws://" + location.hostname + ":" + location.port + "/ws/");
+        this.webSocket.onmessage = function (msg) {
+            let chatMessage = msg.data;
+            const messageParts = chatMessage.split("|");
+            console.log(messageParts);
+            let sender = messageParts[0];
+            let receiver = messageParts[1];
+            if (sender === self.receiver.username && receiver === self.username) {
+                axios.get("/messages/", {
+                    params: {
+                        username: self.username,
+                        receiver: self.receiver.username,
+                    }
+                }).then((response) => {
+                    self.messages = response.data;
+                });
+            }
+        };
+        this.webSocket.onclose = function () { alert("WebSocket connection closed") };
+    },
+    validations: {
+        message: {
+            required: validators.required,
+        }
     }
 })
 
@@ -98,7 +147,7 @@ Vue.component("my-chat-message", {
     <div class="d-flex flex-column justify-content-end">
         <div class="d-flex justify-content-end">
             <div class="message-data-time">
-                Date and time
+                {{message.date}}
             </div>
         </div>
         <div class="d-flex justify-content-end">
@@ -116,7 +165,7 @@ Vue.component("incoming-chat-message", {
     <div class="d-flex flex-column justify-content-start">
         <div class="d-flex justify-content-start">
             <div class="message-data-time">
-                Date and time
+                {{message.date}}
             </div>
         </div>
         <div class="d-flex justify-content-start">
