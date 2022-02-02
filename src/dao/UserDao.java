@@ -440,4 +440,34 @@ public class UserDao {
         user.setBlocked(!user.isBlocked());
         saveUsers(new ArrayList<>(users.values()));
     }
+
+    public ArrayList<User> getChats(String username) {
+        ArrayList<User> chats = new ArrayList<>();
+        User user = users.get(username);
+        for (Message m : user.getMessages()) {
+            if (m.getSender().equals(username)){
+                if (!chats.contains(m.getUserReceiver())){
+                    chats.add(m.getUserReceiver());
+                }
+            }
+            else {
+                if (!chats.contains(m.getUserSender())){
+                    chats.add(m.getUserSender());
+                }
+            }
+        }
+        return chats;
+    }
+
+    public ArrayList<Message> getMessages(HashMap<String, String> queryParams) {
+        String username = queryParams.get("username");
+        String receiver = queryParams.get("receiver");
+        ArrayList<Message> messages = new ArrayList<>();
+        for (Message m : users.get(username).getMessages()) {
+            if (m.getSender().equals(receiver) || m.getReceiver().equals(receiver)){
+                messages.add(m);
+            }
+        }
+        return messages;
+    }
 }

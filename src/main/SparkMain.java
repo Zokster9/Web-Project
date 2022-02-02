@@ -52,5 +52,7 @@ public class SparkMain {
         get(Path.Web.GET_PROFILE_PICTURE, ProfileController.getProfilePicture);
         get(Path.Web.SEARCH, ProfileController.searchUsers);
         put(Path.Web.BLOCK_UNBLOCK, ProfileController.blockUnblockUser);
+        get(Path.Web.GET_CHATS, ChatController.getChats);
+        get(Path.Web.MESSAGES, ChatController.getMessages);
     }
 }

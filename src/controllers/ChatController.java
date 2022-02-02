@@ -5,6 +5,11 @@ import model.User;
 import spark.Request;
 import spark.Response;
 import spark.Route;
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.HashMap;
+
 import static main.SparkMain.g;
 import static main.SparkMain.userDao;
 
@@ -19,5 +24,20 @@ public class ChatController {
         message.setUserSender(sender);
         userDao.addNewMessage(sender, receiver, message);
         return g.toJson(message);
+    };
+
+    public static Route getChats = (Request request, Response response) -> {
+        response.type("application/json");
+        String username = request.params("username");
+        ArrayList<User> chats = userDao.getChats(username);
+        return g.toJson(chats);
+    };
+
+    public static Route getMessages = (Request request, Response response) -> {
+        response.type("application/json");
+        HashMap<String, String> queryParams = new HashMap<>();
+        request.queryMap().toMap().forEach((k, v) -> { queryParams.put(k, v[0]); });
+        ArrayList<Message> messages = userDao.getMessages(queryParams);
+        return g.toJson(messages);
     };
 }

@@ -16,6 +16,7 @@ const CreateStatus = {template: "<create-status></create-status>"};
 const CreatePhoto = {template: "<create-photo></create-photo>"};
 const FriendRequests = {template: "<friend-requests></friend-requests>"};
 const Messages = {template: "<chat-page></chat-page>"};
+const MessagesUser = {template: "<chat-page-user></chat-page-user>"}
 
 const router = new VueRouter({
     mode: 'hash',
@@ -36,6 +37,8 @@ const router = new VueRouter({
         { path: "/create-photo/", component: CreatePhoto},
         { path: "/friend-requests/", component: FriendRequests},
         { path: "/messages/", component: Messages},
+        { path: "/messages/:username/", component: MessagesUser},
+
 
         { path: '*', component: NotFoundComponent },
     ]

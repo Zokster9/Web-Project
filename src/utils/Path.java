@@ -21,6 +21,7 @@ public class Path {
         public static final String GET_USER = "/get-user/:username/";
         public static final String GET_PROFILE_PICTURE = "/get-profile-picture/";
         public static final String BLOCK_UNBLOCK = "/block-unblock/:username/";
+        public static final String GET_CHATS = "/get-chats/:username/";
     }
 
     public static class DataFilePaths{
