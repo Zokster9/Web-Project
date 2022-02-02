@@ -3,7 +3,7 @@ Vue.component("status-ui", {
     template: `
 
     <div class="status" style="margin-top:30px">
-        <router-link to="/post/" tag="div" class="content">
+        <router-link to="'/post/'+status.id" tag="div" class="content">
             <div v-if="user">
                 <profile-picture-details :user="user"></profile-picture-details>
             </div>
@@ -15,9 +15,9 @@ Vue.component("status-ui", {
             </div>
         </router-link>
         <div class="like-comment-share">
-            <router-link to="/like-not-implemented" tag="button" class="like"><i class="fa fa-thumbs-up"></i> Like</router-link>
-            <router-link to="/comment" tag="button" class="comment"><i class="fa fa-comment"></i> Comment</router-link>
-            <router-link to="/share" tag="button" class="share"><i class="fa fa-share"></i> Share</router-link>
+            <router-link exact to="/like-not-implemented" tag="button" class="like"><i class="fa fa-thumbs-up"></i> Like</router-link>
+            <router-link exact to="'/post/'+status.id" tag="button" class="comment"><i class="fa fa-comment"></i> Comment</router-link>
+            <router-link exact to="/share" tag="button" class="share"><i class="fa fa-share"></i> Share</router-link>
         </div>
     </div>
     `,
@@ -27,7 +27,6 @@ Vue.component("status-ui", {
         }
     },
     mounted() {
-        console.log(this.status.username)
         axios.get(`/get-user/${this.status.username}`)
             .then((response) => {
                 this.user = response.data;
