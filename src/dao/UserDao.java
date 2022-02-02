@@ -103,7 +103,8 @@ public class UserDao {
 
     public boolean isUserValid(User user) {
         if (users.containsKey(user.getUsername())) {
-            return users.get(user.getUsername()).getPassword().equals(user.getPassword());
+            if (!users.get(user.getUsername()).isBlocked())
+                return users.get(user.getUsername()).getPassword().equals(user.getPassword());
         }
         return false;
     }
