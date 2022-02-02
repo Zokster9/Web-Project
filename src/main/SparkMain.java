@@ -1,6 +1,7 @@
 package main;
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import controllers.ChatController;
 import controllers.FeedController;
 import controllers.LoginController;
@@ -22,7 +23,9 @@ public class SparkMain {
 
     public static UserDao userDao;
     public static Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
-    public static Gson g = new Gson();
+    public static Gson g = new GsonBuilder()
+                                .serializeNulls()
+                                .create();
 
     public static void main(String[] args) throws IOException {
         userDao = new UserDao();
@@ -54,5 +57,7 @@ public class SparkMain {
         put(Path.Web.BLOCK_UNBLOCK, ProfileController.blockUnblockUser);
         get(Path.Web.GET_CHATS, ChatController.getChats);
         get(Path.Web.MESSAGES, ChatController.getMessages);
+        get(Path.Web.GET_POST, FeedController.getPost);
+        get(Path.Web.GET_COMMENTS, FeedController.getComments);
     }
 }

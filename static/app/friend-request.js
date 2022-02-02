@@ -7,15 +7,6 @@ Vue.component("friend-requests", {
         <div class="vertical-center">
             <div class="inner-block-requests">
                 <div class="friend-requests d-flex flex-column align-items-center">
-                    <friend-request></friend-request>
-                    <friend-request></friend-request>
-                    <friend-request></friend-request>
-                    <friend-request></friend-request>
-                    <friend-request></friend-request>
-                    <friend-request></friend-request>
-                    <friend-request></friend-request>
-                    <friend-request></friend-request>
-                    <friend-request></friend-request>
                 </div>
             </div>
         </div>

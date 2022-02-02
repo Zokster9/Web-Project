@@ -1,62 +1,15 @@
 [
   {
-    "username": "admin",
-    "password": "admin",
-    "email": "admin@pico.com",
-    "name": "Admir",
-    "surname": "Admirevic",
-    "dateOfBirth": "Feb 2, 2022 5:39:43 PM",
-    "role": "Administrator",
-    "profilePicture": "no-profile-page.png",
-    "gender": "Male",
-    "isPrivate": false,
-    "isBlocked": false,
-    "isDeleted": false,
-    "friends": [],
-    "JWTToken": null
-  },
-  {
-    "username": "zokster",
-    "password": "admin",
-    "email": "admin@pico.com",
-    "name": "Zoran",
-    "surname": "Bukorac",
-    "dateOfBirth": "Feb 2, 2022 5:39:43 PM",
-    "role": "Administrator",
-    "profilePicture": "no-profile-page.png",
-    "gender": "Male",
-    "isPrivate": false,
-    "isBlocked": false,
-    "isDeleted": false,
-    "friends": [],
-    "JWTToken": null
-  },
-  {
-    "username": "mirko",
-    "password": "password",
-    "email": "mirko@gmail.com",
-    "name": "Mirko",
-    "surname": "Slavujić",
-    "dateOfBirth": "Feb 2, 2022 5:39:43 PM",
-    "role": "User",
-    "profilePicture": "no-profile-page.png",
-    "gender": "Male",
-    "isPrivate": false,
-    "isBlocked": false,
-    "isDeleted": false,
-    "friends": [
-      "ines",
-      "test"
-    ],
-    "JWTToken": null
-  },
-  {
     "username": "ines",
     "password": "password",
     "email": "ines@outlook.com",
     "name": "Ines",
     "surname": "Svegić",
-    "dateOfBirth": "Feb 2, 2022 5:39:43 PM",
+    "dateOfBirth": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
     "role": "User",
     "profilePicture": "MONKEE.jpg",
     "gender": "Female",
@@ -74,7 +27,11 @@
     "email": "test@test.com",
     "name": "Test",
     "surname": "Test",
-    "dateOfBirth": "Feb 2, 2022 5:39:43 PM",
+    "dateOfBirth": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
     "role": "User",
     "profilePicture": "no-profile-page.png",
     "gender": "Female",
@@ -83,6 +40,69 @@
     "isDeleted": false,
     "friends": [
       "mirko"
+    ],
+    "JWTToken": null
+  },
+  {
+    "username": "zokster",
+    "password": "admin",
+    "email": "admin@pico.com",
+    "name": "Zoran",
+    "surname": "Bukorac",
+    "dateOfBirth": {
+      "year": 2022,
+      "month": 1,
+      "day": 27
+    },
+    "role": "Administrator",
+    "profilePicture": "no-profile-page.png",
+    "gender": "Male",
+    "isPrivate": false,
+    "isBlocked": false,
+    "isDeleted": false,
+    "friends": [],
+    "JWTToken": null
+  },
+  {
+    "username": "admin",
+    "password": "admin",
+    "email": "admin@pico.com",
+    "name": "Admir",
+    "surname": "Admirevic",
+    "dateOfBirth": {
+      "year": 2022,
+      "month": 1,
+      "day": 15
+    },
+    "role": "Administrator",
+    "profilePicture": "no-profile-page.png",
+    "gender": "Male",
+    "isPrivate": false,
+    "isBlocked": false,
+    "isDeleted": false,
+    "friends": [],
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY0Mzc2ODYzMiwiaWF0IjoxNjQzNzY2ODMyfQ.WZZSJ436m6K2-I_VG4RLUIicalSiQA4jgvtVHFWqgC8"
+  },
+  {
+    "username": "mirko",
+    "password": "password",
+    "email": "mirko@gmail.com",
+    "name": "Mirko",
+    "surname": "Slavujić",
+    "dateOfBirth": {
+      "year": 2022,
+      "month": 1,
+      "day": 28
+    },
+    "role": "User",
+    "profilePicture": "no-profile-page.png",
+    "gender": "Male",
+    "isPrivate": false,
+    "isBlocked": false,
+    "isDeleted": false,
+    "friends": [
+      "ines",
+      "test"
     ],
     "JWTToken": null
   }
