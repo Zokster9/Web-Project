@@ -70,13 +70,14 @@ Vue.component("login-form", {
             axios.post("/login/", {
                 username: this.form.username,
                 password: this.form.password
-            }).then(function(response) {
-                console.log("GAAAAAAAAAAAAAAAAAAAS");
-                window.sessionStorage.setItem("jwt", response.data.JWTToken);
-                window.sessionStorage.setItem("profilePicture", response.data.profilePicture);
-                app.username = response.data.username;
-                router.push("/feed")
-            }).catch(function(error) {
+            }).then((response) => {
+                window.sessionStorage.setItem("user", JSON.stringify(response.data));
+                if (response.data.role === "Administrator")
+                    router.push("/search");
+                else
+                    router.push("feed");
+            }).catch((error) => {
+                alert("Incorrect login details.")
                 console.log("Ne ide brt");
             });
         }
@@ -94,7 +95,18 @@ Vue.component("login-form", {
                 minLength: validators.minLength(1)
             }
         }
+    },
+
+    mounted() {
+        if (window.sessionStorage.getItem("user") !== null) {
+            let role = JSON.parse(window.sessionStorage.getItem("user")).role;
+            if (role === "Administrator")
+                router.push("/search/")
+            else
+                router.push("/feed/")
+        }
     }
+
 });
 
 // For testing

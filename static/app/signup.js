@@ -62,7 +62,7 @@ Vue.component("signup-form", {
                             </div>
 
                             <div class="form-group">
-                                <button @click="clicked('')" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
+                                <button @click="register" @ :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Sign Up</button>
                             </div>
 
                             <p class="forgot-password text-right">
@@ -110,6 +110,20 @@ Vue.component("signup-form", {
         },
         clicked(msg){
             console.log(msg)
+        },
+        register(){
+            axios.post("/signup/", {
+                username: this.form.username,
+                password: this.form.password,
+                email: this.form.email,
+                name: this.form.firstName,
+                surname: this.form.lastName,
+            }).then(function(response) {
+                router.push("/login/")
+            }).catch(function(error) {
+                alert("Username or email already taken!");
+                console.log("Ne ide brt");
+            });
         }
     },
 
@@ -144,6 +158,16 @@ Vue.component("signup-form", {
                 required : validators.required,
                 sameAsPassword : validators.sameAs('password')
             }
+        }
+    },
+
+    mounted() {
+        if (window.sessionStorage.getItem("user") !== null) {
+            let role = JSON.parse(window.sessionStorage.getItem("user")).role;
+            if (role === "Administrator")
+                router.push("/feed/")
+            else
+                router.push("/search/")
         }
     }
 });

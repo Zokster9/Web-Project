@@ -26,7 +26,16 @@ Vue.component("forgot-password-form", {
         </div>
     </div>
     </div>
-    `
+    `,
+    mounted() {
+        if (window.sessionStorage.getItem("user") !== null) {
+            let role = JSON.parse(window.sessionStorage.getItem("user")).role;
+            if (role === "Administrator")
+                router.push("/search/")
+            else
+                router.push("/feed/")
+        }
+    }
 });
 
 // For testing
