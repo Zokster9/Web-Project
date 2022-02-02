@@ -30,7 +30,7 @@ public class LoginController {
         response.type("application/json");
         String payload = request.body();
         User user = g.fromJson(payload, User.class);
-        if (userDao.isUsernameValid(user.getUsername())) {
+        if (userDao.isUsernameValid(user.getUsername()) && userDao.isEmailValid(user.getEmail())) {
             userDao.addUser(user);
             return g.toJson(user);
         }
