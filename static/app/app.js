@@ -9,12 +9,13 @@ const Feed = {template: "<feed-page></feed-page>"};
 const Profile = { template: "<profile-page></profile-page>" };
 const Gallery = {template: "<gallery-page></gallery-page>"};
 const MutualFriends = {template: "<mutual-friends></mutual-friends>"};
-const Post  = { template: "<post-ui></post-ui>"}
-const Search = {template: "<search-ui></search-ui>"}
-const EditProfile = {template: "<edit-profile></edit-profile>"}
-const CreateStatus = {template: "<create-status></create-status>"}
-const CreatePhoto = {template: "<create-photo></create-photo>"}
-
+const Post  = { template: "<post-ui></post-ui>"};
+const Search = {template: "<search-ui></search-ui>"};
+const EditProfile = {template: "<edit-profile></edit-profile>"};
+const CreateStatus = {template: "<create-status></create-status>"};
+const CreatePhoto = {template: "<create-photo></create-photo>"};
+const FriendRequests = {template: "<friend-requests></friend-requests>"};
+const Messages = {template: "<chat-page></chat-page>"};
 
 const router = new VueRouter({
     mode: 'hash',
@@ -24,7 +25,7 @@ const router = new VueRouter({
         { path: "/signup/", component: SignUpForm},
         { path: "/forgot-password/", component: ForgotPassword },
         { path: "/feed/", component: Feed},
-        { path: "/post/",  component: Post},
+        { path: "/post/:id",  component: Post},
         { path: "/chat/", component: ChatPage},
         { path: "/profile", component: Profile},
         { path: "/gallery", component: Gallery},
@@ -33,6 +34,9 @@ const router = new VueRouter({
         { path: "/edit-profile", component: EditProfile},
         { path: "/create-status/", component: CreateStatus},
         { path: "/create-photo/", component: CreatePhoto},
+        { path: "/friend-requests/", component: FriendRequests},
+        { path: "/messages/", component: Messages},
+
         { path: '*', component: NotFoundComponent },
     ]
 });
