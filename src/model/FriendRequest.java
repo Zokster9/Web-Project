@@ -1,10 +1,10 @@
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class FriendRequest {
     private FriendRequestStatus status;
-    private LocalDate date;
+    private Date date;
     private String sender;
     private String receiver;
 
@@ -14,7 +14,7 @@ public class FriendRequest {
     public FriendRequest() {
     }
 
-    public FriendRequest(LocalDate date, String sender, String receiver) {
+    public FriendRequest(Date date, String sender, String receiver) {
         this.status = FriendRequestStatus.Pending;
         this.date = date;
         this.sender = sender;
@@ -29,11 +29,11 @@ public class FriendRequest {
         this.status = status;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

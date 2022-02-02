@@ -2,11 +2,7 @@
   {
     "id": 0,
     "content": "Gdes brate",
-    "date": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "date": "Feb 2, 2022 5:39:43 PM",
     "isDeleted": false,
     "sender": "mirko",
     "receiver": "test"
@@ -14,11 +10,7 @@
   {
     "id": 1,
     "content": "Evo sta ima",
-    "date": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "date": "Feb 2, 2022 5:39:43 PM",
     "isDeleted": false,
     "sender": "test",
     "receiver": "mirko"
@@ -26,11 +18,7 @@
   {
     "id": 2,
     "content": "Eo nista kod tebe?",
-    "date": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "date": "Feb 2, 2022 5:39:43 PM",
     "isDeleted": false,
     "sender": "mirko",
     "receiver": "test"
@@ -38,11 +26,7 @@
   {
     "id": 3,
     "content": "Caoos",
-    "date": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "date": "Feb 2, 2022 5:39:43 PM",
     "isDeleted": false,
     "sender": "ines",
     "receiver": "mirko"
@@ -50,11 +34,7 @@
   {
     "id": 4,
     "content": "Eo, kod tb",
-    "date": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "date": "Feb 2, 2022 5:39:43 PM",
     "isDeleted": false,
     "sender": "mirko",
     "receiver": "ines"
@@ -62,11 +42,7 @@
   {
     "id": 5,
     "content": "Nis, kod tb?",
-    "date": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "date": "Feb 2, 2022 5:39:43 PM",
     "isDeleted": false,
     "sender": "ines",
     "receiver": "mirko"
@@ -74,11 +50,7 @@
   {
     "id": 6,
     "content": "Admin ovde test",
-    "date": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "date": "Feb 2, 2022 5:39:43 PM",
     "isDeleted": false,
     "sender": "admin",
     "receiver": "test"
@@ -86,11 +58,7 @@
   {
     "id": 7,
     "content": "Drugi admin ovde, ali ti ne bi trebao videti razliku",
-    "date": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "date": "Feb 2, 2022 5:39:43 PM",
     "isDeleted": false,
     "sender": "zokster",
     "receiver": "test"

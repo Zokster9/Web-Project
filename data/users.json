@@ -5,18 +5,15 @@
     "email": "admin@pico.com",
     "name": "Admir",
     "surname": "Admirevic",
-    "dateOfBirth": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "dateOfBirth": "Feb 2, 2022 5:39:43 PM",
     "role": "Administrator",
     "profilePicture": "no-profile-page.png",
     "gender": "Male",
     "isPrivate": false,
     "isBlocked": false,
     "isDeleted": false,
-    "friends": []
+    "friends": [],
+    "JWTToken": null
   },
   {
     "username": "zokster",
@@ -24,18 +21,15 @@
     "email": "admin@pico.com",
     "name": "Zoran",
     "surname": "Bukorac",
-    "dateOfBirth": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "dateOfBirth": "Feb 2, 2022 5:39:43 PM",
     "role": "Administrator",
     "profilePicture": "no-profile-page.png",
     "gender": "Male",
     "isPrivate": false,
     "isBlocked": false,
     "isDeleted": false,
-    "friends": []
+    "friends": [],
+    "JWTToken": null
   },
   {
     "username": "mirko",
@@ -43,11 +37,7 @@
     "email": "mirko@gmail.com",
     "name": "Mirko",
     "surname": "Slavujić",
-    "dateOfBirth": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "dateOfBirth": "Feb 2, 2022 5:39:43 PM",
     "role": "User",
     "profilePicture": "no-profile-page.png",
     "gender": "Male",
@@ -57,7 +47,8 @@
     "friends": [
       "ines",
       "test"
-    ]
+    ],
+    "JWTToken": null
   },
   {
     "username": "ines",
@@ -65,11 +56,7 @@
     "email": "ines@outlook.com",
     "name": "Ines",
     "surname": "Svegić",
-    "dateOfBirth": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "dateOfBirth": "Feb 2, 2022 5:39:43 PM",
     "role": "User",
     "profilePicture": "MONKEE.jpg",
     "gender": "Female",
@@ -78,7 +65,8 @@
     "isDeleted": false,
     "friends": [
       "mirko"
-    ]
+    ],
+    "JWTToken": null
   },
   {
     "username": "test",
@@ -86,11 +74,7 @@
     "email": "test@test.com",
     "name": "Test",
     "surname": "Test",
-    "dateOfBirth": {
-      "year": 2022,
-      "month": 1,
-      "day": 28
-    },
+    "dateOfBirth": "Feb 2, 2022 5:39:43 PM",
     "role": "User",
     "profilePicture": "no-profile-page.png",
     "gender": "Female",
@@ -99,6 +83,7 @@
     "isDeleted": false,
     "friends": [
       "mirko"
-    ]
+    ],
+    "JWTToken": null
   }
 ]

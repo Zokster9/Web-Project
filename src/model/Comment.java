@@ -1,12 +1,12 @@
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Comment {
     private Long postID;
     private String content;
-    private LocalDate date;
-    private LocalDate editDate;
+    private Date date;
+    private Date editDate;
     private boolean isDeleted;
     private String username;
 
@@ -16,7 +16,7 @@ public class Comment {
         isDeleted = false;
     }
 
-    public Comment(Long postID, String content, LocalDate date, String username) {
+    public Comment(Long postID, String content, Date date, String username) {
         this.postID = postID;
         this.content = content;
         this.date = date;
@@ -36,19 +36,19 @@ public class Comment {
 
     public void setContent(String content) { this.content = content; }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 
-    public LocalDate getEditDate() {
+    public Date getEditDate() {
         return editDate;
     }
 
-    public void setEditDate(LocalDate editDate) {
+    public void setEditDate(Date editDate) {
         this.editDate = editDate;
     }
 

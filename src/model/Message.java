@@ -1,11 +1,11 @@
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
 
 public class Message {
     private Long id;
     private String content;
-    private LocalDate date;
+    private Date date;
     private boolean isDeleted;
     private String sender;
     private String receiver;
@@ -14,10 +14,11 @@ public class Message {
     private transient User userReceiver;
 
     public Message() {
+        date = new Date();
         isDeleted = false;
     }
 
-    public Message(Long id, String content, LocalDate date, String sender, String receiver) {
+    public Message(Long id, String content, Date date, String sender, String receiver) {
         this.id = id;
         this.content = content;
         this.date = date;
@@ -36,11 +37,11 @@ public class Message {
         this.content = content;
     }
 
-    public LocalDate getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(LocalDate date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

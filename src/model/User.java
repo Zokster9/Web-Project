@@ -1,6 +1,6 @@
 package model;
 
-import java.time.LocalDate;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -10,7 +10,7 @@ public class User {
     private String email;
     private String name;
     private String surname;
-    private LocalDate dateOfBirth;
+    private Date dateOfBirth;
     private UserType role;
     private String profilePicture;
     private Gender gender;
@@ -27,7 +27,7 @@ public class User {
     private transient List<Photo> photos;
 
     public User() {
-        dateOfBirth = LocalDate.now();
+        dateOfBirth = new Date();
         role = UserType.User;
         isPrivate = false;
         isBlocked = false;
@@ -47,7 +47,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
-        dateOfBirth = LocalDate.now();
+        dateOfBirth = new Date();
         role = UserType.User;
         isPrivate = false;
         isBlocked = false;
@@ -101,11 +101,11 @@ public class User {
         this.surname = surname;
     }
 
-    public LocalDate getDateOfBirth() {
+    public Date getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setDateOfBirth(Date dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

@@ -2,7 +2,6 @@ package dao;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import javaxt.utils.Array;
 import model.*;
 import utils.Path;
 import utils.SortStatusByDate;
@@ -12,8 +11,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.ZoneId;
 import java.util.*;
-
-import java.time.LocalDate;
 
 public class UserDao {
     private Gson gson;
@@ -69,7 +66,7 @@ public class UserDao {
     }
 
     public void addFriendRequest(User sender, User receiver) {
-        FriendRequest friendRequest = new FriendRequest(LocalDate.now(), sender.getUsername(), receiver.getUsername());
+        FriendRequest friendRequest = new FriendRequest(new Date(), sender.getUsername(), receiver.getUsername());
         sender.getFriendRequestsSent().add(friendRequest);
         receiver.getFriendRequests().add(friendRequest);
     }
@@ -425,12 +422,13 @@ public class UserDao {
             //TODO Check how we will store dates in string, to make sure this is valid
             SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
             Date dateMin = formatter.parse(dateRange[0].substring(2,26));
-            LocalDate localDateMin = dateMin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            Date dateMax = formatter.parse(dateRange[0].substring(29,53));
-            LocalDate localDateMax = dateMax.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-            clonedUsers.removeIf(x -> (!(x.getDateOfBirth() != null
-                                    && x.getDateOfBirth().isAfter(localDateMin.minusDays(1))
-                                    && x.getDateOfBirth().isBefore(localDateMax.plusDays(1)))));
+            // TODO CHIPI POPRAVLJA
+//            LocalDate localDateMin = dateMin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//            Date dateMax = formatter.parse(dateRange[0].substring(29,53));
+//            LocalDate localDateMax = dateMax.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+//            clonedUsers.removeIf(x -> (!(x.getDateOfBirth() != null
+//                                    && x.getDateOfBirth().isAfter(localDateMin.minusDays(1))
+//                                    && x.getDateOfBirth().isBefore(localDateMax.plusDays(1)))));
         }
         return clonedUsers;
     }
