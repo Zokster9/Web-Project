@@ -21,8 +21,8 @@ Vue.component("main-navbar", {
                     <router-link class="nav-link pr-3" to="/messages/"><i class="fab fa-facebook-messenger fa-2x"></i></router-link>
                 </li>
                 <li class="nav-item">
-                    <router-link v-if="username" event to="/login" @click.native="signOut" class="nav-link pr-3"><i class="fas fa-sign-out-alt fa-2x"></i></router-link>
-                    <router-link v-else to="/login" class="nav-link pr-3"><i class="fas fa-sign-in-alt fa-2x"></i></router-link>
+                    <router-link v-if="username" event exact to="/login" @click.native="signOut" class="nav-link pr-3"><i class="fas fa-sign-out-alt fa-2x"></i></router-link>
+                    <router-link v-else exact to="/login" class="nav-link pr-3"><i class="fas fa-sign-in-alt fa-2x"></i></router-link>
                 </li>
             </ul>
             </div>
@@ -39,7 +39,7 @@ Vue.component("main-navbar", {
     methods: {
         signOut() {
             window.sessionStorage.removeItem("user");
-            router.push("login")
+            router.push("/login")
         }
     },
     mounted() {
