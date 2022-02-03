@@ -2,24 +2,134 @@ Vue.component("post-ui", {
     template:`
 	<div>
 		<main-navbar></main-navbar>
-		<div class="post d-flex justify-content-center shadow" style="margin:auto;margin-top:100px;width:90vw;height:80vh;border-radius: 20px;overflow: hidden;">
+		<div v-if="post.picutre!=='' && post && picture" class="post d-flex justify-content-center shadow" style="margin:auto;margin-top:100px;width:90vw;height:80vh;border-radius: 20px;overflow: hidden;">
 			<div class="post-image" style="height:100%;width:65vw;background-color: black;">
-				<img src="imgs/download.jpg" alt="Posted img idk fuck me" style="width:100%;height:100%;object-fit:contain;overflow:hidden;object-position:center;">
+				<img :src="post.picture" :alt="post.picture" style="width:100%;height:100%;object-fit:contain;overflow:hidden;object-position:center;">
 			</div>
 			<div class="post-sidebar" style="width:25vw;height:100%;background-color: white;">
-				<profile-picture-details></profile-picture-details>
+				<profile-picture-details :user="poster"></profile-picture-details>
 				<div class="post-text" style="margin-left: 10px;margin-right: 5px;">
 					<p class="font-weight-normal fs-5">
-						Aenean s
+						{{post.text}}
 					</p>
 				</div>
-				<hr>
 				<div style="height:60vh;">
 					<post-comments></post-comments>
 				</div>
 			</div>
 		</div>
+		<div v-else>
+		    <div v-if="post" class="d-flex justify-content-center shadow" style="margin:auto;margin-top:100px;width:60vw;height:80vh;border-radius: 20px;overflow: hidden;">
+                <div class="post shadow">
+                    <div v-if="poster">
+                        <profile-picture-details :user="poster"></profile-picture-details>
+                    </div>
+                    <div class="status-text">
+                        <p class="font-weight-large fs-5 p-2">{{post.text}}</p>
+                    </div>
+                    <div style="height:50%;">
+					    <post-comments></post-comments>
+				    </div>
+                </div>
+            </div>
+        </div>
 	</div>
-    `
+    `,
+    data(){
+        return{
+            user: null,
+            post: null,
+            poster: null,
+        }
+    },
+
+    mounted() {
+        if (window.sessionStorage.getItem("user") !== null){
+            this.user = JSON.parse(window.sessionStorage.getItem("user"));
+        } else {
+            router.push("/login")
+            return;
+        }
+        axios.get("/get-post/"+this.$route.params.id+"/", {
+            headers: {
+                Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+            }
+            }).then((response) => {
+                this.post = response.data;
+                axios.get("/get-user/"+this.post.username+"/", {
+                }).then((response) =>{
+                    this.poster = response.data;
+                });
+            }).catch((error) => {
+                if(this.user.role === 'Administrator'){
+                    router.push("/search");
+                    return;
+                } else {
+                    router.push("/feed");
+                    return;
+                }
+            });
+    },
 })
 
+Vue.component("post-comments", {
+    template:`
+    <div class="comment-part" style="margin-left:10px; margin-right:10px;height:100%;">
+        <div class="write-comment d-flex">
+            <!-- Comment must have text to be posted -->
+            <input type="text" rows="1" style="width:100%;height:auto;" placeholder="Write a comment..."/>
+            <button type="button" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="multiple-comments overflow-auto" style="height:100%;">
+            <div v-for="comment in comments">
+                <single-comment :comment="comment"></single-comment>
+            </div>
+        </div>
+    </div>
+    `,
+    data(){
+        return{
+            comments: null,
+        }
+    },
+    mounted() {
+        axios.get("/get-comments/"+this.$route.params.id+"/", {
+        }).then((response) => {
+            this.comments = response.data;
+        })
+    }
+
+})
+
+Vue.component("single-comment", {
+    props: ["comment"],
+    template: `
+    <div v-if="user" class="single-comment d-flex" style="gap:5px;width:100%;max-width:30vw;margin-top:10px;">
+        <div class="profile-picture d-flex flex-column align-items-center" style="width:40px;height:40px;flex-shrink:0;gap:5px;">
+            <profile-picture :profilePicture="user.profilePicture" class="flex-shrink-0"></profile-picture>
+            <button class="btn btn-danger btn-sm w-75"><i class="far fa-trash-alt"></i></button>
+        </div>
+        <div class="d-flex flex-column">
+            <div class="username">
+                {{'@'+user.username}}
+            </div>
+            <div class="comment-text rounded shadow-lg" style="background-color:lightblue;">
+                <div class="font-weight-large fs-6 p-1">
+                    {{comment.content}}
+                </div>
+            </div>
+        </div>
+    </div>
+    `,
+    data(){
+        return{
+            user: null,
+        }
+    },
+    mounted(){
+        axios.get("/get-user/"+this.comment.username+"/", {
+        }).then((response) =>{
+            this.user = response.data;
+        });
+    }
+})

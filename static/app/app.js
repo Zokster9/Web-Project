@@ -26,7 +26,7 @@ const router = new VueRouter({
         { path: "/signup/", component: SignUpForm},
         { path: "/forgot-password/", component: ForgotPassword },
         { path: "/feed/", component: Feed},
-        { path: "/post/:id",  component: Post},
+        { path: "/post/:id/",  component: Post},
         { path: "/chat/", component: ChatPage},
         { path: "/profile/:username", component: Profile},
         { path: "/gallery", component: Gallery},

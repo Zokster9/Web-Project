@@ -23,6 +23,8 @@ public class Path {
         public static final String GET_PROFILE_PICTURE = "/get-profile-picture/";
         public static final String BLOCK_UNBLOCK = "/block-unblock/:username/";
         public static final String GET_CHATS = "/get-chats/:username/";
+        public static final String GET_POST = "/get-post/:id/";
+        public static final String GET_COMMENTS = "/get-comments/:id/";
     }
 
     public static class DataFilePaths{

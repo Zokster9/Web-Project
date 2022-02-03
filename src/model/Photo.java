@@ -6,7 +6,7 @@ import java.util.List;
 public class Photo {
     private Long id;
     private String picture;
-    private String caption;
+    private String text;
     private boolean isDeleted;
     private String username;
 
@@ -21,7 +21,7 @@ public class Photo {
     public Photo(Long id, String picture, String caption, String username) {
         this.id = id;
         this.picture = picture;
-        this.caption = caption;
+        this.text = caption;
         this.username = username;
         isDeleted = false;
         comments = new ArrayList<>();
@@ -39,9 +39,13 @@ public class Photo {
         this.picture = picture;
     }
 
-    public String getCaption() { return caption; }
+    public String getText() {
+        return text;
+    }
 
-    public void setCaption(String caption) { this.caption = caption; }
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public boolean isDeleted() {
         return isDeleted;
