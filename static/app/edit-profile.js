@@ -56,7 +56,7 @@ Vue.component("edit-profile", {
                             <button @click="clicked('')" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Edit profile</button>
                         </div>
 
-                        <div v-if="true" class="form-group">
+                        <div v-if="!user.isPrivate" class="form-group">
                             <button @click="clicked('private')" :disabled="$v.form.$invalid" type="submit" class="btn btn-primary btn-lg btn-block">Make profile private</button>
                         </div>
                         <div v-else class="form-group">
@@ -90,7 +90,6 @@ Vue.component("edit-profile", {
             }
         }
     },
-
     methods: {
         isFocused(field){
             return this.infocus[field]

@@ -23,6 +23,7 @@ Vue.component("profile-page", {
                     <li class="nav-item"><button @click="statusesClick" class="nav-link">Statuses</button></li>
                     <li class="nav-item"><button @click="galleryClick" class="nav-link">Gallery</button></li>
                 </ul>
+                <component :is="currentComponent" v-bind="currentProperties"></component>
             </div>
             <div v-else-if="isPrivate && !isLoggedIn" class="mt-4" hidden>
             </div>
@@ -31,6 +32,7 @@ Vue.component("profile-page", {
                     <li class="nav-item"><button @click="statusesClick" class="nav-link">Statuses</button></li>
                     <li class="nav-item"><button @click="galleryClick" class="nav-link">Gallery</button></li>
                 </ul>
+                <component :is="currentComponent" v-bind="currentProperties"></component>
             </div>
             <div v-else-if="isPrivate && isLoggedIn" class="mt-4">
                 <ul class="nav nav-tabs nav-justified mx-auto" style="max-width: 900px;">
@@ -40,6 +42,7 @@ Vue.component("profile-page", {
                     <li v-else-if="isUsersProfile" class="nav-item"><button @click="friendsClick" class="nav-link" >Friends list</button></li>
                     <li v-if="isUsersProfile" class="nav-item"><button @click="editAccountClick" class="nav-link">Edit account</button></li>
                 </ul>
+                <component :is="currentComponent" v-bind="currentProperties"></component>
             </div>
             <div v-else-if="!isPrivate && isLoggedIn" class="mt-4">
                 <ul class="nav nav-tabs nav-justified mx-auto" style="max-width: 900px;">
@@ -49,8 +52,8 @@ Vue.component("profile-page", {
                     <li v-else-if="isUsersProfile" class="nav-item"><button @click="friendsClick" role="tab" class="nav-link" >Friends list</button></li>
                     <li v-if="isUsersProfile" class="nav-item"><button @click="editAccountClick" role="tab" class="nav-link">Edit account</button></li>
                 </ul>
+                <component :is="currentComponent" v-bind="currentProperties"></component>
             </div>
-            <component :is="currentComponent" v-bind="currentProperties"></component>
         </div>
     </div>
     `,
