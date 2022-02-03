@@ -11,7 +11,8 @@ public class Path {
         public static final String PROFILE_GALLERY = "/profile/:username/gallery/";
         public static final String ADD_FRIEND = "/add-friend/";
         public static final String UNFRIEND = "/unfriend/";
-        public static final String PROFILE_COMMON_FRIENDS = "/profile/:username/common-friends/";
+        public static final String PROFILE_MUTUAL_FRIENDS = "/profile/:username/mutual-friends/";
+        public static final String PROFILE_FRIENDS = "/profile/friends/";
         public static final String MESSAGES = "/messages/";
         public static final String ADD_PHOTO = "/add-photo/";
         public static final String DELETE_PHOTO = "/delete-photo/";

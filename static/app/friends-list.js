@@ -1,9 +1,8 @@
-Vue.component("mutual-friends", {
-    props: ["username"],
-    template: `
-    <div class="d-flex justify-content-center flex-column align-items-center mt-2">
-		<profile-picture-details v-for="friend in friends" :user="friend"></profile-picture-details>
-	</div>
+Vue.component("friends-list", {
+    template:`
+    <div class="d-flex flex-column justify-content-center align-items-center mt-3">
+        <profile-picture-details v-for="friend in friends" :user="friend"></profile-picture-details>
+    </div>
     `,
     data() {
         return {
@@ -11,8 +10,8 @@ Vue.component("mutual-friends", {
         }
     },
     methods: {
-        getMutualFriends() {
-            axios.get("/profile/" + this.username + "/mutual-friends/", {
+        getFriends() {
+            axios.get("/profile/friends/", {
                 headers: {
                     Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
                 }
@@ -22,11 +21,11 @@ Vue.component("mutual-friends", {
         }
     },
     mounted() {
-        this.getMutualFriends();
+        this.getFriends();
     },
     watch: {
         $route(to, from) {
-            this.getMutualFriends();
+            this.getFriends();
         }
     },
 })

@@ -11,7 +11,7 @@ Vue.component("main-navbar", {
                 </li>
                 <li  v-if="role==='User'" class="nav-item">
                     <div style="height:40px; width:40px; margin-top:3px;">
-                        <profile-picture :profilePicture="profilePicture"></profile-picture>
+                        <profile-picture :username="username" :profilePicture="profilePicture"></profile-picture>
                     </div>
                 </li>
                 <li v-if="role==='User'" class="nav-item">

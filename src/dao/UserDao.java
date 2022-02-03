@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import model.*;
 import utils.Path;
+import utils.SortPhotoByDate;
 import utils.SortStatusByDate;
 
 import java.io.*;
@@ -75,10 +76,15 @@ public class UserDao {
         List<String> mutualFriendsUsernames = new ArrayList<>(user1.getFriends());
         mutualFriendsUsernames.retainAll(user2.getFriends());
         List<User> mutualFriends = new ArrayList<>();
-        for (String username : mutualFriendsUsernames) {
-            mutualFriends.add(users.get(username));
-        }
+        mutualFriendsUsernames.forEach(username -> mutualFriends.add(users.get(username)));
         return mutualFriends;
+    }
+
+    public List<User> getFriends(User loggedUser) {
+        List<String> friendsUsernames = new ArrayList<>(loggedUser.getFriends());
+        List<User> friends = new ArrayList<>();
+        friendsUsernames.forEach(username -> friends.add(users.get(username)));
+        return friends;
     }
 
     public List<Status> getFriendsStatuses(User user) {
@@ -107,11 +113,15 @@ public class UserDao {
     }
 
     public List<Status> getUserStatuses(User profileUser) {
-        return profileUser.getStatuses();
+        List<Status> userStatuses = new ArrayList<>(profileUser.getStatuses());
+        userStatuses.sort(new SortStatusByDate());
+        return userStatuses;
     }
 
     public List<Photo> getUserGallery(User profileUser) {
-        return profileUser.getPhotos();
+        List<Photo> userPhotos = new ArrayList<>(profileUser.getPhotos());
+        userPhotos.sort(new SortPhotoByDate());
+        return userPhotos;
     }
 
     public void removeFriend(User user, User exFriend) {

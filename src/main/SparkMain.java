@@ -38,7 +38,7 @@ public class SparkMain {
         post(Path.Web.LOGIN, LoginController.loginUser);
         post(Path.Web.SIGN_UP, LoginController.signUpUser);
         get(Path.Web.FEED, FeedController.getFeed);
-        get(Path.Web.PROFILE_COMMON_FRIENDS, ProfileController.getMutualFriends);
+        get(Path.Web.PROFILE_MUTUAL_FRIENDS, ProfileController.getMutualFriends);
         get(Path.Web.PROFILE_STATUSES, ProfileController.getProfileStatuses);
         get(Path.Web.PROFILE_GALLERY, ProfileController.getProfileGallery);
         post(Path.Web.ADD_FRIEND, ProfileController.addFriend);
@@ -54,5 +54,6 @@ public class SparkMain {
         put(Path.Web.BLOCK_UNBLOCK, ProfileController.blockUnblockUser);
         get(Path.Web.GET_CHATS, ChatController.getChats);
         get(Path.Web.MESSAGES, ChatController.getMessages);
+        get(Path.Web.PROFILE_FRIENDS, ProfileController.getFriends);
     }
 }

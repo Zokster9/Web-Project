@@ -60,7 +60,7 @@
     "role": "User",
     "profilePicture": "MONKEE.jpg",
     "gender": "Female",
-    "isPrivate": false,
+    "isPrivate": true,
     "isBlocked": false,
     "isDeleted": false,
     "friends": [

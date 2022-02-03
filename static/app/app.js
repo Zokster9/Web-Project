@@ -28,7 +28,7 @@ const router = new VueRouter({
         { path: "/feed/", component: Feed},
         { path: "/post/:id",  component: Post},
         { path: "/chat/", component: ChatPage},
-        { path: "/profile", component: Profile},
+        { path: "/profile/:username", component: Profile},
         { path: "/gallery", component: Gallery},
         { path: "/mutual-friends", component:MutualFriends},
         { path: "/search", component:Search},

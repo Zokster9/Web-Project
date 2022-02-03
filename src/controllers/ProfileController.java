@@ -37,8 +37,16 @@ public class ProfileController {
         User loggedUser = userDao.getUser(tokenUsername);
         String pathUsername = request.params("username");
         User profileUser = userDao.getUser(pathUsername);
-        List<User> commonFriends = userDao.getMutualFriends(loggedUser, profileUser);
-        return g.toJson(commonFriends);
+        List<User> mutualFriends = userDao.getMutualFriends(loggedUser, profileUser);
+        return g.toJson(mutualFriends);
+    };
+
+    public static Route getFriends = (Request request, Response response) -> {
+        String tokenUsername = getUsernameFromToken(request);
+        response.type("application/json");
+        User loggedUser = userDao.getUser(tokenUsername);
+        List<User> friends = userDao.getFriends(loggedUser);
+        return g.toJson(friends);
     };
 
     public static Route getProfileStatuses = (Request request, Response response) -> {

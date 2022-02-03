@@ -3,7 +3,7 @@ Vue.component("status-ui", {
     template: `
 
     <div class="status" style="margin-top:30px">
-        <router-link to="'/post/'+status.id" tag="div" class="content">
+        <router-link :to="'/post/'+status.id" tag="div" class="content">
             <div v-if="user">
                 <profile-picture-details :user="user"></profile-picture-details>
             </div>

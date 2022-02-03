@@ -157,6 +157,10 @@ label {
   height: 100%;
 }
 
+.photography:hover {
+  cursor: pointer;
+}
+
 .img-fluid {
   width: 100%;
   height: 100%;

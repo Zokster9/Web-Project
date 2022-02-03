@@ -1,8 +1,9 @@
 Vue.component("edit-profile", {
+    props: ["user"],
     template: `
     <div class="App">
         <div class="vertical-center">
-            <div class="inner-block">
+            <div class="inner-block my-4">
                 <div class="edit-profile">
                     <form @submit.prevent>
                         <div class="form-group">
@@ -107,7 +108,12 @@ Vue.component("edit-profile", {
             return date.getTime() > new Date().getTime() - 24 * 3600 * 1000;
         },
     },
-    
+    mounted() {
+        this.form.firstName = this.user.name;
+        this.form.lastName = this.user.surname;
+        this.form.email = this.user.email;
+        this.form.date = this.user.dateOfBirth;
+    },
     validations:{
         form:{
             firstName : {
