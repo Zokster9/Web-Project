@@ -112,12 +112,14 @@ public class UserDao {
 
     public List<Status> getUserStatuses(User profileUser) {
         List<Status> userStatuses = new ArrayList<>(profileUser.getStatuses());
+        userStatuses.removeIf(Status::isDeleted);
         userStatuses.sort(new SortStatusByDate());
         return userStatuses;
     }
 
     public List<Photo> getUserGallery(User profileUser) {
         List<Photo> userPhotos = new ArrayList<>(profileUser.getPhotos());
+        userPhotos.removeIf(Photo::isDeleted);
         userPhotos.sort(new SortPhotoByDate());
         return userPhotos;
     }
@@ -475,30 +477,33 @@ public class UserDao {
     public String getPost(User user, Long ID) {
 
         if (statuses.getOrDefault(ID, null) != null)
-            return  user.getRole() == UserType.Administrator ||
+            return  !statuses.get(ID).isDeleted() &&
+                    (user.getRole() == UserType.Administrator ||
                     statuses.get(ID).getPoster() == user ||
                     !statuses.get(ID).getPoster().isPrivate() ||
                     (statuses.get(ID).getPoster().isPrivate() &&
-                            statuses.get(ID).getPoster().getFriends().contains(user.getUsername())) ?
+                            statuses.get(ID).getPoster().getFriends().contains(user.getUsername()))) ?
                     gson.toJson(statuses.get(ID)) : null;
         else if (photos.getOrDefault(ID, null) != null)
-            return  user.getRole() == UserType.Administrator ||
+            return  photos.get(ID).isDeleted() &&
+                    (user.getRole() == UserType.Administrator ||
                     photos.get(ID).getPoster() == user ||
                     !photos.get(ID).getPoster().isPrivate() ||
                     (photos.get(ID).getPoster().isPrivate() &&
-                            photos.get(ID).getPoster().getFriends().contains(user.getUsername())) ?
+                            photos.get(ID).getPoster().getFriends().contains(user.getUsername()))) ?
                     gson.toJson(photos.get(ID)) : null;
         else
             return null;
     }
 
-    public ArrayList<Comment> getComments(Long ID) {
-        ArrayList<Comment> postComments = new ArrayList<>();
-        for (Comment c : comments) {
-            if (c.getPostID() == ID && !c.isDeleted()) {
-                postComments.add(c);
-            }
+    public List<Comment> getComments(Long ID) {
+        List<Comment> postComments;
+        if (statuses.getOrDefault(ID, null)== null){
+            postComments = new ArrayList<>(statuses.get(ID).getComments());
+        } else {
+            postComments = new ArrayList<>(photos.get(ID).getComments());
         }
+        postComments.removeIf(Comment::isDeleted);
         return postComments;
     }
 
@@ -577,7 +582,7 @@ public class UserDao {
 
     public Message deletePost(String username, Long ID, String message) {
         User deleter = users.get(username);
-        Message m = null;
+        Message m = new Message();
         if (statuses.getOrDefault(ID, null) != null) {
             Status s = statuses.get(ID);
             if (s.isDeleted())
@@ -592,6 +597,7 @@ public class UserDao {
                 m = new Message(getMessageIDCounter(), message, new Date().getTime(), deleter.getUsername(), s.getPoster().getUsername());
                 deleter.getMessages().add(m);
                 s.getPoster().getMessages().add(m);
+                messages.add(m);
             }
         } else if (photos.getOrDefault(ID, null) != null) {
             Photo p = photos.get(ID);
@@ -607,6 +613,7 @@ public class UserDao {
                 m = new Message(getMessageIDCounter(), message, new Date().getTime(), deleter.getUsername(), p.getPoster().getUsername());
                 deleter.getMessages().add(m);
                 p.getPoster().getMessages().add(m);
+                messages.add(m);
             }
         } else
             return null;

@@ -48,9 +48,18 @@ Vue.component("post-ui", {
     },
     methods: {
         deletePost(){
-            if (user.role === 'Administrator') {
-                route.push("/delete-post/"+this.$route.params.id+"/")
+            if (this.user.role === 'Administrator') {
+                router.push("/delete-post/"+this.$route.params.id+"/");
+                return;
             }
+            axios.delete("/delete-post/"+this.$route.params.id+"/", {
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                }
+            }).then(response => {
+                alert("Post succesffuly deleted")
+                router.push("/profile/"+this.user.username)
+            })
         }
     },
     mounted() {
