@@ -23,11 +23,14 @@ Vue.component("chat-page-user", {
                                     {{"@"+this.$route.params.username}}
                                 </div>
                             </div>
+                            <div v-if="receiver.role==='Administrator'">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
                         </div>
                         <div class="chat-messages overflow-auto" style="height:57vh;padding-left:10px;padding-right:10px;padding-bottom:10px;">
                             <div v-for="message in messages">
-                                <my-chat-message v-if="message.sender===username" :message="message"></my-chat-message>
-                                <incoming-chat-message v-else :message="message"></incoming-chat-message>
+                                <my-chat-message v-if="message.sender===username" :message="message" :isAdmin="receiver.role==='Administrator'"></my-chat-message>
+                                <incoming-chat-message v-else :message="message" :isAdmin="receiver.role==='Administrator'"></incoming-chat-message>
                             </div>
                         </div>
                         <div class="d-flex">
@@ -138,46 +141,59 @@ Vue.component("chat-page-user", {
         message: {
             required: validators.required,
         }
-    },
-    watch: {
-        $route(to, from) {
-            this.loadChats();
-        }
-    },
+    }
 })
 
 Vue.component("my-chat-message", {
-    props: ["message"],
+    props: ["message", "isAdmin"],
     template: `
     <div class="d-flex flex-column justify-content-end">
         <div class="d-flex justify-content-end">
             <div class="message-data-time">
-                {{message.date}}
+                {{date}}
             </div>
         </div>
         <div class="d-flex justify-content-end">
-            <div class="message my-message p-2">
+            <div :class="[isAdmin ? 'admin-my-message' : 'my-message']" class="message p-2">
                 {{message.content}}
             </div>
         </div>
     </div>
-    `
+    `,
+    data(){
+        return{
+            date:null,
+        }
+    },
+    mounted(){
+        let date = JSON.stringify(new Date(this.message.date)).split("-");
+        this.date = date[2].split("T")[1].substring(0,5)+ " " +date[2].split("T")[0] + "." + date[1] + "." + date[0].substring(1)+".";
+    }
 })
 
 Vue.component("incoming-chat-message", {
-    props: ["message"],
+    props: ["message", "isAdmin"],
     template:`
     <div class="d-flex flex-column justify-content-start">
         <div class="d-flex justify-content-start">
             <div class="message-data-time">
-                {{message.date}}
+                {{date}}
             </div>
         </div>
         <div class="d-flex justify-content-start">
-            <div class="message incoming-message p-2">
+            <div :class="[isAdmin ? 'admin-incoming-message' : 'incoming-message']" class="message p-2">
                 {{message.content}}
             </div>
         </div>
     </div>
-    `
+    `,
+    data(){
+        return{
+            date:null,
+        }
+    },
+    mounted(){
+        let date = JSON.stringify(new Date(this.message.date)).split("-");
+        this.date = date[2].split("T")[1].substring(0,5)+ " " +date[2].split("T")[0] + "." + date[1] + "." + date[0].substring(1)+".";
+    }
 })
