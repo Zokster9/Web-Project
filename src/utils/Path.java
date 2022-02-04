@@ -33,6 +33,8 @@ public class Path {
         public static final String DECLINE_REQUEST = "/decline-request/:username/";
         public static final String HAS_SENT_FRIEND_REQUEST = "/has-sent-friend-request/:username/";
         public static final String DELETE_POST ="/delete-post/:id/";
+        public static final String ADD_COMMENT = "/add-comment/";
+        public static final String DELETE_COMMENT = "/delete-comment/";
     }
 
     public static class DataFilePaths{

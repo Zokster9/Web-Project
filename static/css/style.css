@@ -307,12 +307,20 @@ body::-webkit-scrollbar-thumb
   padding: 3px;
 }
 
+.message-data-time {
+  font-size: 10pt;
+}
+
 .message.my-message {
   background: lightblue;
 }
 
 .message.incoming-message {
   background-color: lightgrey;
+}
+
+.message.admin-incoming-message, .message.admin-my-message {
+  background-color: gold;
 }
 
 .side-chats .chat-list-item:hover {
