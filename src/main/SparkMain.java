@@ -61,7 +61,15 @@ public class SparkMain {
         get(Path.Web.PROFILE_FRIENDS, ProfileController.getFriends);
         get(Path.Web.GET_POST, FeedController.getPost);
         get(Path.Web.GET_COMMENTS, FeedController.getComments);
+<<<<<<< HEAD
         put(Path.Web.PRIVATE_PUBLIC, ProfileController.privatePublicProfile);
         put(Path.Web.EDIT_PROFILE, ProfileController.editProfile);
+=======
+        put(Path.Web.CHANGE_PROFILE_PICTURE, ProfileController.changeProfilePicture);
+        get(Path.Web.GET_FRIEND_REQUESTS, ProfileController.getFriendRequests);
+        put(Path.Web.ACCEPT_REQUEST, ProfileController.acceptFriendRequest);
+        put(Path.Web.DECLINE_REQUEST, ProfileController.declineFriendRequest);
+        get(Path.Web.HAS_SENT_FRIEND_REQUEST, ProfileController.hasSentFriendRequest);
+>>>>>>> 79fd8bc9f9d50a4190e10ac4a467b0ce6be967c1
     }
 }

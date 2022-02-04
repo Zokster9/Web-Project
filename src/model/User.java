@@ -38,6 +38,7 @@ public class User {
         friendRequestsSent = new ArrayList<>();
         statuses = new ArrayList<>();
         photos = new ArrayList<>();
+        profilePicture = "no-profile-page.png";
     }
 
     public User(String username, String password, String email, String name, String surname, Gender gender) {

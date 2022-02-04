@@ -505,6 +505,7 @@ public class UserDao {
         return postComments;
     }
 
+<<<<<<< HEAD
     public User changePrivateStatus(String username) {
         User user = users.get(username);
         user.setPrivate(!user.isPrivate());
@@ -535,5 +536,46 @@ public class UserDao {
             edited.setPassword(edits.getPassword());
         }
         return edited;
+=======
+    public void changeProfilePicture(User loggedUser, String picture) {
+        loggedUser.setProfilePicture(picture);
+    }
+
+    public List<FriendRequest> getPendingFriendRequests(User loggedUser) {
+        List<FriendRequest> pendingFriendRequests = new ArrayList<>();
+        loggedUser.getFriendRequests().forEach(friendRequest -> {
+            if (friendRequest.getStatus() == FriendRequestStatus.Pending) {
+                pendingFriendRequests.add(friendRequest);
+            }
+        });
+        return pendingFriendRequests;
+    }
+
+    public void addFriend(User loggedUser, User newFriend) {
+        loggedUser.getFriendRequests().forEach(friendRequest -> {
+            if (friendRequest.getSender().equals(newFriend.getUsername())) {
+                friendRequest.setStatus(FriendRequestStatus.Accepted);
+            }
+        });
+        loggedUser.getFriends().add(newFriend.getUsername());
+        newFriend.getFriends().add(loggedUser.getUsername());
+    }
+
+    public void declineFriendRequest(User loggedUser, User rejectedUser) {
+        loggedUser.getFriendRequests().forEach(friendRequest -> {
+            if (friendRequest.getSender().equals(rejectedUser.getUsername())) {
+                friendRequest.setStatus(FriendRequestStatus.Rejected);
+            }
+        });
+    }
+
+    public boolean hasSentFriendRequest(User loggedUser, User potentialFriend) {
+        for (FriendRequest friendRequest : loggedUser.getFriendRequestsSent()) {
+            if (friendRequest.getReceiver().equals(potentialFriend.getUsername()) && friendRequest.getStatus() == FriendRequestStatus.Pending) {
+                return true;
+            }
+        }
+        return false;
+>>>>>>> 79fd8bc9f9d50a4190e10ac4a467b0ce6be967c1
     }
 }

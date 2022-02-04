@@ -1,5 +1,6 @@
 package controllers;
 
+import model.FriendRequest;
 import model.Photo;
 import model.Status;
 import model.User;
@@ -163,6 +164,7 @@ public class ProfileController {
         return g.toJson(request.body());
     };
 
+<<<<<<< HEAD
     public static Route privatePublicProfile = (Request request, Response response) -> {
         response.type("application/json");
         String username = getUsernameFromToken(request);
@@ -181,5 +183,52 @@ public class ProfileController {
             return request.body();
         }
         return g.toJson(edited);
+=======
+    public static Route changeProfilePicture = (Request request, Response response) -> {
+        String tokenUsername = getUsernameFromToken(request);
+        response.type("application/json");
+        String picture = request.queryParams("picture");
+        User loggedUser = userDao.getUser(tokenUsername);
+        userDao.changeProfilePicture(loggedUser, picture);
+        return g.toJson(loggedUser);
+    };
+
+    public static Route getFriendRequests = (Request request, Response response) -> {
+        String tokenUsername = getUsernameFromToken(request);
+        response.type("application/json");
+        User loggedUser = userDao.getUser(tokenUsername);
+        List<FriendRequest> friendRequests = userDao.getPendingFriendRequests(loggedUser);
+        return g.toJson(friendRequests);
+    };
+
+    public static Route acceptFriendRequest = (Request request, Response response) -> {
+        String tokenUsername = getUsernameFromToken(request);
+        response.type("application/json");
+        String username = request.params("username");
+        User loggedUser = userDao.getUser(tokenUsername);
+        User newFriend = userDao.getUser(username);
+        userDao.addFriend(loggedUser, newFriend);
+        return g.toJson(newFriend);
+    };
+
+    public static Route declineFriendRequest = (Request request, Response response) -> {
+        String tokenUsername = getUsernameFromToken(request);
+        response.type("application/json");
+        String username = request.params("username");
+        User loggedUser = userDao.getUser(tokenUsername);
+        User rejectedUser = userDao.getUser(username);
+        userDao.declineFriendRequest(loggedUser, rejectedUser);
+        return g.toJson(rejectedUser);
+    };
+
+    public static Route hasSentFriendRequest = (Request request, Response response) -> {
+        String tokenUsername = getUsernameFromToken(request);
+        response.type("application/json");
+        String username = request.params("username");
+        User loggedUser = userDao.getUser(tokenUsername);
+        User potentialFriend = userDao.getUser(username);
+        boolean hasSentFriendRequest = userDao.hasSentFriendRequest(loggedUser, potentialFriend);
+        return g.toJson(hasSentFriendRequest);
+>>>>>>> 79fd8bc9f9d50a4190e10ac4a467b0ce6be967c1
     };
 }
