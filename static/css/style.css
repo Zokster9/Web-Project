@@ -318,3 +318,8 @@ body::-webkit-scrollbar-thumb
 .side-chats .chat-list-item:hover {
   background-color: lightgrey;
 }
+
+.username {
+  text-decoration: none;
+  color: black;
+}

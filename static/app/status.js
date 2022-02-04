@@ -16,7 +16,7 @@ Vue.component("status-ui", {
         </router-link>
         <div class="like-comment-share">
             <router-link exact to="/like-not-implemented" tag="button" class="like"><i class="fa fa-thumbs-up"></i> Like</router-link>
-            <router-link exact to="'/post/'+status.id" tag="button" class="comment"><i class="fa fa-comment"></i> Comment</router-link>
+            <router-link exact :to="'/post/'+status.id" tag="button" class="comment"><i class="fa fa-comment"></i> Comment</router-link>
             <router-link exact to="/share" tag="button" class="share"><i class="fa fa-share"></i> Share</router-link>
         </div>
     </div>
