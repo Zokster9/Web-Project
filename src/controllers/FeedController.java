@@ -44,4 +44,16 @@ public class FeedController {
         ArrayList<Comment> comments = userDao.getComments(Long.parseLong(postID));
         return g.toJson(comments);
     };
+
+    public static Route addStatus = (Request request, Response response) -> {
+        return null;
+    };
+
+    public static Route addPhoto = (Request request, Response response) -> {
+        return null;
+    };
+
+    public static Route deletePost = (Request request, Response response) -> {
+        return null;
+    };
 }
