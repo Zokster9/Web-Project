@@ -1,5 +1,6 @@
 package controllers;
 
+import model.FriendRequest;
 import model.Photo;
 import model.Status;
 import model.User;
@@ -170,5 +171,13 @@ public class ProfileController {
         User loggedUser = userDao.getUser(tokenUsername);
         userDao.changeProfilePicture(loggedUser, picture);
         return g.toJson(loggedUser);
+    };
+
+    public static Route getFriendRequests = (Request request, Response response) -> {
+        String tokenUsername = getUsernameFromToken(request);
+        response.type("application/json");
+        User loggedUser = userDao.getUser(tokenUsername);
+        List<FriendRequest> friendRequests = userDao.getPendingFriendRequests(loggedUser);
+        return g.toJson(friendRequests);
     };
 }

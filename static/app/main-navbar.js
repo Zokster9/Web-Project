@@ -15,7 +15,7 @@ Vue.component("main-navbar", {
                     </div>
                 </li>
                 <li v-if="role==='User'" class="nav-item">
-                    <router-link class="nav-link pr-3" to="/friend-request/"><i class="fas fa-user-plus fa-2x"></i></router-link>
+                    <router-link class="nav-link pr-3" to="/friend-requests/"><i class="fas fa-user-plus fa-2x"></i></router-link>
                 </li>
                 <li v-if="username" class="nav-item">
                     <router-link class="nav-link pr-3" to="/messages/"><i class="fab fa-facebook-messenger fa-2x"></i></router-link>

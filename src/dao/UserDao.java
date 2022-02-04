@@ -510,4 +510,14 @@ public class UserDao {
     public void changeProfilePicture(User loggedUser, String picture) {
         loggedUser.setProfilePicture(picture);
     }
+
+    public List<FriendRequest> getPendingFriendRequests(User loggedUser) {
+        List<FriendRequest> pendingFriendRequests = new ArrayList<>();
+        loggedUser.getFriendRequests().forEach(friendRequest -> {
+            if (friendRequest.getStatus() == FriendRequestStatus.Pending) {
+                pendingFriendRequests.add(friendRequest);
+            }
+        });
+        return pendingFriendRequests;
+    }
 }
