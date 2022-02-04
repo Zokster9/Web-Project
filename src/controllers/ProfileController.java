@@ -180,4 +180,24 @@ public class ProfileController {
         List<FriendRequest> friendRequests = userDao.getPendingFriendRequests(loggedUser);
         return g.toJson(friendRequests);
     };
+
+    public static Route acceptFriendRequest = (Request request, Response response) -> {
+        String tokenUsername = getUsernameFromToken(request);
+        response.type("application/json");
+        String username = request.params("username");
+        User loggedUser = userDao.getUser(tokenUsername);
+        User newFriend = userDao.getUser(username);
+        userDao.addFriend(loggedUser, newFriend);
+        return g.toJson(newFriend);
+    };
+
+    public static Route declineFriendRequest = (Request request, Response response) -> {
+        String tokenUsername = getUsernameFromToken(request);
+        response.type("application/json");
+        String username = request.params("username");
+        User loggedUser = userDao.getUser(tokenUsername);
+        User newFriend = userDao.getUser(username);
+        userDao.declineFriendRequest(loggedUser, newFriend);
+        return g.toJson(newFriend);
+    };
 }

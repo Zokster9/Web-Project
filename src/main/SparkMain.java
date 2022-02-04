@@ -62,5 +62,7 @@ public class SparkMain {
         get(Path.Web.GET_COMMENTS, FeedController.getComments);
         put(Path.Web.CHANGE_PROFILE_PICTURE, ProfileController.changeProfilePicture);
         get(Path.Web.GET_FRIEND_REQUESTS, ProfileController.getFriendRequests);
+        put(Path.Web.ACCEPT_REQUEST, ProfileController.acceptFriendRequest);
+        put(Path.Web.DECLINE_REQUEST, ProfileController.declineFriendRequest);
     }
 }

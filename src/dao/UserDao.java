@@ -520,4 +520,22 @@ public class UserDao {
         });
         return pendingFriendRequests;
     }
+
+    public void addFriend(User loggedUser, User newFriend) {
+        loggedUser.getFriendRequests().forEach(friendRequest -> {
+            if (friendRequest.getSender().equals(newFriend.getUsername())) {
+                friendRequest.setStatus(FriendRequestStatus.Accepted);
+            }
+        });
+        loggedUser.getFriends().add(newFriend.getUsername());
+        newFriend.getFriends().add(loggedUser.getUsername());
+    }
+
+    public void declineFriendRequest(User loggedUser, User newFriend) {
+        loggedUser.getFriendRequests().forEach(friendRequest -> {
+            if (friendRequest.getSender().equals(newFriend.getUsername())) {
+                friendRequest.setStatus(FriendRequestStatus.Rejected);
+            }
+        });
+    }
 }

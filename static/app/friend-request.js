@@ -7,7 +7,7 @@ Vue.component("friend-requests", {
             <div class="vertical-center">
                 <div class="inner-block-requests">
                     <div class="friend-requests d-flex flex-column align-items-center">
-                        <friend-request v-for="friendRequest in friendRequests" :username="friendRequest.sender"></friend-request>
+                        <friend-request @get-requests="getRequests" v-for="friendRequest in friendRequests" :username="friendRequest.sender"></friend-request>
                     </div>
                 </div>
             </div>
@@ -19,15 +19,20 @@ Vue.component("friend-requests", {
             friendRequests: null,
         }
     },
-    mounted() {
-        axios.get("/friend-requests/", {
-            headers: {
-                Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
-            }
-        })
-            .then(response => {
-                this.friendRequests = response.data;
+    methods: {
+        getRequests() {
+            axios.get("/friend-requests/", {
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                }
             })
+                .then(response => {
+                    this.friendRequests = response.data;
+                })
+        }
+    },
+    mounted() {
+        this.getRequests()
     }
 })
 
@@ -37,8 +42,8 @@ Vue.component("friend-request", {
     <div class="friend-request d-flex" style="width:100%;">
         <profile-picture-details :user="user"></profile-picture-details>
         <div class="d-flex align-items-center justify-content-end ms-auto p-2" style="gap:10px;">
-            <button type="button" class="btn btn-success">Accept</button>
-            <button type="button" class="btn btn-danger">Deny</button>
+            <button @click="acceptRequest" type="button" class="btn btn-success">Accept</button>
+            <button @click="declineRequest" type="button" class="btn btn-danger">Deny</button>
         </div>
     </div>
     `,
@@ -46,6 +51,26 @@ Vue.component("friend-request", {
         return {
             user: null,
         }
+    },
+    methods: {
+        acceptRequest() {
+            axios.put("/accept-request/" + this.user.username, {}, {
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                }
+            }).then(response => {
+                this.$emit("get-requests")
+            })
+        },
+        declineRequest() {
+            axios.put("decline-request/" + this.user.username, {}, {
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                }
+            }).then(response => {
+                this.$emit("get-requests")
+            })
+        },
     },
     mounted() {
         axios.get('/get-user/' + this.username + '/')

@@ -27,6 +27,8 @@ public class Path {
         public static final String GET_COMMENTS = "/get-comments/:id/";
         public static final String CHANGE_PROFILE_PICTURE = "/change-profile-picture/";
         public static final String GET_FRIEND_REQUESTS = "/friend-requests/";
+        public static final String ACCEPT_REQUEST = "/accept-request/:username/";
+        public static final String DECLINE_REQUEST = "/decline-request/:username/";
     }
 
     public static class DataFilePaths{
