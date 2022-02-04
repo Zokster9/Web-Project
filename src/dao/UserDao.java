@@ -505,7 +505,6 @@ public class UserDao {
         return postComments;
     }
 
-<<<<<<< HEAD
     public User changePrivateStatus(String username) {
         User user = users.get(username);
         user.setPrivate(!user.isPrivate());
@@ -536,7 +535,6 @@ public class UserDao {
             edited.setPassword(edits.getPassword());
         }
         return edited;
-=======
     public void changeProfilePicture(User loggedUser, String picture) {
         loggedUser.setProfilePicture(picture);
     }
@@ -576,6 +574,5 @@ public class UserDao {
             }
         }
         return false;
->>>>>>> 79fd8bc9f9d50a4190e10ac4a467b0ce6be967c1
     }
 }

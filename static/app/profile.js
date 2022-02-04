@@ -135,13 +135,9 @@ Vue.component("profile-page", {
             axios.get('/get-user/' + this.$route.params.username + '/')
                 .then((response) => {
                     this.user = response.data;
-<<<<<<< HEAD
                     let date = JSON.stringify(new Date(response.data.dateOfBirth)).split("-");
                     this.newDate = date[2].split("T")[0] + "." + date[1] + "." + date[0].substring(1)+".";
                     this.currentComponent = "statuses-page";
-=======
-                    let date = response.data.dateOfBirth.split(" ");
-                    this.newDate = date[0] + " " + date[1] + " " + date[2];
                     if (this.isPrivate && this.isLoggedIn && !this.isFriend) {
                         this.currentComponent = "mutual-friends";
                         this.mutualFriendsClicked = true;
@@ -157,7 +153,6 @@ Vue.component("profile-page", {
                     }).then((response) => {
                         this.hasSentFriendRequest = response.data;
                     })
->>>>>>> 79fd8bc9f9d50a4190e10ac4a467b0ce6be967c1
                 });
         },
         statusesClick() {

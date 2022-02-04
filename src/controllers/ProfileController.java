@@ -164,7 +164,6 @@ public class ProfileController {
         return g.toJson(request.body());
     };
 
-<<<<<<< HEAD
     public static Route privatePublicProfile = (Request request, Response response) -> {
         response.type("application/json");
         String username = getUsernameFromToken(request);
@@ -183,7 +182,6 @@ public class ProfileController {
             return request.body();
         }
         return g.toJson(edited);
-=======
     public static Route changeProfilePicture = (Request request, Response response) -> {
         String tokenUsername = getUsernameFromToken(request);
         response.type("application/json");
@@ -229,6 +227,5 @@ public class ProfileController {
         User potentialFriend = userDao.getUser(username);
         boolean hasSentFriendRequest = userDao.hasSentFriendRequest(loggedUser, potentialFriend);
         return g.toJson(hasSentFriendRequest);
->>>>>>> 79fd8bc9f9d50a4190e10ac4a467b0ce6be967c1
     };
 }
