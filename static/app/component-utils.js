@@ -1,8 +1,11 @@
 Vue.component("profile-picture", {
-    props: ["profilePicture", "username"],
+    props: ["profilePicture", "username", "loggedUser"],
     template:`
     <div style="width:100%;height:100%;">
-        <router-link exact :to="'/profile/'+username">
+        <router-link v-if="loggedUser && loggedUser.username === username" to="/change-profile-picture">
+            <img :src="'imgs/'+profilePicture" class="profile-pic">
+        </router-link>
+        <router-link v-else exact :to="'/profile/'+username">
             <img :src="'imgs/'+profilePicture" class="profile-pic">
         </router-link>
     </div>

@@ -3,7 +3,7 @@ Vue.component("gallery-page", {
     template: `
     <div class="container w-50">
 		<div class="row">
-		    <photo-ui v-for="photo in gallery" :photo="photo"></photo-ui>
+		    <photo-ui v-for="photo in gallery" :noLink="false" :photo="photo"></photo-ui>
 		</div>
 	</div>
     `,

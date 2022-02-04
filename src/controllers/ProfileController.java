@@ -162,4 +162,13 @@ public class ProfileController {
         userDao.changeBlockStatus(username);
         return g.toJson(request.body());
     };
+
+    public static Route changeProfilePicture = (Request request, Response response) -> {
+        String tokenUsername = getUsernameFromToken(request);
+        response.type("application/json");
+        String picture = request.queryParams("picture");
+        User loggedUser = userDao.getUser(tokenUsername);
+        userDao.changeProfilePicture(loggedUser, picture);
+        return g.toJson(loggedUser);
+    };
 }

@@ -25,6 +25,7 @@ public class Path {
         public static final String GET_CHATS = "/get-chats/:username/";
         public static final String GET_POST = "/get-post/:id/";
         public static final String GET_COMMENTS = "/get-comments/:id/";
+        public static final String CHANGE_PROFILE_PICTURE = "/change-profile-picture/";
     }
 
     public static class DataFilePaths{

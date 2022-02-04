@@ -503,4 +503,8 @@ public class UserDao {
         }
         return postComments;
     }
+
+    public void changeProfilePicture(User loggedUser, String picture) {
+        loggedUser.setProfilePicture(picture);
+    }
 }
