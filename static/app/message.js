@@ -32,17 +32,28 @@ Vue.component("chat-page", {
             chats: null,
         }
     },
-    mounted() {
-        if (window.sessionStorage.getItem("user") === null){
-            router.push("/search/");
-            return;
+    methods: {
+        loadChats() {
+            if (window.sessionStorage.getItem("user") === null){
+                router.push("/search/");
+                return;
+            }
+            this.username = JSON.parse(window.sessionStorage.getItem("user")).username;
+            axios.get("/get-chats/"+this.username+"/", {
+            }).then((response) => {
+                this.chats = response.data;
+            })
         }
-        this.username = JSON.parse(window.sessionStorage.getItem("user")).username;
-        axios.get("/get-chats/"+this.username+"/", {
-        }).then((response) => {
-            this.chats = response.data;
-        })
-    }
+    },
+    mounted() {
+        this.loadChats();
+    },
+    watch: {
+        $route(to, from) {
+            this.loadChats();
+        }
+    },
+
 })
 
 Vue.component("chat-list-item", {
@@ -69,5 +80,10 @@ Vue.component("chat-list-item", {
         loadChats(){
             this.$parent.loadChats();
         }
-    }
+    },
+    watch: {
+        $route(to, from) {
+            this.loadChats();
+        }
+    },
 });
