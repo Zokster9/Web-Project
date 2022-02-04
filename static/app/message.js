@@ -43,7 +43,6 @@ Vue.component("chat-page", {
             this.chats = response.data;
         })
     }
-
 })
 
 Vue.component("chat-list-item", {
@@ -60,6 +59,9 @@ Vue.component("chat-list-item", {
             <div class="username">
                 {{"@"+user.username}}
             </div>
+        </div>
+        <div v-if="user.role ==='Administrator'" class="ms-auto">
+            <i class="fas fa-user-shield"></i>
         </div>
     </router-link>
     `,
