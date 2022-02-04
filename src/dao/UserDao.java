@@ -29,6 +29,7 @@ public class UserDao {
         photos = new HashMap<>();
         messages = new ArrayList<>();
         friendRequests = new ArrayList<>();
+        comments = new ArrayList<>();
 
         gson = new GsonBuilder()
                 .setPrettyPrinting()
@@ -42,6 +43,7 @@ public class UserDao {
         message.setId(getMessageIDCounter());
         sender.getMessages().add(message);
         receiver.getMessages().add(message);
+        messages.add(message);
     }
 
     public boolean isUsernameValid(String username) {
@@ -68,6 +70,7 @@ public class UserDao {
         FriendRequest friendRequest = new FriendRequest(new Date().getTime(), sender.getUsername(), receiver.getUsername());
         sender.getFriendRequestsSent().add(friendRequest);
         receiver.getFriendRequests().add(friendRequest);
+        friendRequests.add(friendRequest);
     }
 
     public List<User> getMutualFriends(User user1, User user2) {
@@ -334,7 +337,7 @@ public class UserDao {
         try {
             BufferedReader buffer = new BufferedReader(new FileReader(Path.DataFilePaths.MESSAGES));
             Message[] messagesArray = new Gson().fromJson(buffer, Message[].class);
-            messages = Arrays.asList(messagesArray);
+            messages = new ArrayList<>(Arrays.asList(messagesArray));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("File " + Path.DataFilePaths.MESSAGES + " doesn't exist!");
@@ -345,7 +348,7 @@ public class UserDao {
         try {
             BufferedReader buffer = new BufferedReader(new FileReader(Path.DataFilePaths.COMMENTS));
             Comment[] commentsArray = new Gson().fromJson(buffer, Comment[].class);
-            comments = Arrays.asList(commentsArray);
+            comments = new ArrayList<>(Arrays.asList(commentsArray));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("File " + Path.DataFilePaths.COMMENTS + " doesn't exist!");
@@ -356,7 +359,7 @@ public class UserDao {
         try {
             BufferedReader buffer = new BufferedReader(new FileReader(Path.DataFilePaths.FRIEND_REQUESTS));
             FriendRequest[] friendRequestsArray = new Gson().fromJson(buffer, FriendRequest[].class);
-            friendRequests = Arrays.asList(friendRequestsArray);
+            friendRequests = new ArrayList<>(Arrays.asList(friendRequestsArray));
         } catch (FileNotFoundException e) {
             e.printStackTrace();
             System.out.println("File " + Path.DataFilePaths.FRIEND_REQUESTS + " doesn't exist!");
@@ -621,6 +624,7 @@ public class UserDao {
     }
 
     public void addComment(Comment comment) {
+        comments.add(comment);
         if (statuses.containsKey(comment.getPostID())) {
             statuses.get(comment.getPostID()).getComments().add(comment);
         } else {
@@ -647,5 +651,9 @@ public class UserDao {
 
     public void deleteComment(Comment comment) {
         comment.setDeleted(true);
+    }
+
+    public void setCommentPoster(Comment comment) {
+        comment.setUser(users.get(comment.getUsername()));
     }
 }

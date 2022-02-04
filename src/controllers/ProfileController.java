@@ -245,6 +245,7 @@ public class ProfileController {
         response.type("application/json");
         String payload = request.body();
         Comment comment = g.fromJson(payload, Comment.class);
+        userDao.setCommentPoster(comment);
         userDao.addComment(comment);
         return g.toJson(comment);
     };
