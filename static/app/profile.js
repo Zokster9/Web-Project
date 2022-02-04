@@ -107,8 +107,8 @@ Vue.component("profile-page", {
             axios.get('/get-user/' + this.$route.params.username + '/')
                 .then((response) => {
                     this.user = response.data;
-                    let date = response.data.dateOfBirth.split(" ");
-                    this.newDate = date[0] + " " + date[1] + " " + date[2];
+                    let date = JSON.stringify(new Date(response.data.dateOfBirth)).split("-");
+                    this.newDate = date[2].split("T")[0] + "." + date[1] + "." + date[0].substring(1)+".";
                     this.currentComponent = "statuses-page";
                 });
         },

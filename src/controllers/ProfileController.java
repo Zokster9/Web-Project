@@ -162,4 +162,24 @@ public class ProfileController {
         userDao.changeBlockStatus(username);
         return g.toJson(request.body());
     };
+
+    public static Route privatePublicProfile = (Request request, Response response) -> {
+        response.type("application/json");
+        String username = getUsernameFromToken(request);
+        User user = userDao.changePrivateStatus(username);
+        return g.toJson(user);
+    };
+
+    public static Route editProfile = (Request request, Response response) -> {
+        response.type("application/json");
+        String username = getUsernameFromToken(request);
+        User edits = g.fromJson(request.body(), User.class);
+        edits.setUsername(username);
+        User edited = userDao.editUser(edits);
+        if (edited == null){
+            response.status(401);
+            return request.body();
+        }
+        return g.toJson(edited);
+    };
 }

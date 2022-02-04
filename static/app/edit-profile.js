@@ -11,12 +11,12 @@ Vue.component("edit-profile", {
                             <tr>
                             <td>
                             <label for="first-name">First name</label>
-                            <input v-model="form.firstName" @focus="inFocus('firstName')" @blur="outFocus('firstName')" id="first-name" type="text" pattern="[a-zA-Z\.]+$" class="form-control form-control-lg"/>
+                            <input v-model="form.firstName" @focus="inFocus('firstName')" @blur="outFocus('firstName')" id="first-name" type="text" class="form-control form-control-lg"/>
                             <div v-show="!isFocused('firstName') && $v.form.firstName.$invalid" class="alert alert-danger">First name is required</div>
                             </td>
                             <td>
                             <label for="last-name">Last name</label>
-                            <input v-model="form.lastName" @focus="inFocus('lastName')" @blur="outFocus('lastName')" id="last-name" type="text" pattern="[a-zA-Z\.]+$" class="form-control form-control-lg"/>
+                            <input v-model="form.lastName" @focus="inFocus('lastName')" @blur="outFocus('lastName')" id="last-name" type="text" class="form-control form-control-lg"/>
                             <div v-show="!isFocused('lastName') && $v.form.lastName.$invalid" class="alert alert-danger">Last name is required</div>
                             </td>
                             </tr>
@@ -53,14 +53,14 @@ Vue.component("edit-profile", {
                         </div>
 
                         <div class="form-group">
-                            <button @click="clicked('')" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Edit profile</button>
+                            <button @click="editProfile" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Edit profile</button>
                         </div>
 
-                        <div v-if="!user.isPrivate" class="form-group">
-                            <button @click="clicked('private')" :disabled="$v.form.$invalid" type="submit" class="btn btn-primary btn-lg btn-block">Make profile private</button>
+                        <div v-if="user.isPrivate" class="form-group">
+                            <button  @click="changePrivate" type="submit" class="btn btn-primary btn-lg btn-block">Make profile public</button>
                         </div>
                         <div v-else class="form-group">
-                            <button @click="clicked('public')" :disabled="$v.form.$invalid" type="submit" class="btn btn-primary btn-lg btn-block">Make profile public</button>
+                            <button @click="changePrivate" type="submit" class="btn btn-primary btn-lg btn-block">Make profile private</button>
                         </div>
                     </form>
                 </div>
@@ -106,12 +106,69 @@ Vue.component("edit-profile", {
         disabledDate(date) {
             return date.getTime() > new Date().getTime() - 24 * 3600 * 1000;
         },
+        changePrivate(){
+            axios.put("/private-public-profile/", {}, {
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                }
+            }).then((response) => {
+                window.sessionStorage.setItem("user", JSON.stringify(response.data));
+                this.user.isPrivate = response.data;
+            })
+        },
+        editProfile(){
+            let name = null;
+            let surname = null;
+            let email = null;
+            let password = null;
+            let date = null;
+            if (!(this.form.firstName === this.user.name || this.form.firstName === "")){
+                name = this.form.firstName;
+            }
+            if (!(this.form.lastName === this.user.surname || this.form.lastName === "")){
+                surname =this.form.lastName;
+            }
+            if (!(this.form.email === this.user.email || this.form.email === "")){
+                email = this.form.email;
+            }
+            if (!(this.form.password === this.user.password || this.form.password === "")){
+                password = this.form.password;
+            }
+            if (!(this.form.date.getTime() === this.user.dateOfBirth || this.form.date === null)) {
+                date = this.form.date.getTime();
+            }
+            if (this.user.password !== this.form.currentPassword || this.form.currentPassword === "" && this.form.password !== ""){
+                alert("Wrong password")
+                return;
+            }
+            
+            axios.put("/edit-profile/", {
+                name: name,
+                surname: surname,
+                email: email,
+                dateOfBirth: date,
+                password: password,
+            }, 
+            {
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                }
+            }).then((response) => {
+                window.sessionStorage.setItem("user", JSON.stringify(response.data));
+                this.$parent.user = response.data;
+                let date = JSON.stringify(new Date(response.data.dateOfBirth)).split("-");
+                this.$parent.newDate = date[2].split("T")[0] + "." + date[1] + "." + date[0].substring(1)+".";
+                alert("Changes saved.")
+            }).catch(error => {
+                alert("Email already taken.")
+            })
+        }
     },
     mounted() {
         this.form.firstName = this.user.name;
         this.form.lastName = this.user.surname;
         this.form.email = this.user.email;
-        this.form.date = this.user.dateOfBirth;
+        this.form.date = new Date(this.user.dateOfBirth);
     },
     validations:{
         form:{

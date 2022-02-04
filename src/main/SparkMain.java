@@ -11,6 +11,7 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import utils.Filters;
 import utils.Path;
+import utils.Test;
 import ws.MessageHandler;
 
 import java.io.File;
@@ -60,5 +61,7 @@ public class SparkMain {
         get(Path.Web.PROFILE_FRIENDS, ProfileController.getFriends);
         get(Path.Web.GET_POST, FeedController.getPost);
         get(Path.Web.GET_COMMENTS, FeedController.getComments);
+        put(Path.Web.PRIVATE_PUBLIC, ProfileController.privatePublicProfile);
+        put(Path.Web.EDIT_PROFILE, ProfileController.editProfile);
     }
 }

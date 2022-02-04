@@ -429,16 +429,12 @@ public class UserDao {
         }
         String[] dateRange = queryParams.getOrDefault("dateRange", null);
         if (dateRange != null) {
-            //TODO Check how we will store dates in string, to make sure this is valid
-            SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX");
-            Date dateMin = formatter.parse(dateRange[0].substring(2,26));
-            // TODO CHIPI POPRAVLJA
-//            LocalDate localDateMin = dateMin.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//            Date dateMax = formatter.parse(dateRange[0].substring(29,53));
-//            LocalDate localDateMax = dateMax.toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-//            clonedUsers.removeIf(x -> (!(x.getDateOfBirth() != null
-//                                    && x.getDateOfBirth().isAfter(localDateMin.minusDays(1))
-//                                    && x.getDateOfBirth().isBefore(localDateMax.plusDays(1)))));
+            String dates = dateRange[0].substring(1, dateRange[0].length()-1);
+            Long dateMin = Long.parseLong(dates.split(",")[0]);
+            Long dateMax = Long.parseLong(dates.split(",")[1]);
+            clonedUsers.removeIf(x -> (!(x.getDateOfBirth() != null
+                                    && x.getDateOfBirth() >= dateMin
+                                    && x.getDateOfBirth() <= dateMax)));
         }
         return clonedUsers;
     }
@@ -484,12 +480,14 @@ public class UserDao {
         if (statuses.getOrDefault(ID, null) != null)
             return  user.getRole() == UserType.Administrator ||
                     statuses.get(ID).getPoster() == user ||
+                    !statuses.get(ID).getPoster().isPrivate() ||
                     (statuses.get(ID).getPoster().isPrivate() &&
                             statuses.get(ID).getPoster().getFriends().contains(user.getUsername())) ?
                     gson.toJson(statuses.get(ID)) : null;
         else if (photos.getOrDefault(ID, null) != null)
             return  user.getRole() == UserType.Administrator ||
                     statuses.get(ID).getPoster() == user ||
+                    !statuses.get(ID).getPoster().isPrivate() ||
                     (photos.get(ID).getPoster().isPrivate() &&
                             photos.get(ID).getPoster().getFriends().contains(user.getUsername())) ?
                     gson.toJson(photos.get(ID)) : null;
@@ -511,5 +509,31 @@ public class UserDao {
         User user = users.get(username);
         user.setPrivate(!user.isPrivate());
         return user;
+    }
+
+    public User editUser(User edits) {
+        User edited = users.get(edits.getUsername());
+        if (edits.getName() != null) {
+            edited.setName(edits.getName());
+        }
+        if (edits.getSurname() != null){
+            edited.setSurname(edits.getSurname());
+        }
+        if (edits.getEmail() != null) {
+            for (User u: users.values()) {
+                if(u.getEmail().toLowerCase().equals(edits.getEmail().toLowerCase())
+                        && !u.getUsername().equals(edits.getUsername())){
+                    return null;
+                }
+            }
+            edited.setEmail(edits.getEmail());
+        }
+        if (edits.getDateOfBirth() != null){
+            edited.setDateOfBirth(edits.getDateOfBirth());
+        }
+        if (edits.getPassword() != null){
+            edited.setPassword(edits.getPassword());
+        }
+        return edited;
     }
 }
