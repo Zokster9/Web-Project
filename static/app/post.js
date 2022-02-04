@@ -4,7 +4,7 @@ Vue.component("post-ui", {
 		<main-navbar></main-navbar>
 		<div v-if="post.picture!==''" class="post d-flex justify-content-center shadow" style="margin:auto;margin-top:100px;width:90vw;height:80vh;border-radius: 20px;overflow: hidden;">
 			<div class="post-image" style="height:100%;width:65vw;background-color: black;">
-				<img :src="post.picture" :alt="post.picture" style="width:100%;height:100%;object-fit:contain;overflow:hidden;object-position:center;">
+				<img :src="imgs/+post.picture" :alt="imgs/+post.picture" style="width:100%;height:100%;object-fit:contain;overflow:hidden;object-position:center;">
 			</div>
 			<div class="post-sidebar" style="width:25vw;height:80vh;background-color: white;">
 				<profile-picture-details :user="poster"></profile-picture-details>
