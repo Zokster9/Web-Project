@@ -574,4 +574,33 @@ public class UserDao {
         }
         return false;
     }
+
+    public void addComment(Comment comment) {
+        if (statuses.containsKey(comment.getPostID())) {
+            statuses.get(comment.getPostID()).getComments().add(comment);
+        } else {
+            photos.get(comment.getPostID()).getComments().add(comment);
+        }
+    }
+
+    public Comment getComment(Long postId, String username, Long date) {
+        if (statuses.containsKey(postId)) {
+            for (Comment comment : statuses.get(postId).getComments()) {
+                if (comment.getUsername().equals(username) && comment.getDate().equals(date)) {
+                    return comment;
+                }
+            }
+        } else {
+            for (Comment comment : photos.get(postId).getComments()) {
+                if (comment.getUsername().equals(username) && comment.getDate().equals(date)) {
+                    return comment;
+                }
+            }
+        }
+        return null;
+    }
+
+    public void deleteComment(Comment comment) {
+        comment.setDeleted(true);
+    }
 }

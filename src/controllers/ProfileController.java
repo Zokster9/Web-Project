@@ -1,9 +1,6 @@
 package controllers;
 
-import model.FriendRequest;
-import model.Photo;
-import model.Status;
-import model.User;
+import model.*;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -157,14 +154,14 @@ public class ProfileController {
         return g.toJson(result);
     };
 
-    public static Route blockUnblockUser = (Request request, Response response) -> {
+    public static Route changeBlockStatus = (Request request, Response response) -> {
         response.type("application/json");
         String username = request.params("username");
         userDao.changeBlockStatus(username);
         return g.toJson(request.body());
     };
 
-    public static Route privatePublicProfile = (Request request, Response response) -> {
+    public static Route changeProfileStatus = (Request request, Response response) -> {
         response.type("application/json");
         String username = getUsernameFromToken(request);
         User user = userDao.changePrivateStatus(username);
@@ -229,5 +226,23 @@ public class ProfileController {
         User potentialFriend = userDao.getUser(username);
         boolean hasSentFriendRequest = userDao.hasSentFriendRequest(loggedUser, potentialFriend);
         return g.toJson(hasSentFriendRequest);
+    };
+
+    public static Route addComment = (Request request, Response response) -> {
+        response.type("application/json");
+        String payload = request.body();
+        Comment comment = g.fromJson(payload, Comment.class);
+        userDao.addComment(comment);
+        return g.toJson(comment);
+    };
+
+    public static Route deleteComment = (Request request, Response response) -> {
+        response.type("application/json");
+        Long postId = Long.valueOf(request.queryParams("postId"));
+        String username = request.queryParams("username");
+        Long date = Long.valueOf(request.queryParams("date"));
+        Comment comment = userDao.getComment(postId, username, date);
+        userDao.deleteComment(comment);
+        return g.toJson(comment);
     };
 }

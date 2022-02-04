@@ -14,6 +14,7 @@ public class Comment {
 
     public Comment() {
         isDeleted = false;
+        date = new Date().getTime();
     }
 
     public Comment(Long postID, String content, Long date, String username) {
