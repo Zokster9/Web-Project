@@ -2,25 +2,25 @@ Vue.component("post-ui", {
     template:`
 	<div>
 		<main-navbar></main-navbar>
-		<div v-if="post.picutre!=='' && post && picture" class="post d-flex justify-content-center shadow" style="margin:auto;margin-top:100px;width:90vw;height:80vh;border-radius: 20px;overflow: hidden;">
+		<div v-if="post.picture!==''" class="post d-flex justify-content-center shadow" style="margin:auto;margin-top:100px;width:90vw;height:80vh;border-radius: 20px;overflow: hidden;">
 			<div class="post-image" style="height:100%;width:65vw;background-color: black;">
 				<img :src="post.picture" :alt="post.picture" style="width:100%;height:100%;object-fit:contain;overflow:hidden;object-position:center;">
 			</div>
-			<div class="post-sidebar" style="width:25vw;height:100%;background-color: white;">
+			<div class="post-sidebar" style="width:25vw;height:80vh;background-color: white;">
 				<profile-picture-details :user="poster"></profile-picture-details>
 				<div class="post-text" style="margin-left: 10px;margin-right: 5px;">
 					<p class="font-weight-normal fs-5">
 						{{post.text}}
 					</p>
 				</div>
-				<div style="height:60vh;">
+				<div>
 					<post-comments></post-comments>
 				</div>
 			</div>
 		</div>
 		<div v-else>
 		    <div v-if="post" class="d-flex justify-content-center shadow" style="margin:auto;margin-top:100px;width:60vw;height:80vh;border-radius: 20px;overflow: hidden;">
-                <div class="post shadow">
+                <div class="post shadow w-100 h-100" >
                     <div v-if="poster">
                         <profile-picture-details :user="poster"></profile-picture-details>
                     </div>
@@ -104,15 +104,15 @@ Vue.component("post-comments", {
 Vue.component("single-comment", {
     props: ["comment"],
     template: `
-    <div v-if="user" class="single-comment d-flex" style="gap:5px;width:100%;max-width:30vw;margin-top:10px;">
+    <div v-if="user" class="single-comment d-flex" style="gap:5px;max-width:95%;margin-top:10px;">
         <div class="profile-picture d-flex flex-column align-items-center" style="width:40px;height:40px;flex-shrink:0;gap:5px;">
             <profile-picture :profilePicture="user.profilePicture" class="flex-shrink-0"></profile-picture>
-            <button class="btn btn-danger btn-sm w-75"><i class="far fa-trash-alt"></i></button>
+            <button v-if="(user.username === current) || user.role==='Administrator'" class="btn btn-danger btn-sm w-75"><i class="far fa-trash-alt"></i></button>
         </div>
         <div class="d-flex flex-column">
-            <div class="username">
+            <router-link :to="'/profile/'+user.username" class="username">
                 {{'@'+user.username}}
-            </div>
+            </router-link>
             <div class="comment-text rounded shadow-lg" style="background-color:lightblue;">
                 <div class="font-weight-large fs-6 p-1">
                     {{comment.content}}
@@ -124,6 +124,7 @@ Vue.component("single-comment", {
     data(){
         return{
             user: null,
+            current: JSON.parse(window.sessionStorage.getItem("user")).username,
         }
     },
     mounted(){

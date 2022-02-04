@@ -480,13 +480,16 @@ public class UserDao {
     }
 
     public String getPost(User user, Long ID) {
+
         if (statuses.getOrDefault(ID, null) != null)
-            return  !statuses.get(ID).getPoster().isPrivate() ||
+            return  user.getRole() == UserType.Administrator ||
+                    !statuses.get(ID).getPoster().isPrivate() ||
                     (statuses.get(ID).getPoster().isPrivate() &&
                             statuses.get(ID).getPoster().getFriends().contains(user.getUsername())) ?
                     gson.toJson(statuses.get(ID)) : null;
         else if (photos.getOrDefault(ID, null) != null)
-            return  !photos.get(ID).getPoster().isPrivate() ||
+            return  user.getRole() == UserType.Administrator ||
+                    !photos.get(ID).getPoster().isPrivate() ||
                     (photos.get(ID).getPoster().isPrivate() &&
                             photos.get(ID).getPoster().getFriends().contains(user.getUsername())) ?
                     gson.toJson(photos.get(ID)) : null;
