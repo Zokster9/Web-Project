@@ -13,7 +13,7 @@ Vue.component("post-ui", {
 						{{post.text}}
 					</p>
 				</div>
-				<div>
+				<div style="height:40vh">
 					<post-comments></post-comments>
 				</div>
 			</div>
@@ -27,7 +27,7 @@ Vue.component("post-ui", {
                     <div class="status-text">
                         <p class="font-weight-large fs-5 p-2">{{post.text}}</p>
                     </div>
-                    <div style="height:50%;">
+                    <div style="height:40%;">
 					    <post-comments></post-comments>
 				    </div>
                 </div>
