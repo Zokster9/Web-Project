@@ -239,6 +239,7 @@ public class ProfileController {
             return response;
         }
         return g.toJson(m);
+    };
         
     public static Route addComment = (Request request, Response response) -> {
         response.type("application/json");
@@ -250,7 +251,7 @@ public class ProfileController {
 
     public static Route deleteComment = (Request request, Response response) -> {
         response.type("application/json");
-        Long postId = Long.valueOf(request.queryParams("postId"));
+        Long postId = Long.valueOf(request.queryParams("postID"));
         String username = request.queryParams("username");
         Long date = Long.valueOf(request.queryParams("date"));
         Comment comment = userDao.getComment(postId, username, date);

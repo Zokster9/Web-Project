@@ -578,11 +578,11 @@ public class UserDao {
     public Message deletePost(String username, Long ID, String message) {
         User deleter = users.get(username);
         Message m = null;
-        if (statuses.getOrDefault(ID, null) != null){
+        if (statuses.getOrDefault(ID, null) != null) {
             Status s = statuses.get(ID);
             if (s.isDeleted())
                 return null;
-            if (deleter.getRole() == UserType.Administrator || s.getPoster() == deleter){
+            if (deleter.getRole() == UserType.Administrator || s.getPoster() == deleter) {
                 s.setDeleted(true);
                 for (Comment c : s.getComments()) {
                     c.setDeleted(true);
@@ -599,7 +599,7 @@ public class UserDao {
                 return null;
             if (deleter.getRole() == UserType.Administrator || p.getPoster() == deleter) {
                 p.setDeleted(true);
-                for(Comment c: p.getComments()){
+                for (Comment c : p.getComments()) {
                     c.setDeleted(true);
                 }
             }
@@ -611,6 +611,8 @@ public class UserDao {
         } else
             return null;
         return m;
+    }
+
     public void addComment(Comment comment) {
         if (statuses.containsKey(comment.getPostID())) {
             statuses.get(comment.getPostID()).getComments().add(comment);
