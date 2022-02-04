@@ -107,7 +107,7 @@ Vue.component("single-comment", {
     <div v-if="user" class="single-comment d-flex" style="gap:5px;max-width:95%;margin-top:10px;">
         <div class="profile-picture d-flex flex-column align-items-center" style="width:40px;height:40px;flex-shrink:0;gap:5px;">
             <profile-picture :profilePicture="user.profilePicture" class="flex-shrink-0"></profile-picture>
-            <button v-if="user.username === current" class="btn btn-danger btn-sm w-75"><i class="far fa-trash-alt"></i></button>
+            <button v-if="(user.username === current) || user.role==='Administrator'" class="btn btn-danger btn-sm w-75"><i class="far fa-trash-alt"></i></button>
         </div>
         <div class="d-flex flex-column">
             <router-link :to="'/profile/'+user.username" class="username">
