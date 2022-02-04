@@ -60,7 +60,7 @@
     "role": "User",
     "profilePicture": "no-profile-page.png",
     "gender": "Female",
-    "isPrivate": false,
+    "isPrivate": true,
     "isBlocked": false,
     "isDeleted": false,
     "friends": [

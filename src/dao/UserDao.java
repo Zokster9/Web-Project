@@ -9,8 +9,6 @@ import utils.SortStatusByDate;
 
 import java.io.*;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.ZoneId;
 import java.util.*;
 
 public class UserDao {
@@ -59,7 +57,7 @@ public class UserDao {
 
     public boolean isEmailValid(String email) {
         for (User user : users.values()) {
-            if (user.getEmail().toLowerCase().equals(email.toLowerCase())) {
+            if (user.getEmail().equalsIgnoreCase(email)) {
                 return false;
             }
         }
@@ -403,14 +401,13 @@ public class UserDao {
         statuses.get(statusToDelete.getId()).setDeleted(true);
     }
 
-    //TODO Check what is returned in queryparams
     public ArrayList<User> searchUsers(Map<String, String[]> queryParams) throws ParseException {
         ArrayList<User> clonedUsers = new ArrayList<>(users.values());
         clonedUsers.removeIf(x ->(x.getRole() == UserType.Administrator));
         String[] username = queryParams.getOrDefault("username", null);
         if (username != null){
             if (!username[0].isEmpty())
-                clonedUsers.removeIf(x -> (x.getName().toLowerCase().equals(username[0].toLowerCase())));
+                clonedUsers.removeIf(x -> (x.getName().equalsIgnoreCase(username[0])));
         }
         String[] name = queryParams.getOrDefault("name", null);
         if (name != null){
@@ -521,7 +518,7 @@ public class UserDao {
         }
         if (edits.getEmail() != null) {
             for (User u : users.values()) {
-                if (u.getEmail().toLowerCase().equals(edits.getEmail().toLowerCase())
+                if (u.getEmail().equalsIgnoreCase(edits.getEmail())
                         && !u.getUsername().equals(edits.getUsername())) {
                     return null;
                 }

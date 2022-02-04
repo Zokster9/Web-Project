@@ -18,7 +18,7 @@ Vue.component("profile-page", {
                     <button disabled v-else-if="hasSentFriendRequest" class="btn" id="request"><i class="fas fa-user-check"></i> Friend request sent</button>
                     <button @click="addFriend" v-else class="btn" id="request"><i class="fas fa-user-plus"></i> Send friend request</button>
                 </span>
-                <router-link v-if="isFriend || isAdmin" class="btn" to="/"><i class="fab fa-facebook-messenger"></i> Send message</router-link>
+                <router-link class="btn" exact :to="'/messages/'+user.username"><i class="fab fa-facebook-messenger"></i> Send message</router-link>
             </div>
             <div v-if="!isPrivate && !isLoggedIn" class="mt-4">
                 <ul class="nav nav-tabs nav-justified mx-auto" style="max-width: 900px;">
@@ -97,7 +97,10 @@ Vue.component("profile-page", {
             return this.user.isPrivate;
         },
         isUsersProfile() {
-            return this.user.username === this.loggedInUser.username;
+            if (this.isLoggedIn) {
+                return this.user.username === this.loggedInUser.username;
+            }
+            return false;
         },
         isAdmin() {
             return this.loggedInUser.role === "Administrator";
@@ -123,10 +126,24 @@ Vue.component("profile-page", {
     },
     methods: {
         addFriend() {
-
+            axios.post("/add-friend/" + this.user.username + "/", {}, {
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                }
+            }).then(response => {
+                this.getUser();
+                this.hasSentFriendRequest = true;
+            })
         },
         removeFriend() {
-
+            axios.delete("/unfriend/" + this.user.username, {
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                }
+            }).then(response => {
+                this.getUser();
+                this.hasSentFriendRequest = false;
+            })
         },
         setParams() {
             this.currentComponent = "mutual-friends";
@@ -145,19 +162,20 @@ Vue.component("profile-page", {
                     this.user = response.data;
                     let date = JSON.stringify(new Date(response.data.dateOfBirth)).split("-");
                     this.newDate = date[2].split("T")[0] + "." + date[1] + "." + date[0].substring(1)+".";
-                    this.currentComponent = "statuses-page";
-                    if (this.isSignedInNotFriendPrivateProfile) {
+                    if (this.isSignedInNotFriendPrivateProfile && !this.isUsersProfile) {
                         this.setParams();
                     } else {
                         this.currentComponent = "statuses-page";
                     }
-                    axios.get('/has-sent-friend-request/' + this.user.username, {
-                        headers: {
-                            Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
-                        }
-                    }).then((response) => {
-                        this.hasSentFriendRequest = response.data;
-                    })
+                    if (this.isLoggedIn) {
+                        axios.get('/has-sent-friend-request/' + this.user.username, {
+                            headers: {
+                                Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                            }
+                        }).then((response) => {
+                            this.hasSentFriendRequest = response.data;
+                        })
+                    }
                 });
         },
         statusesClick() {
