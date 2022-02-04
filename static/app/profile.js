@@ -15,6 +15,7 @@ Vue.component("profile-page", {
             <div v-if="isLoggedIn && !isUsersProfile" class="d-flex justify-content-center align-items-center" style="gap: 25px;">
                 <span v-if="!isAdmin">
                     <button @click="removeFriend" v-if="isFriend" class="btn" id="request"><i class="fas fa-user-minus"></i> Remove from friends</button>
+                    <button disabled v-else-if="hasSentFriendRequest" class="btn" id="request"><i class="fas fa-user-check"></i> Friend request sent</button>
                     <button @click="addFriend" v-else class="btn" id="request"><i class="fas fa-user-plus"></i> Send friend request</button>
                 </span>
                 <router-link v-if="isFriend || isAdmin" class="btn" to="/"><i class="fab fa-facebook-messenger"></i> Send message</router-link>
@@ -69,6 +70,7 @@ Vue.component("profile-page", {
             mutualFriendsClicked: false,
             friendsListClicked: false,
             editAccountClicked: false,
+            hasSentFriendRequest: false,
         }
     },
     computed: {
@@ -135,7 +137,21 @@ Vue.component("profile-page", {
                     this.user = response.data;
                     let date = response.data.dateOfBirth.split(" ");
                     this.newDate = date[0] + " " + date[1] + " " + date[2];
-                    this.currentComponent = "statuses-page";
+                    if (this.isPrivate && this.isLoggedIn && !this.isFriend) {
+                        this.currentComponent = "mutual-friends";
+                        this.mutualFriendsClicked = true;
+                        this.statusesClicked = false;
+                    } else {
+                        this.currentComponent = "statuses-page";
+                    }
+
+                    axios.get('/has-sent-friend-request/' + this.user.username, {
+                        headers: {
+                            Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                        }
+                    }).then((response) => {
+                        this.hasSentFriendRequest = response.data;
+                    })
                 });
         },
         statusesClick() {

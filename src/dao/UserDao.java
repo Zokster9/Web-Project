@@ -531,11 +531,20 @@ public class UserDao {
         newFriend.getFriends().add(loggedUser.getUsername());
     }
 
-    public void declineFriendRequest(User loggedUser, User newFriend) {
+    public void declineFriendRequest(User loggedUser, User rejectedUser) {
         loggedUser.getFriendRequests().forEach(friendRequest -> {
-            if (friendRequest.getSender().equals(newFriend.getUsername())) {
+            if (friendRequest.getSender().equals(rejectedUser.getUsername())) {
                 friendRequest.setStatus(FriendRequestStatus.Rejected);
             }
         });
+    }
+
+    public boolean hasSentFriendRequest(User loggedUser, User potentialFriend) {
+        for (FriendRequest friendRequest : loggedUser.getFriendRequestsSent()) {
+            if (friendRequest.getReceiver().equals(potentialFriend.getUsername()) && friendRequest.getStatus() == FriendRequestStatus.Pending) {
+                return true;
+            }
+        }
+        return false;
     }
 }

@@ -9,7 +9,7 @@ public class Path {
         public static final String SEARCH = "/search/";
         public static final String PROFILE_STATUSES = "/profile/:username/statuses/";
         public static final String PROFILE_GALLERY = "/profile/:username/gallery/";
-        public static final String ADD_FRIEND = "/add-friend/";
+        public static final String ADD_FRIEND = "/add-friend/:username";
         public static final String UNFRIEND = "/unfriend/";
         public static final String PROFILE_MUTUAL_FRIENDS = "/profile/:username/mutual-friends/";
         public static final String PROFILE_FRIENDS = "/profile/friends/";
@@ -29,6 +29,7 @@ public class Path {
         public static final String GET_FRIEND_REQUESTS = "/friend-requests/";
         public static final String ACCEPT_REQUEST = "/accept-request/:username/";
         public static final String DECLINE_REQUEST = "/decline-request/:username/";
+        public static final String HAS_SENT_FRIEND_REQUEST = "/has-sent-friend-request/:username/";
     }
 
     public static class DataFilePaths{
