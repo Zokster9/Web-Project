@@ -11,7 +11,6 @@ import io.jsonwebtoken.SignatureAlgorithm;
 import io.jsonwebtoken.security.Keys;
 import utils.Filters;
 import utils.Path;
-import utils.Test;
 import ws.MessageHandler;
 
 import java.io.File;
