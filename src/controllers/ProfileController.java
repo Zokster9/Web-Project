@@ -1,9 +1,6 @@
 package controllers;
 
-import model.FriendRequest;
-import model.Photo;
-import model.Status;
-import model.User;
+import model.*;
 import spark.Request;
 import spark.Response;
 import spark.Route;
@@ -229,5 +226,18 @@ public class ProfileController {
         User potentialFriend = userDao.getUser(username);
         boolean hasSentFriendRequest = userDao.hasSentFriendRequest(loggedUser, potentialFriend);
         return g.toJson(hasSentFriendRequest);
+    };
+
+    public static Route deletePost = (Request request, Response response) -> {
+        response.type("application/json");
+        String username = getUsernameFromToken(request);
+        Long ID = Long.parseLong(request.params("id"));
+        String message = request.params("message");
+        Message m = userDao.deletePost(username, ID, message);
+        if (m == null) {
+            response.status(401);
+            return response;
+        }
+        return g.toJson(m);
     };
 }

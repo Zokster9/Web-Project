@@ -495,7 +495,7 @@ public class UserDao {
     public ArrayList<Comment> getComments(Long ID) {
         ArrayList<Comment> postComments = new ArrayList<>();
         for (Comment c : comments) {
-            if (c.getPostID() == ID) {
+            if (c.getPostID() == ID && !c.isDeleted()) {
                 postComments.add(c);
             }
         }
@@ -573,5 +573,43 @@ public class UserDao {
             }
         }
         return false;
+    }
+
+    public Message deletePost(String username, Long ID, String message) {
+        User deleter = users.get(username);
+        Message m = null;
+        if (statuses.getOrDefault(ID, null) != null){
+            Status s = statuses.get(ID);
+            if (s.isDeleted())
+                return null;
+            if (deleter.getRole() == UserType.Administrator || s.getPoster() == deleter){
+                s.setDeleted(true);
+                for (Comment c : s.getComments()) {
+                    c.setDeleted(true);
+                }
+            }
+            if (deleter.getRole() == UserType.Administrator) {
+                m = new Message(getMessageIDCounter(), message, new Date().getTime(), deleter.getUsername(), s.getPoster().getUsername());
+                deleter.getMessages().add(m);
+                s.getPoster().getMessages().add(m);
+            }
+        } else if (photos.getOrDefault(ID, null) != null) {
+            Photo p = photos.get(ID);
+            if (p.isDeleted())
+                return null;
+            if (deleter.getRole() == UserType.Administrator || p.getPoster() == deleter) {
+                p.setDeleted(true);
+                for(Comment c: p.getComments()){
+                    c.setDeleted(true);
+                }
+            }
+            if (deleter.getRole() == UserType.Administrator) {
+                m = new Message(getMessageIDCounter(), message, new Date().getTime(), deleter.getUsername(), p.getPoster().getUsername());
+                deleter.getMessages().add(m);
+                p.getPoster().getMessages().add(m);
+            }
+        } else
+            return null;
+        return m;
     }
 }

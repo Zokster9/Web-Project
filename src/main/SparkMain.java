@@ -67,5 +67,6 @@ public class SparkMain {
         put(Path.Web.ACCEPT_REQUEST, ProfileController.acceptFriendRequest);
         put(Path.Web.DECLINE_REQUEST, ProfileController.declineFriendRequest);
         get(Path.Web.HAS_SENT_FRIEND_REQUEST, ProfileController.hasSentFriendRequest);
+        delete(Path.Web.DELETE_POST, ProfileController.deletePost);
     }
 }
