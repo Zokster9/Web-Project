@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class FriendRequest {
     private FriendRequestStatus status;
-    private Date date;
+    private Long date;
     private String sender;
     private String receiver;
 
@@ -14,7 +14,7 @@ public class FriendRequest {
     public FriendRequest() {
     }
 
-    public FriendRequest(Date date, String sender, String receiver) {
+    public FriendRequest(Long date, String sender, String receiver) {
         this.status = FriendRequestStatus.Pending;
         this.date = date;
         this.sender = sender;
@@ -29,11 +29,11 @@ public class FriendRequest {
         this.status = status;
     }
 
-    public Date getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Long date) {
         this.date = date;
     }
 

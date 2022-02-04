@@ -10,7 +10,7 @@ public class User {
     private String email;
     private String name;
     private String surname;
-    private Date dateOfBirth;
+    private Long dateOfBirth;
     private UserType role;
     private String profilePicture;
     private Gender gender;
@@ -27,7 +27,7 @@ public class User {
     private transient List<Photo> photos;
 
     public User() {
-        dateOfBirth = new Date();
+        dateOfBirth = new Date().getTime();
         role = UserType.User;
         isPrivate = false;
         isBlocked = false;
@@ -47,7 +47,7 @@ public class User {
         this.name = name;
         this.surname = surname;
         this.gender = gender;
-        dateOfBirth = new Date();
+        dateOfBirth = new Date().getTime();
         role = UserType.User;
         isPrivate = false;
         isBlocked = false;
@@ -101,11 +101,11 @@ public class User {
         this.surname = surname;
     }
 
-    public Date getDateOfBirth() {
+    public Long getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(Long dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 
@@ -132,6 +132,8 @@ public class User {
     public void setPrivate(boolean aPrivate) {
         isPrivate = aPrivate;
     }
+
+
 
     public boolean isBlocked() {
         return isBlocked;

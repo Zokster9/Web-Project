@@ -5,7 +5,7 @@ import java.util.Date;
 public class Comment {
     private Long postID;
     private String content;
-    private Date date;
+    private Long date;
     private Date editDate;
     private boolean isDeleted;
     private String username;
@@ -16,7 +16,7 @@ public class Comment {
         isDeleted = false;
     }
 
-    public Comment(Long postID, String content, Date date, String username) {
+    public Comment(Long postID, String content, Long date, String username) {
         this.postID = postID;
         this.content = content;
         this.date = date;
@@ -36,11 +36,11 @@ public class Comment {
 
     public void setContent(String content) { this.content = content; }
 
-    public Date getDate() {
+    public Long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(Long date) {
         this.date = date;
     }
 
