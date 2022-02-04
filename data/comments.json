@@ -2,7 +2,7 @@
   {
     "postID": 0,
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
-    "date": "Feb 2, 2022 5:39:43 PM",
+    "date": 1643992162763,
     "editDate": null,
     "isDeleted": false,
     "username": "mirko"
@@ -10,7 +10,7 @@
   {
     "postID": 0,
     "content": "dubokoumno",
-    "date": "Feb 2, 2022 5:39:43 PM",
+    "date": 1643992162763,
     "editDate": null,
     "isDeleted": false,
     "username": "test"
@@ -18,7 +18,7 @@
   {
     "postID": 4,
     "content": "pucas",
-    "date": "Feb 2, 2022 5:39:43 PM",
+    "date": 1643992162763,
     "editDate": null,
     "isDeleted": false,
     "username": "test"
@@ -26,7 +26,7 @@
   {
     "postID": 5,
     "content": "najjaci sam",
-    "date": "Feb 2, 2022 5:39:43 PM",
+    "date": 1643992162763,
     "editDate": null,
     "isDeleted": false,
     "username": "ines"
@@ -34,7 +34,7 @@
   {
     "postID": 8,
     "content": "dobra fotka",
-    "date": "Feb 2, 2022 5:39:43 PM",
+    "date": 1643992162763,
     "editDate": null,
     "isDeleted": false,
     "username": "ines"
@@ -42,7 +42,7 @@
   {
     "postID": 11,
     "content": "volim krek",
-    "date": "Feb 2, 2022 5:39:43 PM",
+    "date": 1643992162763,
     "editDate": null,
     "isDeleted": false,
     "username": "mirko"
@@ -50,7 +50,7 @@
   {
     "postID": 13,
     "content": "smradina sam najveca. Gradjanski rat u azerbejdzanu idegaaas",
-    "date": "Feb 2, 2022 5:39:43 PM",
+    "date": 1643992162763,
     "editDate": null,
     "isDeleted": false,
     "username": "test"

@@ -1,25 +1,25 @@
 [
   {
     "status": "Accepted",
-    "date": "Feb 2, 2022 5:39:43 PM",
+    "date": 1643992162763,
     "sender": "mirko",
     "receiver": "ines"
   },
   {
     "status": "Accepted",
-    "date": "Feb 2, 2022 5:39:43 PM",
+    "date": 1643992162764,
     "sender": "test",
     "receiver": "mirko"
   },
   {
     "status": "Rejected",
-    "date": "Feb 2, 2022 5:39:43 PM",
+    "date": 1643992162764,
     "sender": "test",
     "receiver": "ines"
   },
   {
     "status": "Pending",
-    "date": "Feb 2, 2022 5:39:43 PM",
+    "date": 1643992162764,
     "sender": "test",
     "receiver": "ines"
   }
