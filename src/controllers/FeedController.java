@@ -41,7 +41,7 @@ public class FeedController {
     public static Route getComments = (Request request, Response response) -> {
         response.type("application/json");
         String postID = request.params("id");
-        ArrayList<Comment> comments = userDao.getComments(Long.parseLong(postID));
+        List<Comment> comments = userDao.getComments(Long.parseLong(postID));
         return g.toJson(comments);
     };
 }

@@ -88,12 +88,12 @@ Vue.component("post-comments", {
     <div class="comment-part" style="margin-left:10px; margin-right:10px;height:100%;">
         <div v-if="role==='User'" class="write-comment d-flex">
             <!-- Comment must have text to be posted -->
-            <input type="text" rows="1" style="width:100%;height:auto;" placeholder="Write a comment..."/>
-            <button type="button" class="btn btn-primary">Submit</button>
+            <input v-model="comment" type="text" rows="1" style="width:100%;height:auto;" placeholder="Write a comment..."/>
+            <button @click="addComment" type="button" class="btn btn-primary">Submit</button>
         </div>
         <div class="multiple-comments overflow-auto" style="height:100%;">
             <div v-for="comment in comments">
-                <single-comment :comment="comment"></single-comment>
+                <single-comment @delete-comment="deleteComment" :comment="comment"></single-comment>
             </div>
         </div>
     </div>
@@ -101,14 +101,41 @@ Vue.component("post-comments", {
     data(){
         return{
             comments: null,
+            comment: "",
         }
     },
     mounted() {
-        axios.get("/get-comments/"+this.$route.params.id+"/", {
-        }).then((response) => {
-            this.comments = response.data;
-        })
-    }
+        this.getComments();
+    },
+    methods: {
+        getComments() {
+            axios.get("/get-comments/"+this.$route.params.id+"/", {
+            }).then((response) => {
+                this.comments = response.data;
+            })
+        },
+        deleteComment(comment) {
+            axios.delete("/delete-comment/", {
+                params: {
+                    postID: comment.postID,
+                    username: comment.username,
+                    date: comment.date,
+                }
+            }).then(response => {
+                window.location.reload();
+            })
+        },
+        addComment() {
+            axios.post("/add-comment/", {
+                postID: this.$route.params.id,
+                content: this.comment,
+                username: JSON.parse(window.sessionStorage.getItem("user")).username,
+            }).then(response => {
+                this.comment = "";
+                this.comments.push(response.data);
+            })
+        }
+    },
 
 })
 
@@ -118,7 +145,7 @@ Vue.component("single-comment", {
     <div v-if="user" class="single-comment d-flex" style="gap:5px;max-width:95%;margin-top:10px;">
         <div class="profile-picture d-flex flex-column align-items-center" style="width:40px;height:40px;flex-shrink:0;gap:5px;">
             <profile-picture :profilePicture="user.profilePicture" class="flex-shrink-0"></profile-picture>
-            <button v-if="(user.username === current)" class="btn btn-danger btn-sm w-75"><i class="far fa-trash-alt"></i></button>
+            <button @click="deleteComment" v-if="(user.username === current)" class="btn btn-danger btn-sm w-75"><i class="far fa-trash-alt"></i></button>
         </div>
         <div class="d-flex flex-column">
             <router-link :to="'/profile/'+user.username" class="username">
@@ -139,9 +166,23 @@ Vue.component("single-comment", {
         }
     },
     mounted(){
-        axios.get("/get-user/"+this.comment.username+"/", {
-        }).then((response) =>{
-            this.user = response.data;
-        });
-    }
+        this.getUser();
+    },
+    methods: {
+        deleteComment() {
+            this.$emit("delete-comment", this.comment);
+        },
+        getUser() {
+            axios.get("/get-user/"+this.comment.username+"/", {
+            }).then((response) =>{
+                this.user = response.data;
+            });
+        }
+    },
+    watch: {
+        $route(to, from) {
+            this.$forceUpdate();
+            this.getUser();
+        }
+    },
 })
