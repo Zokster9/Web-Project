@@ -67,7 +67,7 @@ public class UserDao {
     }
 
     public void addFriendRequest(User sender, User receiver) {
-        FriendRequest friendRequest = new FriendRequest(new Date(), sender.getUsername(), receiver.getUsername());
+        FriendRequest friendRequest = new FriendRequest(new Date().getTime(), sender.getUsername(), receiver.getUsername());
         sender.getFriendRequestsSent().add(friendRequest);
         receiver.getFriendRequests().add(friendRequest);
     }
@@ -483,13 +483,13 @@ public class UserDao {
 
         if (statuses.getOrDefault(ID, null) != null)
             return  user.getRole() == UserType.Administrator ||
-                    !statuses.get(ID).getPoster().isPrivate() ||
+                    statuses.get(ID).getPoster() == user ||
                     (statuses.get(ID).getPoster().isPrivate() &&
                             statuses.get(ID).getPoster().getFriends().contains(user.getUsername())) ?
                     gson.toJson(statuses.get(ID)) : null;
         else if (photos.getOrDefault(ID, null) != null)
             return  user.getRole() == UserType.Administrator ||
-                    !photos.get(ID).getPoster().isPrivate() ||
+                    statuses.get(ID).getPoster() == user ||
                     (photos.get(ID).getPoster().isPrivate() &&
                             photos.get(ID).getPoster().getFriends().contains(user.getUsername())) ?
                     gson.toJson(photos.get(ID)) : null;
@@ -505,5 +505,11 @@ public class UserDao {
             }
         }
         return postComments;
+    }
+
+    public User changePrivateStatus(String username) {
+        User user = users.get(username);
+        user.setPrivate(!user.isPrivate());
+        return user;
     }
 }
