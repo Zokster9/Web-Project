@@ -486,8 +486,8 @@ public class UserDao {
                     gson.toJson(statuses.get(ID)) : null;
         else if (photos.getOrDefault(ID, null) != null)
             return  user.getRole() == UserType.Administrator ||
-                    statuses.get(ID).getPoster() == user ||
-                    !statuses.get(ID).getPoster().isPrivate() ||
+                    photos.get(ID).getPoster() == user ||
+                    !photos.get(ID).getPoster().isPrivate() ||
                     (photos.get(ID).getPoster().isPrivate() &&
                             photos.get(ID).getPoster().getFriends().contains(user.getUsername())) ?
                     gson.toJson(photos.get(ID)) : null;
