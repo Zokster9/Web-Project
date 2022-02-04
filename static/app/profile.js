@@ -4,7 +4,8 @@ Vue.component("profile-page", {
         <main-navbar></main-navbar>
         <div v-if="user" style="margin-top: 80px">
             <div class="d-flex justify-content-center align-items-center" style="height:150px; width:150px; margin:auto;">
-                <profile-picture :profilePicture="user.profilePicture" :username="user.username"></profile-picture>
+                <profile-picture v-if="isUsersProfile" data-bs-toggle="tooltip" data-bs-placement="top" title="Change profile picture" :loggedUser="loggedInUser" :profilePicture="user.profilePicture" :username="user.username"></profile-picture>
+                <profile-picture v-else :profilePicture="user.profilePicture" :username="user.username"></profile-picture>
             </div>
             <div class="d-flex justify-content-center flex-column align-items-center mt-3">
                 <h2>{{user.name + " " + user.surname}}</h2>
@@ -20,8 +21,8 @@ Vue.component("profile-page", {
             </div>
             <div v-if="!isPrivate && !isLoggedIn" class="mt-4">
                 <ul class="nav nav-tabs nav-justified mx-auto" style="max-width: 900px;">
-                    <li class="nav-item"><button @click="statusesClick" class="nav-link">Statuses</button></li>
-                    <li class="nav-item"><button @click="galleryClick" class="nav-link">Gallery</button></li>
+                    <li class="nav-item"><button @click="statusesClick" :class="{active: isStatusesClicked}" class="nav-link">Statuses</button></li>
+                    <li class="nav-item"><button @click="galleryClick" :class="{active: isGalleryClicked}" class="nav-link">Gallery</button></li>
                 </ul>
                 <component :is="currentComponent" v-bind="currentProperties"></component>
             </div>
@@ -29,28 +30,28 @@ Vue.component("profile-page", {
             </div>
             <div v-else-if="isAdmin" class="mt-4">
                 <ul class="nav nav-tabs nav-justified mx-auto" style="max-width: 900px;">
-                    <li class="nav-item"><button @click="statusesClick" class="nav-link">Statuses</button></li>
-                    <li class="nav-item"><button @click="galleryClick" class="nav-link">Gallery</button></li>
+                    <li class="nav-item"><button @click="statusesClick" :class="{active: isStatusesClicked}" class="nav-link">Statuses</button></li>
+                    <li class="nav-item"><button @click="galleryClick" :class="{active: isGalleryClicked}" class="nav-link">Gallery</button></li>
                 </ul>
                 <component :is="currentComponent" v-bind="currentProperties"></component>
             </div>
             <div v-else-if="isPrivate && isLoggedIn" class="mt-4">
                 <ul class="nav nav-tabs nav-justified mx-auto" style="max-width: 900px;">
-                    <li v-if="isFriend || isUsersProfile" class="nav-item"><button @click="statusesClick" class="nav-link ">Statuses</button></li>
-                    <li v-if="isFriend || isUsersProfile" class="nav-item"><button @click="galleryClick" class="nav-link">Gallery</button></li>
-                    <li v-if="!isUsersProfile" class="nav-item"><button @click="mutualFriendsClick" class="nav-link" >Mutual friends</button></li>
-                    <li v-else-if="isUsersProfile" class="nav-item"><button @click="friendsClick" class="nav-link" >Friends list</button></li>
-                    <li v-if="isUsersProfile" class="nav-item"><button @click="editAccountClick" class="nav-link">Edit account</button></li>
+                    <li v-if="isFriend || isUsersProfile" class="nav-item"><button @click="statusesClick" :class="{active: isStatusesClicked}" class="nav-link ">Statuses</button></li>
+                    <li v-if="isFriend || isUsersProfile" class="nav-item"><button @click="galleryClick" :class="{active: isGalleryClicked}" class="nav-link">Gallery</button></li>
+                    <li v-if="!isUsersProfile" class="nav-item"><button @click="mutualFriendsClick" :class="{active: isMutualFriendsClicked}" class="nav-link" >Mutual friends</button></li>
+                    <li v-else-if="isUsersProfile" class="nav-item"><button @click="friendsClick" :class="{active: isFriendsListClicked}" class="nav-link" >Friends list</button></li>
+                    <li v-if="isUsersProfile" class="nav-item"><button @click="editAccountClick" :class="{active: isEditAccountClicked}" class="nav-link">Edit account</button></li>
                 </ul>
                 <component :is="currentComponent" v-bind="currentProperties"></component>
             </div>
             <div v-else-if="!isPrivate && isLoggedIn" class="mt-4">
                 <ul class="nav nav-tabs nav-justified mx-auto" style="max-width: 900px;">
-                    <li class="nav-item"><button @click="statusesClick" role="tab" class="nav-link ">Statuses</button></li>
-                    <li class="nav-item"><button @click="galleryClick" role="tab" class="nav-link">Gallery</button></li>
-                    <li v-if="!isUsersProfile" class="nav-item"><button @click="mutualFriendsClick" role="tab" class="nav-link" >Mutual friends</button></li>
-                    <li v-else-if="isUsersProfile" class="nav-item"><button @click="friendsClick" role="tab" class="nav-link" >Friends list</button></li>
-                    <li v-if="isUsersProfile" class="nav-item"><button @click="editAccountClick" role="tab" class="nav-link">Edit account</button></li>
+                    <li class="nav-item"><button @click="statusesClick" role="tab" :class="{active: isStatusesClicked}" class="nav-link ">Statuses</button></li>
+                    <li class="nav-item"><button @click="galleryClick" role="tab" :class="{active: isGalleryClicked}" class="nav-link">Gallery</button></li>
+                    <li v-if="!isUsersProfile" class="nav-item"><button @click="mutualFriendsClick" role="tab" :class="{active: isMutualFriendsClicked}" class="nav-link" >Mutual friends</button></li>
+                    <li v-else class="nav-item"><button @click="friendsClick" role="tab" :class="{active: isFriendsListClicked}" class="nav-link" >Friends list</button></li>
+                    <li v-if="isUsersProfile" class="nav-item"><button @click="editAccountClick" role="tab" :class="{active: isEditAccountClicked}" class="nav-link">Edit account</button></li>
                 </ul>
                 <component :is="currentComponent" v-bind="currentProperties"></component>
             </div>
@@ -63,6 +64,11 @@ Vue.component("profile-page", {
             loggedInUser: null,
             newDate: null,
             currentComponent: "statuses-page",
+            statusesClicked: true,
+            galleryClicked: false,
+            mutualFriendsClicked: false,
+            friendsListClicked: false,
+            editAccountClicked: false,
         }
     },
     computed: {
@@ -93,7 +99,22 @@ Vue.component("profile-page", {
         },
         isAdmin() {
             return this.loggedInUser.role === "Administrator";
-        }
+        },
+        isStatusesClicked() {
+            return this.statusesClicked;
+        },
+        isGalleryClicked() {
+            return this.galleryClicked;
+        },
+        isMutualFriendsClicked() {
+            return this.mutualFriendsClicked;
+        },
+        isFriendsListClicked() {
+            return this.friendsListClicked;
+        },
+        isEditAccountClicked() {
+            return this.editAccountClicked;
+        },
     },
     methods: {
         addFriend() {
@@ -104,6 +125,11 @@ Vue.component("profile-page", {
         },
         getUser() {
             this.currentComponent = "";
+            this.statusesClicked = true
+            this.galleryClicked = false
+            this.mutualFriendsClicked = false
+            this.friendsListClicked = false
+            this.editAccountClicked = false
             axios.get('/get-user/' + this.$route.params.username + '/')
                 .then((response) => {
                     this.user = response.data;
@@ -113,19 +139,44 @@ Vue.component("profile-page", {
                 });
         },
         statusesClick() {
-            this.currentComponent = "statuses-page"
+            this.currentComponent = "statuses-page";
+            this.statusesClicked = true;
+            this.galleryClicked = false;
+            this.mutualFriendsClicked = false;
+            this.friendsListClicked = false;
+            this.editAccountClicked = false;
         },
         galleryClick() {
-            this.currentComponent = "gallery-page"
+            this.currentComponent = "gallery-page";
+            this.statusesClicked = false;
+            this.galleryClicked = true;
+            this.mutualFriendsClicked = false;
+            this.friendsListClicked = false;
+            this.editAccountClicked = false;
         },
         mutualFriendsClick() {
-            this.currentComponent = "mutual-friends"
+            this.currentComponent = "mutual-friends";
+            this.statusesClicked = false;
+            this.galleryClicked = false;
+            this.mutualFriendsClicked = true;
+            this.friendsListClicked = false;
+            this.editAccountClicked = false;
         },
         friendsClick() {
-            this.currentComponent = "friends-list"
+            this.currentComponent = "friends-list";
+            this.statusesClicked = false;
+            this.galleryClicked = false;
+            this.mutualFriendsClicked = false;
+            this.friendsListClicked = true;
+            this.editAccountClicked = false;
         },
         editAccountClick() {
-            this.currentComponent = "edit-profile"
+            this.currentComponent = "edit-profile";
+            this.statusesClicked = false;
+            this.galleryClicked = false;
+            this.mutualFriendsClicked = false;
+            this.friendsListClicked = false;
+            this.editAccountClicked = true;
         },
     },
     mounted() {
