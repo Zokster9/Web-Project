@@ -59,7 +59,7 @@ Vue.component("user-search-ui", {
             <div class="vertical-center">
                 <div class="inner-block-search">
                     <div class="search-results d-flex flex-column align-items-center">
-                        <search-result v-for="result in results" :user="result"></search-result>
+                        <search-result v-for="result in orderedResults" :user="result"></search-result>
                     </div>
                 </div>
             </div>
@@ -86,17 +86,22 @@ Vue.component("user-search-ui", {
             if (window.sessionStorage.getItem("user") !== null) {
                 username = JSON.parse(window.sessionStorage.getItem("user")).username
             }
+            let date = null;
+            if (this.form.dateRange !== null){
+                date = JSON.stringify([this.form.dateRange[0].getTime() - 24 * 3600 * 1000,
+                                       this.form.dateRange[1].getTime() + 24 * 3600 * 1000]);
+            }
             axios.get("/search/", {
                 params: {
                     username: username,
                     name: this.form.firstName,
                     surname: this.form.lastName,
-                    dateRange: JSON.stringify(this.form.dateRange),
+                    dateRange: date,
                     }
             }).then((response) => {
                 this.results = response.data;
                 router.push( {path: "/search/",
-                    query: {name: this.form.firstName, surname: this.form.lastName, dateRange: JSON.stringify(this.form.dateRange)}})
+                    query: {name: this.form.firstName, surname: this.form.lastName, dateRange: this.form.dateRange}})
             })
         }
     },
@@ -126,10 +131,22 @@ Vue.component("user-search-ui", {
 Vue.component("search-result", {
     props: ["user"],
     template: `
-    <div class="search-result d-flex" style="width:100%;">
+    <div class="search-result d-flex align-items-center" style="width:100%;gap:10px">
         <profile-picture-details :user="user"></profile-picture-details>
+        <div class="ms-auto fw-normal" v-if="date">
+            {{date}}
+        </div>
     </div>
-    `
+    `,
+    data(){
+        return {
+            date: null,
+        }
+    },
+    mounted() {
+        let date = JSON.stringify(new Date(this.user.dateOfBirth)).split("-");
+        this.date = date[2].split("T")[0] + "." + date[1] + "." + date[0].substring(1)+".";
+    }
 })
 
 Vue.component("admin-search-ui", {
