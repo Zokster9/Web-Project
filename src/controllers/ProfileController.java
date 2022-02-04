@@ -177,11 +177,13 @@ public class ProfileController {
         User edits = g.fromJson(request.body(), User.class);
         edits.setUsername(username);
         User edited = userDao.editUser(edits);
-        if (edited == null){
+        if (edited == null) {
             response.status(401);
             return request.body();
         }
         return g.toJson(edited);
+    };
+
     public static Route changeProfilePicture = (Request request, Response response) -> {
         String tokenUsername = getUsernameFromToken(request);
         response.type("application/json");

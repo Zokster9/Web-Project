@@ -516,25 +516,27 @@ public class UserDao {
         if (edits.getName() != null) {
             edited.setName(edits.getName());
         }
-        if (edits.getSurname() != null){
+        if (edits.getSurname() != null) {
             edited.setSurname(edits.getSurname());
         }
         if (edits.getEmail() != null) {
-            for (User u: users.values()) {
-                if(u.getEmail().toLowerCase().equals(edits.getEmail().toLowerCase())
-                        && !u.getUsername().equals(edits.getUsername())){
+            for (User u : users.values()) {
+                if (u.getEmail().toLowerCase().equals(edits.getEmail().toLowerCase())
+                        && !u.getUsername().equals(edits.getUsername())) {
                     return null;
                 }
             }
             edited.setEmail(edits.getEmail());
         }
-        if (edits.getDateOfBirth() != null){
+        if (edits.getDateOfBirth() != null) {
             edited.setDateOfBirth(edits.getDateOfBirth());
         }
-        if (edits.getPassword() != null){
+        if (edits.getPassword() != null) {
             edited.setPassword(edits.getPassword());
         }
         return edited;
+    }
+
     public void changeProfilePicture(User loggedUser, String picture) {
         loggedUser.setProfilePicture(picture);
     }

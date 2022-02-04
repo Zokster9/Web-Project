@@ -117,6 +117,9 @@ Vue.component("profile-page", {
         isEditAccountClicked() {
             return this.editAccountClicked;
         },
+        isSignedInNotFriendPrivateProfile() {
+            return this.isPrivate && this.isLoggedIn && !this.isFriend;
+        }
     },
     methods: {
         addFriend() {
@@ -124,6 +127,11 @@ Vue.component("profile-page", {
         },
         removeFriend() {
 
+        },
+        setParams() {
+            this.currentComponent = "mutual-friends";
+            this.mutualFriendsClicked = true;
+            this.statusesClicked = false;
         },
         getUser() {
             this.currentComponent = "";
@@ -138,14 +146,11 @@ Vue.component("profile-page", {
                     let date = JSON.stringify(new Date(response.data.dateOfBirth)).split("-");
                     this.newDate = date[2].split("T")[0] + "." + date[1] + "." + date[0].substring(1)+".";
                     this.currentComponent = "statuses-page";
-                    if (this.isPrivate && this.isLoggedIn && !this.isFriend) {
-                        this.currentComponent = "mutual-friends";
-                        this.mutualFriendsClicked = true;
-                        this.statusesClicked = false;
+                    if (this.isSignedInNotFriendPrivateProfile) {
+                        this.setParams();
                     } else {
                         this.currentComponent = "statuses-page";
                     }
-
                     axios.get('/has-sent-friend-request/' + this.user.username, {
                         headers: {
                             Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
