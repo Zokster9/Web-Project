@@ -138,7 +138,12 @@ Vue.component("chat-page-user", {
         message: {
             required: validators.required,
         }
-    }
+    },
+    watch: {
+        $route(to, from) {
+            this.loadChats();
+        }
+    },
 })
 
 Vue.component("my-chat-message", {
