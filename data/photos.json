@@ -30,7 +30,7 @@
   {
     "id": 8,
     "picture": "mountain-sunset.jpg",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "isDeleted": false,
     "username": "mirko"
   },
@@ -44,7 +44,7 @@
   {
     "id": 10,
     "picture": "monkey.jpg",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "isDeleted": false,
     "username": "ines"
   },
@@ -58,7 +58,7 @@
   {
     "id": 12,
     "picture": "download.jpg",
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     "isDeleted": false,
     "username": "test"
   },

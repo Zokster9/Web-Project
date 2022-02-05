@@ -61,7 +61,7 @@ Vue.component("chat-list-item", {
     template: `
     <router-link exact :to="user.username" tag="div" @click.native="loadChats" class="d-flex w-90 chat-list-item rounded align-items-center" style="height:60px;gap:5px;margin-left:10px;margin-right:10px;padding:10px;">                        
         <div class="flex-grow-0" style="height:50px;width:50px;">
-            <profile-picture :profilePicture="user.profilePicture"></profile-picture>
+            <profile-picture :profilePicture="user.profilePicture" :username="user.username"></profile-picture>
         </div>
         <div class="d-flex flex-column">
             <div class="name">

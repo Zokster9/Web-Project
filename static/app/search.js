@@ -59,7 +59,7 @@ Vue.component("user-search-ui", {
             <div class="vertical-center">
                 <div class="inner-block-search">
                     <div class="search-results d-flex flex-column align-items-center">
-                        <search-result v-for="result in orderedResults" :user="result"></search-result>
+                        <search-result v-for="result in orderedResults" :user="result" :key="result.username"></search-result>
                     </div>
                 </div>
             </div>
@@ -189,7 +189,7 @@ Vue.component("admin-search-ui", {
             <div class="vertical-center">
                 <div class="inner-block-search">
                     <div class="search-results d-flex flex-column align-items-center">
-                        <search-result-admin v-for="result in orderedResults" :user="result"></search-result-admin>
+                        <search-result-admin v-for="result in orderedResults" :user="result" :key="result.username"></search-result-admin>
                     </div>
                 </div>
             </div>

@@ -1,56 +1,63 @@
 [
   {
     "id": 0,
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere.",
     "picture": "",
     "isDeleted": false,
     "username": "mirko"
   },
   {
     "id": 1,
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere.",
     "picture": "",
     "isDeleted": false,
     "username": "mirko"
   },
   {
     "id": 2,
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere.",
     "picture": "",
     "isDeleted": false,
     "username": "ines"
   },
   {
     "id": 3,
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere.",
     "picture": "",
     "isDeleted": false,
     "username": "ines"
   },
   {
     "id": 4,
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere.",
     "picture": "",
     "isDeleted": false,
     "username": "ines"
   },
   {
+    "id": 20,
+    "text": "Danas sam bas raspolozen. Volim subote.",
+    "picture": "",
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
     "id": 5,
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere.",
     "picture": "",
     "isDeleted": false,
     "username": "test"
   },
   {
     "id": 6,
-    "text": "Test",
+    "text": "Kocka do kocke kockica.",
     "picture": "",
     "isDeleted": false,
     "username": "test"
   },
   {
     "id": 7,
-    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere.",
     "picture": "",
     "isDeleted": false,
     "username": "test"
