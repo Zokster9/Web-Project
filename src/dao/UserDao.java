@@ -180,12 +180,15 @@ public class UserDao {
         saveStatuses(new ArrayList<>(statuses.values()));
     }
 
-    public ArrayList<User> searchUsers(Map<String, String[]> queryParams) throws ParseException {
+    public ArrayList<User> searchUsers(Map<String, String[]> queryParams, String tokenUsername) throws ParseException {
         ArrayList<User> clonedUsers = new ArrayList<>(users.values());
         clonedUsers.removeIf(x ->(x.getRole() == UserType.Administrator));
         String[] username = queryParams.getOrDefault("username", null);
         if (username != null){
             if (!username[0].isEmpty())
+                if (tokenUsername != null) {
+                    clonedUsers.removeIf(x -> (x.getName().equalsIgnoreCase(tokenUsername)));
+                }
                 clonedUsers.removeIf(x -> (x.getName().equalsIgnoreCase(username[0])));
         }
         String[] name = queryParams.getOrDefault("name", null);
@@ -384,6 +387,7 @@ public class UserDao {
                 s.getPoster().getMessages().add(m);
                 messages.add(m);
             }
+            saveMessages(messages);
             saveStatuses(new ArrayList<>(statuses.values()));
         } else if (photos.getOrDefault(ID, null) != null) {
             Photo p = photos.get(ID);
@@ -403,6 +407,7 @@ public class UserDao {
                 p.getPoster().getMessages().add(m);
                 messages.add(m);
             }
+            saveMessages(messages);
             savePhotos(new ArrayList<>(photos.values()));
         } else
             return null;

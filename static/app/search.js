@@ -81,26 +81,49 @@ Vue.component("user-search-ui", {
         disabledDate(date) {
             return date.getTime() > new Date().getTime() - 24 * 3600 * 1000;
         },
-        search() {
-            let username = null;
-            if (window.sessionStorage.getItem("user") !== null) {
-                username = JSON.parse(window.sessionStorage.getItem("user")).username
-            }
+        getSearchResults(username, token) {
             let date = null;
             if (this.form.dateRange !== null && !this.form.dateRange.every(x => x === null)){
                 date = JSON.stringify([this.form.dateRange[0].getTime(), this.form.dateRange[1].getTime()]);
             }
             axios.get("/search/", {
+                headers: {
+                    Authorization: 'Bearer ' + token,
+                },
                 params: {
                     username: username,
                     name: this.form.firstName,
                     surname: this.form.lastName,
                     dateRange: date,
-                    }
+                }
             }).then((response) => {
                 this.results = response.data;
                 router.push( {path: "/search/",
                     query: {name: this.form.firstName, surname: this.form.lastName, dateRange: this.form.dateRange}})
+            })
+        },
+        search() {
+            let token = null;
+            let username = null;
+            if (window.sessionStorage.getItem("user") !== null) {
+                username = JSON.parse(window.sessionStorage.getItem("user")).username
+                token = JSON.parse(window.sessionStorage.getItem("user")).JWTToken
+            }
+            this.getSearchResults(username, token)
+        },
+        getUsers(username, token) {
+            axios.get("/search/", {
+                headers: {
+                    Authorization: 'Bearer ' + token,
+                },
+                params: {
+                    username: username,
+                    name: this.form.firstName,
+                    surname: this.form.lastName,
+                    dateRange: this.form.dateRange,
+                }
+            }).then((response) => {
+                this.results = response.data;
             })
         }
     },
@@ -110,20 +133,13 @@ Vue.component("user-search-ui", {
         }
     },
     mounted() {
+        let token = null;
         let username = null;
         if (window.sessionStorage.getItem("user") !== null) {
             username = JSON.parse(window.sessionStorage.getItem("user")).username
+            token = JSON.parse(window.sessionStorage.getItem("user")).JWTToken
         }
-        axios.get("/search/", {
-            params: {
-                username: username,
-                name: this.form.firstName,
-                surname: this.form.lastName,
-                dateRange: this.form.dateRange,
-            }
-        }).then((response) => {
-            this.results = response.data;
-        })
+        this.getUsers(username, token);
     }
 });
 

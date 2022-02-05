@@ -148,9 +148,10 @@ public class ProfileController {
     };
 
     public static Route searchUsers = (Request request, Response response) -> {
+        String tokenUsername = getUsernameFromToken(request);
         HashMap<String, String[]> queryParams = new HashMap<>();
         request.queryMap().toMap().forEach(queryParams::put);
-        ArrayList<User> result = userDao.searchUsers(queryParams);
+        ArrayList<User> result = userDao.searchUsers(queryParams, tokenUsername);
         return g.toJson(result);
     };
 
