@@ -87,9 +87,8 @@ Vue.component("user-search-ui", {
                 username = JSON.parse(window.sessionStorage.getItem("user")).username
             }
             let date = null;
-            if (this.form.dateRange !== null){
-                date = JSON.stringify([this.form.dateRange[0].getTime() - 24 * 3600 * 1000,
-                                       this.form.dateRange[1].getTime() + 24 * 3600 * 1000]);
+            if (this.form.dateRange !== null && !this.form.dateRange.every(x => x === null)){
+                date = JSON.stringify([this.form.dateRange[0].getTime(), this.form.dateRange[1].getTime()]);
             }
             axios.get("/search/", {
                 params: {
