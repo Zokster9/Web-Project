@@ -29,13 +29,13 @@ Vue.component("chat-page-user", {
                         </div>
                         <div class="chat-messages overflow-auto" style="height:57vh;padding-left:10px;padding-right:10px;padding-bottom:10px;">
                             <div v-for="message in messages">
-                                <my-chat-message v-if="message.sender===username" :message="message" :isAdmin="receiver.role==='Administrator'"></my-chat-message>
+                                <my-chat-message v-if="message.sender===user.username" :message="message" :isAdmin="user.role ==='Administrator'"></my-chat-message>
                                 <incoming-chat-message v-else :message="message" :isAdmin="receiver.role==='Administrator'"></incoming-chat-message>
                             </div>
                         </div>
                         <div class="d-flex">
                             <button class="btn btn-primary flex-shrink-0" :disabled="$v.message.$invalid" @click="sendMessage"><i class="fas fa-paper-plane"></i></button>
-                            <input v-model="message" type="text" class="w-100 form-control form-control-lg"/>
+                            <input v-model="message" :disabled="receiver.role ==='Administrator'" type="text" class="w-100 form-control form-control-lg"/>
                         </div>
                     </div>
                 </div>
@@ -45,7 +45,7 @@ Vue.component("chat-page-user", {
     `,
     data() {
         return{
-            username: JSON.parse(window.sessionStorage.getItem("user")).username,
+            user: JSON.parse(window.sessionStorage.getItem("user")),
             chats: null,
             receiver: null,
             messages: null,
@@ -62,7 +62,7 @@ Vue.component("chat-page-user", {
           // this gets opened chat's messages
           axios.get("/messages/", {
               params: {
-                  username: this.username,
+                  username: this.user.username,
                   receiver: this.$route.params.username,
               }
           }).then((response) => {
@@ -70,17 +70,17 @@ Vue.component("chat-page-user", {
           });
         },
         sendMessage() {
-            let chatMessage = this.username + "|" + this.receiver.username + "|" + this.message;
+            let chatMessage = this.user.username + "|" + this.receiver.username + "|" + this.message;
             this.webSocket.send(chatMessage);
             axios.post("/add-message/", {
                 content: this.message,
-                sender: this.username,
+                sender: this.user.username,
                 receiver: this.receiver.username,
             }).then((response) => {
                 this.message = "";
                 axios.get("/messages/", {
                     params: {
-                        username: this.username,
+                        username: this.user.username,
                         receiver: this.receiver.username,
                     }
                 }).then((response) => {
@@ -94,9 +94,9 @@ Vue.component("chat-page-user", {
             router.push("/search/");
             return;
         }
-        this.username = JSON.parse(window.sessionStorage.getItem("user")).username;
+        this.user.username = JSON.parse(window.sessionStorage.getItem("user")).username;
         // this gets chat list
-        axios.get("/get-chats/"+this.username+"/", {
+        axios.get("/get-chats/"+this.user.username+"/", {
         }).then((response) => {
             this.chats = response.data;
         });
@@ -108,7 +108,7 @@ Vue.component("chat-page-user", {
         // this gets opened chat's messages
         axios.get("/messages/", {
             params: {
-                username: this.username,
+                username: this.user.username,
                 receiver: this.$route.params.username,
             }
         }).then((response) => {
