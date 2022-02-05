@@ -54,5 +54,13 @@
     "editDate": null,
     "isDeleted": false,
     "username": "test"
+  },
+  {
+    "postID": 19,
+    "content": "Dobar majmun",
+    "date": 1644027508060,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "mirko"
   }
 ]
