@@ -160,6 +160,13 @@ Vue.component("profile-page", {
             axios.get('/get-user/' + this.$route.params.username + '/')
                 .then((response) => {
                     this.user = response.data;
+                    if (this.user.role ==='Administrator'){
+                        if (this.loggedInUser !== null){
+                            router.push("/feed/")
+                        } else {
+                            router.push("/search/")
+                        }
+                    }
                     let date = JSON.stringify(new Date(response.data.dateOfBirth)).split("-");
                     this.newDate = date[2].split("T")[0] + "." + date[1] + "." + date[0].substring(1)+".";
                     if (this.isSignedInNotFriendPrivateProfile && !this.isUsersProfile) {
