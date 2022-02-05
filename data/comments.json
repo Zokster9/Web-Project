@@ -78,5 +78,37 @@
     "editDate": null,
     "isDeleted": false,
     "username": "kostu"
+  },
+  {
+    "postID": 32,
+    "content": "cao",
+    "date": 1644065574540,
+    "editDate": null,
+    "isDeleted": true,
+    "username": "test"
+  },
+  {
+    "postID": 32,
+    "content": "cao",
+    "date": 1644065578087,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "test"
+  },
+  {
+    "postID": 33,
+    "content": "cao",
+    "date": 1644065596697,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "test"
+  },
+  {
+    "postID": 34,
+    "content": "RESI GLUPANAAAA",
+    "date": 1644076509755,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "test"
   }
 ]

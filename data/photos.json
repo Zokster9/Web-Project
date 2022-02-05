@@ -1,5 +1,12 @@
 [
   {
+    "id": 33,
+    "picture": "sunset.jpg",
+    "text": "",
+    "isDeleted": false,
+    "username": "luki"
+  },
+  {
     "id": 8,
     "picture": "mountain-sunset.jpg",
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",

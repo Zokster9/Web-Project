@@ -30,7 +30,7 @@
     "receiver": "jelis"
   },
   {
-    "status": "Pending",
+    "status": "Accepted",
     "date": 1644062263010,
     "sender": "pavlito",
     "receiver": "test"
@@ -54,9 +54,21 @@
     "receiver": "ines"
   },
   {
-    "status": "Pending",
+    "status": "Rejected",
     "date": 1644062509108,
     "sender": "ujko",
     "receiver": "mirko"
+  },
+  {
+    "status": "Accepted",
+    "date": 1644065379448,
+    "sender": "luki",
+    "receiver": "test"
+  },
+  {
+    "status": "Pending",
+    "date": 1644076323508,
+    "sender": "mirko",
+    "receiver": "ines"
   }
 ]

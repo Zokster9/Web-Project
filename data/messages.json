@@ -198,5 +198,21 @@
     "isDeleted": false,
     "sender": "admin",
     "receiver": "pavlito"
+  },
+  {
+    "id": 25,
+    "content": "Cao pavle",
+    "date": 1644065675315,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "pavlito"
+  },
+  {
+    "id": 26,
+    "content": "Halo",
+    "date": 1644065682880,
+    "isDeleted": false,
+    "sender": "pavlito",
+    "receiver": "test"
   }
 ]

@@ -7,7 +7,7 @@ Vue.component("friend-requests", {
             <div class="vertical-center">
                 <div class="inner-block-requests">
                     <div class="friend-requests d-flex flex-column align-items-center">
-                        <friend-request @get-requests="getRequests" v-for="friendRequest in friendRequests" :username="friendRequest.sender"></friend-request>
+                        <friend-request @get-requests="getRequests" v-for="friendRequest in friendRequests" :username="friendRequest.sender" :key="friendRequest.date"></friend-request>
                     </div>
                 </div>
             </div>

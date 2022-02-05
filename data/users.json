@@ -12,9 +12,7 @@
     "isPrivate": true,
     "isBlocked": false,
     "isDeleted": false,
-    "friends": [
-      "mirko"
-    ],
+    "friends": [],
     "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNjQ0MDYxOTcwLCJpYXQiOjE2NDQwNjAxNzB9.Xe7msRUTMJiZb3J1Mu5bdCnzlMouKpQo396mZGrwUEo"
   },
   {
@@ -31,9 +29,29 @@
     "isBlocked": false,
     "isDeleted": false,
     "friends": [
-      "mirko"
+      "mirko",
+      "pavlito",
+      "luki"
     ],
-    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjQ0MDYzMDcyLCJpYXQiOjE2NDQwNjEyNzJ9.JpbzHjrnZjnmW3f_H9oSD6KTjVb7QGnEeRNEofDUCdI"
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjQ0MDc4NzE4LCJpYXQiOjE2NDQwNzY5MTh9.L0AbRFlz78XjwCDtlybkAd-RJfUCd-5x-COUlayPYLs"
+  },
+  {
+    "username": "luki",
+    "password": "password",
+    "email": "mk@gmail.com",
+    "name": "Marko123",
+    "surname": "Markovic123",
+    "dateOfBirth": 1644065297750,
+    "role": "User",
+    "profilePicture": "no-profile-page.png",
+    "gender": null,
+    "isPrivate": false,
+    "isBlocked": false,
+    "isDeleted": false,
+    "friends": [
+      "test"
+    ],
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJsdWtpIiwiZXhwIjoxNjQ0MDY3MTQzLCJpYXQiOjE2NDQwNjUzNDN9.eLC5pQiGNkDl-HqJaN_sbcGcUisYQYxIrywbfQrOCKk"
   },
   {
     "username": "hank",
@@ -97,7 +115,7 @@
     "isBlocked": false,
     "isDeleted": false,
     "friends": [],
-    "JWTToken": null
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbiIsImV4cCI6MTY0NDA2NzUzNSwiaWF0IjoxNjQ0MDY1NzM1fQ.UuwlToAqZN6QnfpHEZQSwYTkuB52OP2C9GaMCBRfN48"
   },
   {
     "username": "mirko",
@@ -113,10 +131,10 @@
     "isBlocked": false,
     "isDeleted": false,
     "friends": [
-      "ines",
-      "test"
+      "test",
+      "ujko"
     ],
-    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtaXJrbyIsImV4cCI6MTY0NDA2MzA1MywiaWF0IjoxNjQ0MDYxMjUzfQ.hBYS7FKe2KN_Rr_3__VwdmogQhwjVWqPueEpvWqIHlk"
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtaXJrbyIsImV4cCI6MTY0NDA3ODY4NywiaWF0IjoxNjQ0MDc2ODg3fQ.JhChvDATNbG9ParpxIKthopenA8i_Vy7jLgti_RnRBs"
   },
   {
     "username": "pavlito",
@@ -132,9 +150,10 @@
     "isBlocked": false,
     "isDeleted": false,
     "friends": [
-      "jelis"
+      "jelis",
+      "test"
     ],
-    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZsaXRvIiwiZXhwIjoxNjQ0MDY0NTExLCJpYXQiOjE2NDQwNjI3MTF9.LSpb0lm9igrSYve9_fc2y3E4fD6OwH0FoLyCbS7FYzQ"
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZsaXRvIiwiZXhwIjoxNjQ0MDY3NDY1LCJpYXQiOjE2NDQwNjU2NjV9.FUDNPF5Sp-9seTwoA67PF4J_otQswc3Pt7diRPcqNps"
   },
   {
     "username": "jelis",
@@ -166,10 +185,11 @@
     "profilePicture": "sunset.jpg",
     "gender": null,
     "isPrivate": false,
-    "isBlocked": false,
+    "isBlocked": true,
     "isDeleted": false,
     "friends": [
-      "jelis"
+      "jelis",
+      "mirko"
     ],
     "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1amtvIiwiZXhwIjoxNjQ0MDY0NTIxLCJpYXQiOjE2NDQwNjI3MjF9.s4vy_kcYRoC2myo2ZZ_6LIO5xWJBm-19M15IP2J-2kc"
   }

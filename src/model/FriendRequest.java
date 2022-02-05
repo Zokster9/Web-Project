@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Date;
-
 public class FriendRequest {
     private FriendRequestStatus status;
     private Long date;

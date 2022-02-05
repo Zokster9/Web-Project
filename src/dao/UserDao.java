@@ -337,6 +337,7 @@ public class UserDao {
         loggedUser.getFriendRequests().forEach(friendRequest -> {
             if (friendRequest.getSender().equals(newFriend.getUsername())) {
                 friendRequest.setStatus(FriendRequestStatus.Accepted);
+                saveFriendRequests(friendRequests);
             }
         });
         loggedUser.getFriends().add(newFriend.getUsername());

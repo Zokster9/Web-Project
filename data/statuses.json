@@ -7,6 +7,13 @@
     "username": "mirko"
   },
   {
+    "id": 32,
+    "text": "Nova pbjava1",
+    "picture": "5c6d12fe965d46def2989e9fb74fc0b100765258.gif",
+    "isDeleted": false,
+    "username": "luki"
+  },
+  {
     "id": 1,
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere.",
     "picture": "",
@@ -19,6 +26,13 @@
     "picture": "",
     "isDeleted": false,
     "username": "ines"
+  },
+  {
+    "id": 34,
+    "text": "MAX BODOVA BRACOOOO!!!",
+    "picture": "monkey.jpg",
+    "isDeleted": false,
+    "username": "mirko"
   },
   {
     "id": 3,
@@ -52,7 +66,7 @@
     "id": 7,
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere.",
     "picture": "",
-    "isDeleted": false,
+    "isDeleted": true,
     "username": "test"
   },
   {
@@ -96,5 +110,12 @@
     "picture": "logo.gif",
     "isDeleted": false,
     "username": "ujko"
+  },
+  {
+    "id": 31,
+    "text": "Nova objava",
+    "picture": "",
+    "isDeleted": false,
+    "username": "luki"
   }
 ]
