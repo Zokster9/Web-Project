@@ -24,7 +24,7 @@
     "id": 2,
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere.",
     "picture": "",
-    "isDeleted": false,
+    "isDeleted": true,
     "username": "ines"
   },
   {

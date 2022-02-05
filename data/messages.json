@@ -214,5 +214,13 @@
     "isDeleted": false,
     "sender": "pavlito",
     "receiver": "test"
+  },
+  {
+    "id": 27,
+    "content": "Los status",
+    "date": 1644085118581,
+    "isDeleted": false,
+    "sender": "admin",
+    "receiver": "ines"
   }
 ]

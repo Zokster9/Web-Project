@@ -75,4 +75,9 @@ Vue.component("chat-list-item", {
             this.$parent.loadChats();
         }
     },
+    watch: {
+        $route(to, from) {
+            this.loadChats();
+        }
+    }
 });
