@@ -1,0 +1,121 @@
+[
+  {
+    "id": 8,
+    "picture": "mountain-sunset.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "id": 9,
+    "picture": "penguin.png",
+    "text": "",
+    "isDeleted": false,
+    "username": "ines"
+  },
+  {
+    "id": 10,
+    "picture": "monkey.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isDeleted": false,
+    "username": "ines"
+  },
+  {
+    "id": 11,
+    "picture": "4k.jpg",
+    "text": "",
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "id": 12,
+    "picture": "download.jpg",
+    "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    "isDeleted": false,
+    "username": "test"
+  },
+  {
+    "id": 13,
+    "picture": "sunset.jpg",
+    "text": "",
+    "isDeleted": false,
+    "username": "test"
+  },
+  {
+    "id": 14,
+    "picture": "sunset.jpg",
+    "text": "",
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "id": 15,
+    "picture": "monkey.jpg",
+    "text": "",
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "id": 16,
+    "picture": "penguin.png",
+    "text": "",
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "id": 17,
+    "picture": "penguin.png",
+    "text": "",
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "id": 18,
+    "picture": "download.jpg",
+    "text": "",
+    "isDeleted": true,
+    "username": "mirko"
+  },
+  {
+    "id": 19,
+    "picture": "monkey.jpg",
+    "text": "",
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "id": 22,
+    "picture": "penguin.png",
+    "text": "Volim pingvine",
+    "isDeleted": false,
+    "username": "test"
+  },
+  {
+    "id": 23,
+    "picture": "5c6d12fe965d46def2989e9fb74fc0b100765258.gif",
+    "text": "",
+    "isDeleted": false,
+    "username": "pavlito"
+  },
+  {
+    "id": 26,
+    "picture": "mountain-sunset.jpg",
+    "text": "Nasao na netu :DDDD",
+    "isDeleted": false,
+    "username": "kostu"
+  },
+  {
+    "id": 27,
+    "picture": "sunset.jpg",
+    "text": "",
+    "isDeleted": false,
+    "username": "ujko"
+  },
+  {
+    "id": 28,
+    "picture": "favicon.ico",
+    "text": "P",
+    "isDeleted": false,
+    "username": "ujko"
+  }
+]

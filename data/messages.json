@@ -1,0 +1,202 @@
+[
+  {
+    "id": 0,
+    "content": "Gdes brate",
+    "date": 1643992162762,
+    "isDeleted": false,
+    "sender": "mirko",
+    "receiver": "test"
+  },
+  {
+    "id": 1,
+    "content": "Evo sta ima",
+    "date": 1643992162762,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "mirko"
+  },
+  {
+    "id": 2,
+    "content": "Eo nista kod tebe?",
+    "date": 1643992162762,
+    "isDeleted": false,
+    "sender": "mirko",
+    "receiver": "test"
+  },
+  {
+    "id": 3,
+    "content": "Caoos",
+    "date": 1643992162762,
+    "isDeleted": false,
+    "sender": "ines",
+    "receiver": "mirko"
+  },
+  {
+    "id": 4,
+    "content": "Eo, kod tb",
+    "date": 1643992162762,
+    "isDeleted": false,
+    "sender": "mirko",
+    "receiver": "ines"
+  },
+  {
+    "id": 5,
+    "content": "Nis, kod tb?",
+    "date": 1643992162762,
+    "isDeleted": false,
+    "sender": "ines",
+    "receiver": "mirko"
+  },
+  {
+    "id": 6,
+    "content": "Admin ovde test",
+    "date": 1643992162762,
+    "isDeleted": false,
+    "sender": "admin",
+    "receiver": "test"
+  },
+  {
+    "id": 7,
+    "content": "Drugi admin ovde, ali ti ne bi trebao videti razliku",
+    "date": 1643992162762,
+    "isDeleted": false,
+    "sender": "zokster",
+    "receiver": "test"
+  },
+  {
+    "id": 8,
+    "content": "Kad cemo na kafu?",
+    "date": 1644060771700,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "mirko"
+  },
+  {
+    "id": 9,
+    "content": "Sutra mozda.",
+    "date": 1644060887376,
+    "isDeleted": false,
+    "sender": "mirko",
+    "receiver": "test"
+  },
+  {
+    "id": 10,
+    "content": "EEE",
+    "date": 1644061299094,
+    "isDeleted": false,
+    "sender": "mirko",
+    "receiver": "test"
+  },
+  {
+    "id": 11,
+    "content": "Kako si brate?",
+    "date": 1644061496189,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "mirko"
+  },
+  {
+    "id": 12,
+    "content": "Ja smoren.",
+    "date": 1644061512799,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "mirko"
+  },
+  {
+    "id": 13,
+    "content": "EE",
+    "date": 1644061530028,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "mirko"
+  },
+  {
+    "id": 14,
+    "content": "Gde si Mirko?",
+    "date": 1644061597797,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "mirko"
+  },
+  {
+    "id": 15,
+    "content": "Cao luka",
+    "date": 1644062267563,
+    "isDeleted": false,
+    "sender": "pavlito",
+    "receiver": "test"
+  },
+  {
+    "id": 16,
+    "content": "de si",
+    "date": 1644062276706,
+    "isDeleted": false,
+    "sender": "pavlito",
+    "receiver": "hank"
+  },
+  {
+    "id": 17,
+    "content": "sta ima fedore",
+    "date": 1644062320990,
+    "isDeleted": false,
+    "sender": "jelis",
+    "receiver": "ujko"
+  },
+  {
+    "id": 18,
+    "content": "Ja evo napravila profil ovde",
+    "date": 1644062330282,
+    "isDeleted": false,
+    "sender": "jelis",
+    "receiver": "ujko"
+  },
+  {
+    "id": 19,
+    "content": "Cao jelisaveta tvoj drug Kosta je",
+    "date": 1644062396747,
+    "isDeleted": false,
+    "sender": "kostu",
+    "receiver": "jelis"
+  },
+  {
+    "id": 20,
+    "content": "pa caoos ",
+    "date": 1644062496510,
+    "isDeleted": false,
+    "sender": "ujko",
+    "receiver": "jelis"
+  },
+  {
+    "id": 21,
+    "content": "Gde si mirko kruha ti",
+    "date": 1644062518714,
+    "isDeleted": false,
+    "sender": "ujko",
+    "receiver": "mirko"
+  },
+  {
+    "id": 22,
+    "content": "nije P",
+    "date": 1644062541383,
+    "isDeleted": false,
+    "sender": "admin",
+    "receiver": "ujko"
+  },
+  {
+    "id": 23,
+    "content": "Los kvalitet slike",
+    "date": 1644062555393,
+    "isDeleted": false,
+    "sender": "admin",
+    "receiver": "mirko"
+  },
+  {
+    "id": 24,
+    "content": "Pavle kako si stavio pokretnu profilnu sliku. Jedes mi memoriju na serveru!!!!",
+    "date": 1644062575683,
+    "isDeleted": false,
+    "sender": "admin",
+    "receiver": "pavlito"
+  }
+]

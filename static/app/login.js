@@ -1,0 +1,115 @@
+Vue.use(vuelidate.default)
+
+Vue.component("login-form", {
+    template: `
+    <div class="login gifbg">
+    <!-- Navigation -->
+    <login-navbar></login-navbar>
+    <div class="App">
+        <div class="vertical-center">
+            <div class="inner-block">
+                <div class="login">
+                    <form @submit.prevent>
+                        <h3>Sign In</h3>
+
+                        <div class="form-group">
+                            <label>Username</label>
+                            <input v-model="form.username" @focus="inFocus('username')" @blur="outFocus('username')" type="text" pattern="[a-zA-Z0-9\.]+$" class="form-control form-control-lg"/>
+                            <div v-show="!isFocused('username') && $v.form.username.$invalid" class="alert alert-danger">Username is required.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Password</label>
+                            <input v-model="form.password" @focus="inFocus('password')" @blur="outFocus('password')" type="password" class="form-control form-control-lg" />
+                            <div v-show="!isFocused('password') && $v.form.password.$invalid" class="alert alert-danger">Password field must be filled.</div>
+                        </div>
+
+                        <div class="form-group">
+                            <router-link event to="/feed" tag="button" @click.native="login" @enter.native="login" :disabled="$v.form.$invalid" type="submit" class="btn btn-dark btn-lg btn-block">Sign In</router-link>
+                        </div>
+
+                        <div class="form-group">
+                            <router-link to="/search" tag="button" role="button" type="button" class="btn btn-outline-primary btn-lg btn-block">Sign in as guest</router-link>
+                        </div>
+ 
+                        <p class="forgot-password text-right mt-2 mb-4">
+                            <router-link to="/forgot-password">Forgot password?</router-link>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    `,
+
+    data () {
+        return {
+            form:{
+                username: "",
+                password: ""
+            },
+            infocus:{
+                username: true,
+                password: true
+            }
+        }
+    },
+
+    methods: {
+        isFocused(field){
+            return this.infocus[field]
+        },
+        inFocus(field){
+            this.infocus[field] = true
+        },
+        outFocus(field){
+            this.infocus[field] = false
+        },
+        login() {
+            axios.post("/login/", {
+                username: this.form.username,
+                password: this.form.password
+            }).then((response) => {
+                window.sessionStorage.setItem("user", JSON.stringify(response.data));
+                if (response.data.role === "Administrator")
+                    router.push("/search");
+                else
+                    router.push("feed");
+            }).catch((error) => {
+                alert("Incorrect login details.")
+                console.log("Ne ide brt");
+            });
+        }
+    },
+
+    validations: {
+        form:{
+            username : {
+                required: validators.required,
+                minLength: validators.minLength(4),
+                maxLength: validators.maxLength(20)
+            },
+            password: {
+                required: validators.required,
+                minLength: validators.minLength(1)
+            }
+        }
+    },
+
+    mounted() {
+        if (window.sessionStorage.getItem("user") !== null) {
+            let role = JSON.parse(window.sessionStorage.getItem("user")).role;
+            if (role === "Administrator")
+                router.push("/search/")
+            else
+                router.push("/feed/")
+        }
+    }
+
+});
+
+// For testing
+// new Vue({
+//     el: "#wrapper"
+// });

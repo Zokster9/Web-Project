@@ -1,0 +1,82 @@
+[
+  {
+    "postID": 0,
+    "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
+    "date": 1643992162763,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "postID": 0,
+    "content": "dubokoumno",
+    "date": 1643992162763,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "test"
+  },
+  {
+    "postID": 4,
+    "content": "pucas",
+    "date": 1643992162763,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "test"
+  },
+  {
+    "postID": 5,
+    "content": "najjaci sam",
+    "date": 1643992162763,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "ines"
+  },
+  {
+    "postID": 8,
+    "content": "dobra fotka",
+    "date": 1643992162763,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "ines"
+  },
+  {
+    "postID": 11,
+    "content": "volim kucice",
+    "date": 1643992162763,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "postID": 13,
+    "content": "bratina sam najveca. Gradjanski cas za 5min.",
+    "date": 1643992162763,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "test"
+  },
+  {
+    "postID": 19,
+    "content": "Dobar opis",
+    "date": 1644027508060,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "postID": 21,
+    "content": "Barselona nece sigurno :D",
+    "date": 1644060760000,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "postID": 21,
+    "content": "Ni ja ne mislim da ce barselona dobro proci hahahahaha",
+    "date": 1644062429471,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "kostu"
+  }
+]
