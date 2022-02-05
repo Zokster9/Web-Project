@@ -41,7 +41,7 @@
   },
   {
     "postID": 11,
-    "content": "volim krek",
+    "content": "volim kucice",
     "date": 1643992162763,
     "editDate": null,
     "isDeleted": false,
@@ -49,7 +49,7 @@
   },
   {
     "postID": 13,
-    "content": "smradina sam najveca. Gradjanski rat u azerbejdzanu idegaaas",
+    "content": "bratina sam najveca. Gradjanski cas za 5min.",
     "date": 1643992162763,
     "editDate": null,
     "isDeleted": false,
@@ -57,8 +57,16 @@
   },
   {
     "postID": 19,
-    "content": "Dobar majmun",
+    "content": "Dobar opis",
     "date": 1644027508060,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "postID": 21,
+    "content": "Barselona nece sigurno :D",
+    "date": 1644060760000,
     "editDate": null,
     "isDeleted": false,
     "username": "mirko"

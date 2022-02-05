@@ -1,19 +1,39 @@
 [
   {
-    "username": "admin",
-    "password": "admin",
-    "email": "admin@pico.com",
-    "name": "Admir",
-    "surname": "Admirevic",
-    "dateOfBirth": 1643583600000,
-    "role": "Administrator",
-    "profilePicture": "no-profile-page.png",
-    "gender": "Male",
+    "username": "ines",
+    "password": "password",
+    "email": "ines@outlook.com",
+    "name": "Ines",
+    "surname": "Svegić",
+    "dateOfBirth": 960328800000,
+    "role": "User",
+    "profilePicture": "monkey.jpg",
+    "gender": "Female",
+    "isPrivate": true,
+    "isBlocked": false,
+    "isDeleted": false,
+    "friends": [
+      "mirko"
+    ],
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNjQ0MDYxOTcwLCJpYXQiOjE2NDQwNjAxNzB9.Xe7msRUTMJiZb3J1Mu5bdCnzlMouKpQo396mZGrwUEo"
+  },
+  {
+    "username": "test",
+    "password": "password",
+    "email": "test@test.com",
+    "name": "Luka",
+    "surname": "Pavlic",
+    "dateOfBirth": 1643583610000,
+    "role": "User",
+    "profilePicture": "penguin.png",
+    "gender": "Female",
     "isPrivate": false,
     "isBlocked": false,
     "isDeleted": false,
-    "friends": [],
-    "JWTToken": null
+    "friends": [
+      "mirko"
+    ],
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjQ0MDYzMDcyLCJpYXQiOjE2NDQwNjEyNzJ9.JpbzHjrnZjnmW3f_H9oSD6KTjVb7QGnEeRNEofDUCdI"
   },
   {
     "username": "zokster",
@@ -32,14 +52,30 @@
     "JWTToken": null
   },
   {
+    "username": "admin",
+    "password": "admin",
+    "email": "admin@pico.com",
+    "name": "Admir",
+    "surname": "Admirevic",
+    "dateOfBirth": 1643583600000,
+    "role": "Administrator",
+    "profilePicture": "no-profile-page.png",
+    "gender": "Male",
+    "isPrivate": false,
+    "isBlocked": false,
+    "isDeleted": false,
+    "friends": [],
+    "JWTToken": null
+  },
+  {
     "username": "mirko",
     "password": "password",
     "email": "mirko@gmail.com",
     "name": "Mirko",
     "surname": "Slavujić",
-    "dateOfBirth": 1643583600000,
+    "dateOfBirth": 862869600000,
     "role": "User",
-    "profilePicture": "no-profile-page.png",
+    "profilePicture": "sunset.jpg",
     "gender": "Male",
     "isPrivate": false,
     "isBlocked": false,
@@ -48,42 +84,6 @@
       "ines",
       "test"
     ],
-    "JWTToken": null
-  },
-  {
-    "username": "ines",
-    "password": "password",
-    "email": "ines@outlook.com",
-    "name": "Ines",
-    "surname": "Svegić",
-    "dateOfBirth": 1643583700000,
-    "role": "User",
-    "profilePicture": "no-profile-page.png",
-    "gender": "Female",
-    "isPrivate": true,
-    "isBlocked": false,
-    "isDeleted": false,
-    "friends": [
-      "mirko"
-    ],
-    "JWTToken": null
-  },
-  {
-    "username": "test",
-    "password": "password",
-    "email": "test@test.com",
-    "name": "Test",
-    "surname": "Test",
-    "dateOfBirth": 1643583610000,
-    "role": "User",
-    "profilePicture": "no-profile-page.png",
-    "gender": "Female",
-    "isPrivate": false,
-    "isBlocked": false,
-    "isDeleted": false,
-    "friends": [
-      "mirko"
-    ],
-    "JWTToken": null
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtaXJrbyIsImV4cCI6MTY0NDA2MzA1MywiaWF0IjoxNjQ0MDYxMjUzfQ.hBYS7FKe2KN_Rr_3__VwdmogQhwjVWqPueEpvWqIHlk"
   }
 ]

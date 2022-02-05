@@ -62,5 +62,61 @@
     "isDeleted": false,
     "sender": "zokster",
     "receiver": "test"
+  },
+  {
+    "id": 8,
+    "content": "Kad cemo na kafu?",
+    "date": 1644060771700,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "mirko"
+  },
+  {
+    "id": 9,
+    "content": "Sutra mozda.",
+    "date": 1644060887376,
+    "isDeleted": false,
+    "sender": "mirko",
+    "receiver": "test"
+  },
+  {
+    "id": 10,
+    "content": "EEE",
+    "date": 1644061299094,
+    "isDeleted": false,
+    "sender": "mirko",
+    "receiver": "test"
+  },
+  {
+    "id": 11,
+    "content": "Kako si brate?",
+    "date": 1644061496189,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "mirko"
+  },
+  {
+    "id": 12,
+    "content": "Ja smoren.",
+    "date": 1644061512799,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "mirko"
+  },
+  {
+    "id": 13,
+    "content": "EE",
+    "date": 1644061530028,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "mirko"
+  },
+  {
+    "id": 14,
+    "content": "Gde si Mirko?",
+    "date": 1644061597797,
+    "isDeleted": false,
+    "sender": "test",
+    "receiver": "mirko"
   }
 ]

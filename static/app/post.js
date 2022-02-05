@@ -60,19 +60,12 @@ Vue.component("post-ui", {
                 alert("Post succesffuly deleted")
                 router.push("/profile/"+this.user.username)
             })
-        }
-    },
-    mounted() {
-        if (window.sessionStorage.getItem("user") !== null){
-            this.user = JSON.parse(window.sessionStorage.getItem("user"));
-        } else {
-            router.push("/login")
-            return;
-        }
-        axios.get("/get-post/"+this.$route.params.id+"/", {
-            headers: {
-                Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
-            }
+        },
+        getPost() {
+            axios.get("/get-post/"+this.$route.params.id+"/", {
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                }
             }).then((response) => {
                 this.post = response.data;
                 axios.get("/get-user/"+this.post.username+"/", {
@@ -88,7 +81,23 @@ Vue.component("post-ui", {
                     return;
                 }
             });
+        }
     },
+    mounted() {
+        if (window.sessionStorage.getItem("user") !== null){
+            this.user = JSON.parse(window.sessionStorage.getItem("user"));
+        } else {
+            router.push("/login")
+            return;
+        }
+        this.getPost();
+    },
+    watch: {
+        $route(to, from) {
+            this.$forceUpdate();
+            this.getPost();
+        }
+    }
 })
 
 Vue.component("post-comments", {
