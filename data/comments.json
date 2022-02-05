@@ -4,7 +4,7 @@
     "content": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere. Aliquam nec nisl libero. Mauris ante tortor, pretium at nisi at, congue blandit sapien. Integer sed scelerisque enim, non luctus sem. In eu orci nunc. Praesent dui eros, auctor vel eleifend id, viverra sed sem. Donec sit amet eleifend arcu. Phasellus varius luctus nisi non convallis. Aliquam orci mauris, ullamcorper sit amet tortor nec, rhoncus porttitor dui. Etiam tincidunt eu augue in tincidunt. Duis tempus vehicula ex, nec rhoncus nibh sollicitudin sed. Vestibulum et sagittis ex. Vivamus eget augue sed turpis hendrerit consectetur. Nullam placerat arcu vel turpis dapibus, eget semper ipsum tempor.",
     "date": 1643992162763,
     "editDate": null,
-    "isDeleted": false,
+    "isDeleted": true,
     "username": "mirko"
   },
   {
@@ -140,7 +140,7 @@
     "content": "ALLLLEE",
     "date": 1644077745454,
     "editDate": null,
-    "isDeleted": false,
+    "isDeleted": true,
     "username": "mirko"
   },
   {
@@ -150,5 +150,29 @@
     "editDate": null,
     "isDeleted": false,
     "username": "test"
+  },
+  {
+    "postID": 4,
+    "content": "da da",
+    "date": 1644080667330,
+    "editDate": null,
+    "isDeleted": true,
+    "username": "ines"
+  },
+  {
+    "postID": 34,
+    "content": "O dadada",
+    "date": 1644080704971,
+    "editDate": null,
+    "isDeleted": true,
+    "username": "ines"
+  },
+  {
+    "postID": 34,
+    "content": "NANANAN",
+    "date": 1644080707720,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "ines"
   }
 ]

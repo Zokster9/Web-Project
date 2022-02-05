@@ -108,8 +108,3 @@ Vue.component("login-form", {
     }
 
 });
-
-// For testing
-// new Vue({
-//     el: "#wrapper"
-// });

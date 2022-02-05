@@ -12,8 +12,12 @@
     "isPrivate": true,
     "isBlocked": false,
     "isDeleted": false,
-    "friends": [],
-    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNjQ0MDYxOTcwLCJpYXQiOjE2NDQwNjAxNzB9.Xe7msRUTMJiZb3J1Mu5bdCnzlMouKpQo396mZGrwUEo"
+    "friends": [
+      "test",
+      "kostu",
+      "mirko"
+    ],
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJpbmVzIiwiZXhwIjoxNjQ0MDgyNDU3LCJpYXQiOjE2NDQwODA2NTd9.v1PJgQJkEdxzxgd042eE333stDNgGpTcM7p-zC59fTg"
   },
   {
     "username": "test",
@@ -21,7 +25,7 @@
     "email": "test@test.com",
     "name": "Luka",
     "surname": "Pavlic",
-    "dateOfBirth": 1643583610000,
+    "dateOfBirth": 989791200000,
     "role": "User",
     "profilePicture": "penguin.png",
     "gender": "Female",
@@ -31,9 +35,10 @@
     "friends": [
       "mirko",
       "pavlito",
-      "luki"
+      "luki",
+      "ines"
     ],
-    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjQ0MDc4NzE4LCJpYXQiOjE2NDQwNzY5MTh9.L0AbRFlz78XjwCDtlybkAd-RJfUCd-5x-COUlayPYLs"
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjQ0MDc5NTYxLCJpYXQiOjE2NDQwNzc3NjF9.6AraDmJmfR-S3PdZCjI7YA-_wW86MEU_fuXEk86vylk"
   },
   {
     "username": "luki",
@@ -98,7 +103,9 @@
     "isPrivate": false,
     "isBlocked": false,
     "isDeleted": false,
-    "friends": [],
+    "friends": [
+      "ines"
+    ],
     "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3N0dSIsImV4cCI6MTY0NDA2NDQ3NSwiaWF0IjoxNjQ0MDYyNjc1fQ.gKTzweqE56M_2J2oBO4pnHQlRirMNiRSFzjp1ao6CGw"
   },
   {
@@ -132,9 +139,10 @@
     "isDeleted": false,
     "friends": [
       "test",
-      "ujko"
+      "ujko",
+      "ines"
     ],
-    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtaXJrbyIsImV4cCI6MTY0NDA3ODY4NywiaWF0IjoxNjQ0MDc2ODg3fQ.JhChvDATNbG9ParpxIKthopenA8i_Vy7jLgti_RnRBs"
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtaXJrbyIsImV4cCI6MTY0NDA4MjQwNCwiaWF0IjoxNjQ0MDgwNjA0fQ.gQ5wzqXxstuYQCNk-av5E5zFMMzhjOsGao6DXS7Vkng"
   },
   {
     "username": "pavlito",

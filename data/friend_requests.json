@@ -12,13 +12,13 @@
     "receiver": "mirko"
   },
   {
-    "status": "Rejected",
+    "status": "Accepted",
     "date": 1643992162764,
     "sender": "test",
     "receiver": "ines"
   },
   {
-    "status": "Pending",
+    "status": "Accepted",
     "date": 1643992162764,
     "sender": "test",
     "receiver": "ines"
@@ -48,7 +48,7 @@
     "receiver": "jelis"
   },
   {
-    "status": "Pending",
+    "status": "Accepted",
     "date": 1644062412575,
     "sender": "kostu",
     "receiver": "ines"
@@ -66,7 +66,7 @@
     "receiver": "test"
   },
   {
-    "status": "Pending",
+    "status": "Accepted",
     "date": 1644076323508,
     "sender": "mirko",
     "receiver": "ines"

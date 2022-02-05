@@ -4,7 +4,7 @@ Vue.component("change-profile-picture", {
         <main-navbar></main-navbar>
         <div class="container" style="margin-top: 80px">
             <div class="row">
-                <photo-ui @change-profile-picture="changeProfilePicture" v-for="photo in gallery" :noLink="true" :photo="photo"></photo-ui>
+                <photo-ui @change-profile-picture="changeProfilePicture" v-for="photo in gallery" :noLink="true" :photo="photo" :key="photo.id"></photo-ui>
             </div>
         </div>
     </div>

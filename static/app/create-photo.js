@@ -51,7 +51,6 @@ Vue.component("create-photo", {
                 }
             }).then(response => {
                 router.push("/profile/"+this.username)
-                return;
             })
         }
     },

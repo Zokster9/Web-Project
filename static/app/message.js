@@ -7,7 +7,7 @@ Vue.component("chat-page", {
             <div class="d-flex justify-content-center h-100 w-100">
                 <div class="window d-flex" style="height:70vh; width:70vw;margin-top:150px;">
                     <div class="d-flex flex-column side-chats overflow-auto h-100 shadow rounded" style="width:20vw;gap:5px;">
-                        <chat-list-item v-for="chat in chats" :user="chat"></chat-list-item>
+                        <chat-list-item v-for="chat in chats" :user="chat" :key="chat.username"></chat-list-item>
                     </div>
                     <div class="chat d-flex flex-column" style="width:50vw;margin-left:5px;margin-right:5px;">
                         <div class="chat-header d-flex shadow" style="gap:5px;height: 50px;">
@@ -48,12 +48,6 @@ Vue.component("chat-page", {
     mounted() {
         this.loadChats();
     },
-    watch: {
-        $route(to, from) {
-            this.loadChats();
-        }
-    },
-
 })
 
 Vue.component("chat-list-item", {
@@ -79,11 +73,6 @@ Vue.component("chat-list-item", {
     methods:{
         loadChats(){
             this.$parent.loadChats();
-        }
-    },
-    watch: {
-        $route(to, from) {
-            this.loadChats();
         }
     },
 });

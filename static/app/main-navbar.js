@@ -50,7 +50,3 @@ Vue.component("main-navbar", {
         }
     }
 });
-
-// var app = new Vue({
-//     el: "#wrapper",
-// })

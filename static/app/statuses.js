@@ -2,7 +2,7 @@ Vue.component("statuses-page", {
     props: ["username"],
     template: `
     <div class="d-flex flex-column justify-content-center align-items-center">
-        <status-ui v-for="status in statuses" :status="status"></status-ui>
+        <status-ui v-for="status in statuses" :status="status" :key="status.id"></status-ui>
     </div>
     `,
     data() {
@@ -20,10 +20,5 @@ Vue.component("statuses-page", {
     },
     mounted() {
         this.getStatuses();
-    },
-    watch: {
-        $route(to, from) {
-            this.getStatuses();
-        }
     },
 })

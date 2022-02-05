@@ -37,7 +37,3 @@ Vue.component("forgot-password-form", {
         }
     }
 });
-
-// For testing
-// new Vue({
-// }).$mount("#wrapper")

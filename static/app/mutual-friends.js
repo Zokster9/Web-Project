@@ -2,7 +2,7 @@ Vue.component("mutual-friends", {
     props: ["username"],
     template: `
     <div class="d-flex justify-content-center flex-column align-items-center mt-2">
-		<profile-picture-details v-for="friend in friends" :user="friend"></profile-picture-details>
+		<profile-picture-details v-for="friend in friends" :user="friend" :key="friend.username"></profile-picture-details>
 	</div>
     `,
     data() {
@@ -23,10 +23,5 @@ Vue.component("mutual-friends", {
     },
     mounted() {
         this.getMutualFriends();
-    },
-    watch: {
-        $route(to, from) {
-            this.getMutualFriends();
-        }
     },
 })

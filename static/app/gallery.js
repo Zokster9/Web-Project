@@ -6,7 +6,7 @@ Vue.component("gallery-page", {
             <router-link tag="button" class="btn btn-primary w-50 rounded-pill" exact to="/create-photo/" style="max-width: 600px;"><i class="far fa-plus-square"></i>Post a photo</router-link>
         </div>
 		<div class="row">
-		    <photo-ui v-for="photo in gallery" :noLink="false" :photo="photo"></photo-ui>
+		    <photo-ui v-for="photo in gallery" :noLink="false" :photo="photo" :key="photo.id"></photo-ui>
 		</div>
 	</div>
     `,
@@ -29,10 +29,5 @@ Vue.component("gallery-page", {
             this.currentUser =  JSON.parse(window.sessionStorage.getItem("user")).username;
         }
         this.getGallery();
-    },
-    watch: {
-        $route(to, from) {
-            this.getGallery();
-        }
     },
 })

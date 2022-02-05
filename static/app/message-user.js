@@ -28,7 +28,7 @@ Vue.component("chat-page-user", {
                             </div>
                         </div>
                         <div v-if="user && receiver" class="chat-messages overflow-auto" style="height:57vh;padding-left:10px;padding-right:10px;padding-bottom:10px;">
-                            <div v-for="message in messages">
+                            <div v-for="message in messages" :key="message.id">
                                 <my-chat-message v-if="message.sender===user.username" :message="message" :isAdmin="user.role ==='Administrator'"></my-chat-message>
                                 <incoming-chat-message v-else :message="message" :isAdmin="receiver.role==='Administrator'"></incoming-chat-message>
                             </div>
