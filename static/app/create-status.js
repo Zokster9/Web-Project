@@ -53,9 +53,13 @@ Vue.component("create-status", {
             this.picture = event.target.files[0].name
         },
         addStatus(){
+            let picture = "";
+            if (this.picture !== null) {
+                picture = this.picture
+            }
             axios.post("/add-status/", {
                 text: this.form.text,
-                picture: this.picture,
+                picture: picture,
             },{
                 headers: {
                     Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
