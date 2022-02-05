@@ -488,7 +488,7 @@ public class UserDao {
                             statuses.get(ID).getPoster().getFriends().contains(user.getUsername()))) ?
                     gson.toJson(statuses.get(ID)) : null;
         else if (photos.getOrDefault(ID, null) != null)
-            return  photos.get(ID).isDeleted() &&
+            return  !photos.get(ID).isDeleted() &&
                     (user.getRole() == UserType.Administrator ||
                     photos.get(ID).getPoster() == user ||
                     !photos.get(ID).getPoster().isPrivate() ||
@@ -501,7 +501,7 @@ public class UserDao {
 
     public List<Comment> getComments(Long ID) {
         List<Comment> postComments;
-        if (statuses.getOrDefault(ID, null)== null){
+        if (statuses.getOrDefault(ID, null)!= null){
             postComments = new ArrayList<>(statuses.get(ID).getComments());
         } else {
             postComments = new ArrayList<>(photos.get(ID).getComments());
@@ -598,6 +598,8 @@ public class UserDao {
             }
             if (deleter.getRole() == UserType.Administrator) {
                 m = new Message(getMessageIDCounter(), message, new Date().getTime(), deleter.getUsername(), s.getPoster().getUsername());
+                m.setUserSender(deleter);
+                m.setUserReceiver(s.getPoster());
                 deleter.getMessages().add(m);
                 s.getPoster().getMessages().add(m);
                 messages.add(m);
@@ -614,6 +616,8 @@ public class UserDao {
             }
             if (deleter.getRole() == UserType.Administrator) {
                 m = new Message(getMessageIDCounter(), message, new Date().getTime(), deleter.getUsername(), p.getPoster().getUsername());
+                m.setUserSender(deleter);
+                m.setUserReceiver(p.getPoster());
                 deleter.getMessages().add(m);
                 p.getPoster().getMessages().add(m);
                 messages.add(m);

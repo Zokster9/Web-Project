@@ -232,7 +232,7 @@ public class ProfileController {
         response.type("application/json");
         String username = getUsernameFromToken(request);
         Long ID = Long.parseLong(request.params("id"));
-        String message = request.params("message");
+        String message = request.queryParams("message");
         Message m = userDao.deletePost(username, ID, message);
         if (m == null) {
             response.status(401);
