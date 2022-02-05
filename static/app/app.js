@@ -18,6 +18,7 @@ const FriendRequests = {template: "<friend-requests></friend-requests>"};
 const Messages = {template: "<chat-page></chat-page>"};
 const MessagesUser = {template: "<chat-page-user></chat-page-user>"}
 const ChangeProfilePicture = {template: "<change-profile-picture></change-profile-picture>"}
+const DeletePost = {template: "<delete-post></delete-post>"}
 
 const router = new VueRouter({
     mode: 'hash',
@@ -40,6 +41,7 @@ const router = new VueRouter({
         { path: "/messages/", component: Messages},
         { path: "/messages/:username/", component: MessagesUser},
         { path: "/change-profile-picture", component: ChangeProfilePicture },
+        { path: "/delete-post/:id/", component: DeletePost},
 
 
         { path: '*', component: NotFoundComponent },
