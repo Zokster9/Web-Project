@@ -49,6 +49,13 @@
     "username": "test"
   },
   {
+    "id": 21,
+    "text": "Sta mislite ko osvaja ligu sampiona?",
+    "picture": "",
+    "isDeleted": false,
+    "username": "test"
+  },
+  {
     "id": 6,
     "text": "Kocka do kocke kockica.",
     "picture": "",

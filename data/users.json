@@ -21,11 +21,11 @@
     "username": "test",
     "password": "password",
     "email": "test@test.com",
-    "name": "Test",
-    "surname": "Test",
+    "name": "Luka",
+    "surname": "Pavlic",
     "dateOfBirth": 1643583610000,
     "role": "User",
-    "profilePicture": "no-profile-page.png",
+    "profilePicture": "penguin.png",
     "gender": "Female",
     "isPrivate": false,
     "isBlocked": false,
@@ -33,7 +33,7 @@
     "friends": [
       "mirko"
     ],
-    "JWTToken": null
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ0ZXN0IiwiZXhwIjoxNjQ0MDYzMDcyLCJpYXQiOjE2NDQwNjEyNzJ9.JpbzHjrnZjnmW3f_H9oSD6KTjVb7QGnEeRNEofDUCdI"
   },
   {
     "username": "zokster",
@@ -84,6 +84,6 @@
       "ines",
       "test"
     ],
-    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtaXJrbyIsImV4cCI6MTY0NDA2MTk0NSwiaWF0IjoxNjQ0MDYwMTQ1fQ.nD1CZZRAOAepXf01rW2eDsT6NdplSQqWJ7afsgjjsBI"
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtaXJrbyIsImV4cCI6MTY0NDA2MzA1MywiaWF0IjoxNjQ0MDYxMjUzfQ.hBYS7FKe2KN_Rr_3__VwdmogQhwjVWqPueEpvWqIHlk"
   }
 ]

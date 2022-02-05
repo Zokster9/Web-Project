@@ -62,5 +62,13 @@
     "editDate": null,
     "isDeleted": false,
     "username": "mirko"
+  },
+  {
+    "postID": 21,
+    "content": "Barselona nece sigurno :D",
+    "date": 1644060760000,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "mirko"
   }
 ]

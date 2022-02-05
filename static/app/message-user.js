@@ -124,10 +124,10 @@ Vue.component("chat-page-user", {
             console.log(messageParts);
             let sender = messageParts[0];
             let receiver = messageParts[1];
-            if (sender === self.receiver.username && receiver === self.username) {
+            if (sender === self.receiver.username && receiver === self.user.username) {
                 axios.get("/messages/", {
                     params: {
-                        username: self.username,
+                        username: self.user.username,
                         receiver: self.receiver.username,
                     }
                 }).then((response) => {
