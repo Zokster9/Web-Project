@@ -41,7 +41,7 @@
     "email": "jessli@gmail.com",
     "name": "Nikola",
     "surname": "Hogor",
-    "dateOfBirth": 1644062003915,
+    "dateOfBirth": 422229600000,
     "role": "User",
     "profilePicture": "no-profile-page.png",
     "gender": null,
@@ -49,7 +49,7 @@
     "isBlocked": false,
     "isDeleted": false,
     "friends": [],
-    "JWTToken": null
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJoYW5rIiwiZXhwIjoxNjQ0MDY0NDQ0LCJpYXQiOjE2NDQwNjI2NDR9.KYwQrYPVQkw6Z6-wp2FHMWMCPYJ-4V1ukG64pqxffOo"
   },
   {
     "username": "zokster",
@@ -73,7 +73,7 @@
     "email": "huuuu@gmail.com",
     "name": "Kosta",
     "surname": "Kostic",
-    "dateOfBirth": 1644062127399,
+    "dateOfBirth": 1123624800000,
     "role": "User",
     "profilePicture": "no-profile-page.png",
     "gender": null,
@@ -81,7 +81,7 @@
     "isBlocked": false,
     "isDeleted": false,
     "friends": [],
-    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3N0dSIsImV4cCI6MTY0NDA2NDE3NSwiaWF0IjoxNjQ0MDYyMzc1fQ.dXEcxcVhPx9BRw3QEIwNhlai34NjncCMaKU7g5v3TdU"
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3N0dSIsImV4cCI6MTY0NDA2NDQ3NSwiaWF0IjoxNjQ0MDYyNjc1fQ.gKTzweqE56M_2J2oBO4pnHQlRirMNiRSFzjp1ao6CGw"
   },
   {
     "username": "admin",
@@ -134,7 +134,7 @@
     "friends": [
       "jelis"
     ],
-    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZsaXRvIiwiZXhwIjoxNjQ0MDY0MDIxLCJpYXQiOjE2NDQwNjIyMjF9.em8F9u1K1tt_1W9U1Xpu9J5M6P7ubhFfRJStIfB3FPI"
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZsaXRvIiwiZXhwIjoxNjQ0MDY0NTExLCJpYXQiOjE2NDQwNjI3MTF9.LSpb0lm9igrSYve9_fc2y3E4fD6OwH0FoLyCbS7FYzQ"
   },
   {
     "username": "jelis",
@@ -142,7 +142,7 @@
     "email": "jtli@gmail.com",
     "name": "Jelisaveta",
     "surname": "Pokat",
-    "dateOfBirth": 1631570400000,
+    "dateOfBirth": 1277244000000,
     "role": "User",
     "profilePicture": "no-profile-page.png",
     "gender": null,
@@ -153,7 +153,7 @@
       "pavlito",
       "ujko"
     ],
-    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWxpcyIsImV4cCI6MTY0NDA2NDA5MCwiaWF0IjoxNjQ0MDYyMjkwfQ.Shayjy9-vDL84Qe__3QCtJDnBz-z11qjhMkshTBziZY"
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWxpcyIsImV4cCI6MTY0NDA2NDU0OSwiaWF0IjoxNjQ0MDYyNzQ5fQ.2pzUIx-rbGcx6bMR3JWyL7P_zFNoP4VArXjom39sJ5U"
   },
   {
     "username": "ujko",
@@ -161,7 +161,7 @@
     "email": "hsdhsh@gmail.com",
     "name": "Fedor",
     "surname": "Kolasin",
-    "dateOfBirth": 1644062032934,
+    "dateOfBirth": 1050530400000,
     "role": "User",
     "profilePicture": "sunset.jpg",
     "gender": null,
@@ -171,6 +171,6 @@
     "friends": [
       "jelis"
     ],
-    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1amtvIiwiZXhwIjoxNjQ0MDY0MjQzLCJpYXQiOjE2NDQwNjI0NDN9.ktwB__Gz3NRLYBp2JvyvzubQFFbfuwRMxJipET19DG8"
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1amtvIiwiZXhwIjoxNjQ0MDY0NTIxLCJpYXQiOjE2NDQwNjI3MjF9.s4vy_kcYRoC2myo2ZZ_6LIO5xWJBm-19M15IP2J-2kc"
   }
 ]
