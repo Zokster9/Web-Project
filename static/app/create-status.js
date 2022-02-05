@@ -19,7 +19,7 @@ Vue.component("create-status", {
                                 <input class="form-control form-control-lg" accept="image/*" type="file" @change="processFile($event)">
                             </div>
                             <div class="form-group">
-                                <button class="btn btn-primary" :disabled="$v.form.$invalid">Post status</button>
+                                <button @click="addStatus" class="btn btn-primary" :disabled="$v.form.$invalid">Post status</button>
                             </div>
                         </form>
                     </div>
@@ -51,6 +51,18 @@ Vue.component("create-status", {
         },
         processFile(event) {
             this.picture = event.target.files[0].name
+        },
+        addStatus(){
+            axios.post("/add-status/", {
+                text: this.form.text,
+                picture: this.picture,
+            },{
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                }
+            }).then(response => {
+                router.push("/feed/")
+            })
         }
     },
 
