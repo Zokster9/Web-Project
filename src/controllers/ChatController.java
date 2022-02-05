@@ -6,7 +6,6 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.HashMap;
 
@@ -36,7 +35,7 @@ public class ChatController {
     public static Route getMessages = (Request request, Response response) -> {
         response.type("application/json");
         HashMap<String, String> queryParams = new HashMap<>();
-        request.queryMap().toMap().forEach((k, v) -> { queryParams.put(k, v[0]); });
+        request.queryMap().toMap().forEach((k, v) -> queryParams.put(k, v[0]));
         ArrayList<Message> messages = userDao.getMessages(queryParams);
         return g.toJson(messages);
     };

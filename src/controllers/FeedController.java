@@ -7,7 +7,6 @@ import spark.Request;
 import spark.Response;
 import spark.Route;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import static main.SparkMain.g;
