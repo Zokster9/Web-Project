@@ -27,13 +27,13 @@ Vue.component("chat-page-user", {
                                 <i class="fas fa-user-shield"></i>
                             </div>
                         </div>
-                        <div class="chat-messages overflow-auto" style="height:57vh;padding-left:10px;padding-right:10px;padding-bottom:10px;">
+                        <div v-if="user && receiver" class="chat-messages overflow-auto" style="height:57vh;padding-left:10px;padding-right:10px;padding-bottom:10px;">
                             <div v-for="message in messages">
                                 <my-chat-message v-if="message.sender===user.username" :message="message" :isAdmin="user.role ==='Administrator'"></my-chat-message>
                                 <incoming-chat-message v-else :message="message" :isAdmin="receiver.role==='Administrator'"></incoming-chat-message>
                             </div>
                         </div>
-                        <div class="d-flex">
+                        <div v-if="user && receiver" class="d-flex">
                             <button class="btn btn-primary flex-shrink-0" :disabled="$v.message.$invalid" @click="sendMessage"><i class="fas fa-paper-plane"></i></button>
                             <input v-model="message" :disabled="receiver.role ==='Administrator'" type="text" class="w-100 form-control form-control-lg"/>
                         </div>
