@@ -81,7 +81,7 @@
     "isBlocked": false,
     "isDeleted": false,
     "friends": [],
-    "JWTToken": null
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJrb3N0dSIsImV4cCI6MTY0NDA2NDE3NSwiaWF0IjoxNjQ0MDYyMzc1fQ.dXEcxcVhPx9BRw3QEIwNhlai34NjncCMaKU7g5v3TdU"
   },
   {
     "username": "admin",
@@ -124,15 +124,17 @@
     "email": "piglu@gmail.com",
     "name": "Pavle",
     "surname": "Maric",
-    "dateOfBirth": 1644062103790,
+    "dateOfBirth": 966031200000,
     "role": "User",
-    "profilePicture": "no-profile-page.png",
+    "profilePicture": "5c6d12fe965d46def2989e9fb74fc0b100765258.gif",
     "gender": null,
     "isPrivate": false,
     "isBlocked": false,
     "isDeleted": false,
-    "friends": [],
-    "JWTToken": null
+    "friends": [
+      "jelis"
+    ],
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwYXZsaXRvIiwiZXhwIjoxNjQ0MDY0MDIxLCJpYXQiOjE2NDQwNjIyMjF9.em8F9u1K1tt_1W9U1Xpu9J5M6P7ubhFfRJStIfB3FPI"
   },
   {
     "username": "jelis",
@@ -140,15 +142,18 @@
     "email": "jtli@gmail.com",
     "name": "Jelisaveta",
     "surname": "Pokat",
-    "dateOfBirth": 1644062069902,
+    "dateOfBirth": 1631570400000,
     "role": "User",
     "profilePicture": "no-profile-page.png",
     "gender": null,
     "isPrivate": false,
     "isBlocked": false,
     "isDeleted": false,
-    "friends": [],
-    "JWTToken": null
+    "friends": [
+      "pavlito",
+      "ujko"
+    ],
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJqZWxpcyIsImV4cCI6MTY0NDA2NDA5MCwiaWF0IjoxNjQ0MDYyMjkwfQ.Shayjy9-vDL84Qe__3QCtJDnBz-z11qjhMkshTBziZY"
   },
   {
     "username": "ujko",
@@ -158,12 +163,14 @@
     "surname": "Kolasin",
     "dateOfBirth": 1644062032934,
     "role": "User",
-    "profilePicture": "no-profile-page.png",
+    "profilePicture": "sunset.jpg",
     "gender": null,
     "isPrivate": false,
     "isBlocked": false,
     "isDeleted": false,
-    "friends": [],
-    "JWTToken": null
+    "friends": [
+      "jelis"
+    ],
+    "JWTToken": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1amtvIiwiZXhwIjoxNjQ0MDY0MjQzLCJpYXQiOjE2NDQwNjI0NDN9.ktwB__Gz3NRLYBp2JvyvzubQFFbfuwRMxJipET19DG8"
   }
 ]

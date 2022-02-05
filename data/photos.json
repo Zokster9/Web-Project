@@ -73,7 +73,7 @@
     "id": 18,
     "picture": "download.jpg",
     "text": "",
-    "isDeleted": false,
+    "isDeleted": true,
     "username": "mirko"
   },
   {
@@ -89,5 +89,33 @@
     "text": "Volim pingvine",
     "isDeleted": false,
     "username": "test"
+  },
+  {
+    "id": 23,
+    "picture": "5c6d12fe965d46def2989e9fb74fc0b100765258.gif",
+    "text": "",
+    "isDeleted": false,
+    "username": "pavlito"
+  },
+  {
+    "id": 26,
+    "picture": "mountain-sunset.jpg",
+    "text": "Nasao na netu :DDDD",
+    "isDeleted": false,
+    "username": "kostu"
+  },
+  {
+    "id": 27,
+    "picture": "sunset.jpg",
+    "text": "",
+    "isDeleted": false,
+    "username": "ujko"
+  },
+  {
+    "id": 28,
+    "picture": "favicon.ico",
+    "text": "P",
+    "isDeleted": false,
+    "username": "ujko"
   }
 ]

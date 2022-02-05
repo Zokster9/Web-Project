@@ -22,5 +22,41 @@
     "date": 1643992162764,
     "sender": "test",
     "receiver": "ines"
+  },
+  {
+    "status": "Accepted",
+    "date": 1644062256769,
+    "sender": "pavlito",
+    "receiver": "jelis"
+  },
+  {
+    "status": "Pending",
+    "date": 1644062263010,
+    "sender": "pavlito",
+    "receiver": "test"
+  },
+  {
+    "status": "Accepted",
+    "date": 1644062315119,
+    "sender": "jelis",
+    "receiver": "ujko"
+  },
+  {
+    "status": "Pending",
+    "date": 1644062385645,
+    "sender": "kostu",
+    "receiver": "jelis"
+  },
+  {
+    "status": "Pending",
+    "date": 1644062412575,
+    "sender": "kostu",
+    "receiver": "ines"
+  },
+  {
+    "status": "Pending",
+    "date": 1644062509108,
+    "sender": "ujko",
+    "receiver": "mirko"
   }
 ]

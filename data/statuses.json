@@ -35,22 +35,8 @@
     "username": "ines"
   },
   {
-    "id": 20,
-    "text": "Danas sam bas raspolozen. Volim subote.",
-    "picture": "",
-    "isDeleted": false,
-    "username": "mirko"
-  },
-  {
     "id": 5,
     "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque sit amet nisi scelerisque risus mattis posuere.",
-    "picture": "",
-    "isDeleted": false,
-    "username": "test"
-  },
-  {
-    "id": 21,
-    "text": "Sta mislite ko osvaja ligu sampiona?",
     "picture": "",
     "isDeleted": false,
     "username": "test"
@@ -68,5 +54,47 @@
     "picture": "",
     "isDeleted": false,
     "username": "test"
+  },
+  {
+    "id": 20,
+    "text": "Danas sam bas raspolozen. Volim subote.",
+    "picture": "",
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "id": 21,
+    "text": "Sta mislite ko osvaja ligu sampiona?",
+    "picture": "",
+    "isDeleted": false,
+    "username": "test"
+  },
+  {
+    "id": 24,
+    "text": "Pozdrav svima ja sam Jelisaveta",
+    "picture": "",
+    "isDeleted": false,
+    "username": "jelis"
+  },
+  {
+    "id": 25,
+    "text": "Mislim o svacemu",
+    "picture": "download.jpg",
+    "isDeleted": false,
+    "username": "jelis"
+  },
+  {
+    "id": 29,
+    "text": "P sajt",
+    "picture": "",
+    "isDeleted": true,
+    "username": "ujko"
+  },
+  {
+    "id": 30,
+    "text": "P status",
+    "picture": "logo.gif",
+    "isDeleted": false,
+    "username": "ujko"
   }
 ]
