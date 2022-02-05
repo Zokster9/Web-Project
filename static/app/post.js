@@ -109,7 +109,7 @@ Vue.component("post-comments", {
             <input v-model="comment" type="text" rows="1" style="width:100%;height:auto;" placeholder="Write a comment..."/>
             <button @click="addComment" :disabled="comment==''" type="button" class="btn btn-primary">Submit</button>
         </div>
-        <div class="multiple-comments" style="height:100%;overflow:auto;word-break:break-all;">
+        <div v-if="isFiltered" class="multiple-comments" style="height:100%;overflow:auto;word-break:break-all;">
             <div v-for="comment in comments" class="d-flex">
                 <single-comment @delete-comment="deleteComment" :comment="comment" :key="comment.date"></single-comment>
             </div>
@@ -120,10 +120,16 @@ Vue.component("post-comments", {
         return{
             comments: null,
             comment: "",
+            filtered: true,
         }
     },
     mounted() {
         this.getComments();
+    },
+    computed: {
+        isFiltered() {
+            return this.filtered;
+        }
     },
     methods: {
         getComments() {
@@ -133,6 +139,7 @@ Vue.component("post-comments", {
             })
         },
         deleteComment(comment) {
+            this.filtered = false;
             axios.delete("/delete-comment/", {
                 params: {
                     postID: comment.postID,
@@ -141,6 +148,7 @@ Vue.component("post-comments", {
                 }
             }).then(response => {
                 this.comments = this.comments.filter(x => x !== comment)
+                this.filtered = true;
             })
         },
         addComment() {
