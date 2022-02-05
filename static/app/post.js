@@ -16,22 +16,22 @@ Vue.component("post-ui", {
 						{{post.text}}
 					</p>
 				</div>
-				<div style="height:40vh">
+				<div style="height:80%">
 					<post-comments :role="user.role"></post-comments>
 				</div>
 			</div>
 		</div>
 		<div v-else>
 		    <div v-if="post" class="d-flex justify-content-center shadow" style="margin:auto;margin-top:100px;width:60vw;height:80vh;border-radius: 20px;overflow: hidden;">
-                <div class="post shadow w-100 h-100" >
-                    <div v-if="poster" class="d-flex align-items-start">
+                <div class="d-flex flex-column post shadow w-100 h-100" >
+                    <div v-if="poster" class="d-flex flex-grow-0 align-items-start">
                         <profile-picture-details :user="poster"></profile-picture-details>
                         <button v-if="(poster.username === user.username || user.role === 'Administrator')" @click="deletePost" class="btn btn-danger btn-sm flex-grow-0 ms-auto m-3"><i class="far fa-trash-alt"></i></button>
                     </div>
-                    <div class="status-text">
+                    <div class="status-text flex-grow-0">
                         <p class="font-weight-large fs-5 p-2">{{post.text}}</p>
                     </div>
-                    <div style="height:40%;">
+                    <div style="height:60%">
 					    <post-comments :role="user.role"></post-comments>
 				    </div>
                 </div>
@@ -98,10 +98,10 @@ Vue.component("post-comments", {
         <div v-if="role==='User'" class="write-comment d-flex">
             <!-- Comment must have text to be posted -->
             <input v-model="comment" type="text" rows="1" style="width:100%;height:auto;" placeholder="Write a comment..."/>
-            <button @click="addComment" type="button" class="btn btn-primary">Submit</button>
+            <button @click="addComment" :disabled="comment==''" type="button" class="btn btn-primary">Submit</button>
         </div>
-        <div class="multiple-comments overflow-auto" style="height:100%;">
-            <div v-for="comment in comments">
+        <div class="multiple-comments" style="height:100%;overflow:auto;word-break:break-all;">
+            <div v-for="comment in comments" class="d-flex">
                 <single-comment @delete-comment="deleteComment" :comment="comment"></single-comment>
             </div>
         </div>
@@ -151,21 +151,21 @@ Vue.component("post-comments", {
 Vue.component("single-comment", {
     props: ["comment"],
     template: `
-    <div v-if="user" class="single-comment d-flex" style="gap:5px;max-width:95%;margin-top:10px;">
-        <div class="profile-picture d-flex flex-column align-items-center" style="width:40px;height:40px;flex-shrink:0;gap:5px;">
-            <profile-picture :profilePicture="user.profilePicture" class="flex-shrink-0"></profile-picture>
-            <button @click="deleteComment" v-if="(user.username === current)" class="btn btn-danger btn-sm w-75"><i class="far fa-trash-alt"></i></button>
+    <div v-if="user" class="single-comment d-flex flex-grow-0 align-items-center" style="gap:5px;max-width:95%;margin-top:10px;">
+        <div class="profile-picture d-flex flex-column align-self-start" style="width:40px;height:40px;flex-shrink:0;gap:5px;">
+            <profile-picture :profilePicture="user.profilePicture" :username="user.username" class="flex-shrink-0"></profile-picture>
         </div>
-        <div class="d-flex flex-column">
-            <router-link :to="'/profile/'+user.username" class="username">
+        <div v-if="user" class="" style="max-width:80%">
+            <router-link :to="'/profile/'+comment.username" class="username">
                 {{'@'+user.username}}
             </router-link>
-            <div class="comment-text rounded shadow-lg" style="background-color:lightblue;">
-                <div class="font-weight-large fs-6 p-1">
+            <div class="comment-text rounded shadow-lgs" style="min-width: 0;background-color:lightblue;">
+                <div class="font-weight-large fs-6 p-1" >
                     {{comment.content}}
                 </div>
             </div>
         </div>
+        <button @click="deleteComment" v-if="(user.username === current)" class="btn btn-danger btn-sm flex-grow-0"><i class="far fa-trash-alt"></i></button>
     </div>
     `,
     data(){
