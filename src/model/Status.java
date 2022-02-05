@@ -14,6 +14,7 @@ public class Status {
     private transient List<Comment> comments;
 
     public Status() {
+        picture = "";
         isDeleted = false;
         comments = new ArrayList<>();
     }
