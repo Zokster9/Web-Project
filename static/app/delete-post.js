@@ -10,7 +10,7 @@ Vue.component("delete-post", {
                     <div class="delete-post">
                         <form @submit.prevent>
                             <div class="form-group">
-                                <label>Deletetion reason</label>
+                                <label>Deletion reason</label>
                                 <textarea v-model="form.text" @focus="inFocus('text')" @blur="outFocus('text')" rows="6" class="form-control"/>
                                 <div v-show="!isFocused('text') && $v.form.username.$invalid" class="alert alert-danger">Username is required.</div>
                             </div>
@@ -54,7 +54,7 @@ Vue.component("delete-post", {
                     message: this.form.text,
                 }
             }).then(response => {
-                alert("Post succesffuly deleted")
+                alert("Post successfully deleted")
                 router.push("/search")
             })
         }

@@ -13,7 +13,7 @@ Vue.component("chat-page-user", {
                     <div class="chat d-flex flex-column" style="width:50vw;margin-left:5px;margin-right:5px;">
                         <div v-if="receiver" class="chat-header d-flex shadow" style="gap:5px;">
                             <div class="flex-shrink-0" style="height:50px;width:50px;">
-                                <profile-picture :profilePicture="receiver.profilePicture"></profile-picture>
+                                <profile-picture :profilePicture="receiver.profilePicture" :username="receiver.username"></profile-picture>
                             </div>
                             <div class="d-flex flex-column">
                                 <div class="name">
@@ -124,10 +124,10 @@ Vue.component("chat-page-user", {
             console.log(messageParts);
             let sender = messageParts[0];
             let receiver = messageParts[1];
-            if (sender === self.receiver.username && receiver === self.username) {
+            if (sender === self.receiver.username && receiver === self.user.username) {
                 axios.get("/messages/", {
                     params: {
-                        username: self.username,
+                        username: self.user.username,
                         receiver: self.receiver.username,
                     }
                 }).then((response) => {
