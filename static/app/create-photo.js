@@ -19,7 +19,7 @@ Vue.component("create-photo", {
                             </div>
                             
                             <div class="form-group">
-                                <button class="btn btn-primary" :disabled="$v.form.$invalid">Post photo</button>
+                                <button class="btn btn-primary" @click="addPhoto" :disabled="$v.form.$invalid">Post photo</button>
                             </div>
                         </form>
                     </div>
@@ -34,11 +34,25 @@ Vue.component("create-photo", {
                 text: "",
                 picture: null,
             },
+            username: JSON.parse(window.sessionStorage.getItem("user")).username
         }
     },
     methods: {
         processFile(event) {
             this.form.picture = event.target.files[0].name
+        },
+        addPhoto(){
+            axios.post("/add-photo/", {
+                text: this.form.text,
+                picture: this.form.picture,
+            },{
+                headers: {
+                    Authorization: 'Bearer ' + JSON.parse(window.sessionStorage.getItem("user")).JWTToken,
+                }
+            }).then(response => {
+                router.push("/profile/"+this.username)
+                return;
+            })
         }
     },
 
@@ -52,4 +66,5 @@ Vue.component("create-photo", {
             },
         }
     }
+
 })
