@@ -111,7 +111,7 @@ Vue.component("post-comments", {
         </div>
         <div class="multiple-comments" style="height:100%;overflow:auto;word-break:break-all;">
             <div v-for="comment in comments" class="d-flex">
-                <single-comment @delete-comment="deleteComment" :comment="comment"></single-comment>
+                <single-comment @delete-comment="deleteComment" :comment="comment" :key="comment.date"></single-comment>
             </div>
         </div>
     </div>
@@ -140,7 +140,7 @@ Vue.component("post-comments", {
                     date: comment.date,
                 }
             }).then(response => {
-                window.location.reload();
+                this.comments = this.comments.filter(x => x !== comment)
             })
         },
         addComment() {
@@ -195,12 +195,6 @@ Vue.component("single-comment", {
             }).then((response) =>{
                 this.user = response.data;
             });
-        }
-    },
-    watch: {
-        $route(to, from) {
-            this.$forceUpdate();
-            this.getUser();
         }
     },
 })

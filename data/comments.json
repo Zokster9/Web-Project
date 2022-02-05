@@ -108,6 +108,46 @@
     "content": "RESI GLUPANAAAA",
     "date": 1644076509755,
     "editDate": null,
+    "isDeleted": true,
+    "username": "test"
+  },
+  {
+    "postID": 34,
+    "content": "TUTU NEKO TE ZOVE",
+    "date": 1644077523984,
+    "editDate": null,
+    "isDeleted": true,
+    "username": "mirko"
+  },
+  {
+    "postID": 34,
+    "content": "TUTU I NOCI OVE",
+    "date": 1644077530015,
+    "editDate": null,
+    "isDeleted": true,
+    "username": "mirko"
+  },
+  {
+    "postID": 34,
+    "content": "TUTUT",
+    "date": 1644077702534,
+    "editDate": null,
+    "isDeleted": true,
+    "username": "mirko"
+  },
+  {
+    "postID": 34,
+    "content": "ALLLLEE",
+    "date": 1644077745454,
+    "editDate": null,
+    "isDeleted": false,
+    "username": "mirko"
+  },
+  {
+    "postID": 34,
+    "content": "TDDAAA",
+    "date": 1644077766176,
+    "editDate": null,
     "isDeleted": false,
     "username": "test"
   }
